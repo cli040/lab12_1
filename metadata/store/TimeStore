@@ -1,0 +1,43 @@
+{
+    "type": "jsonstore",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "data": [
+            "[",
+            "{",
+            "\"Start\": \"12-18-2005 09:00\",",
+            "\"End\": \"7-9-2009 12:00\",",
+            "\"Time\": 669,",
+            "\"Comment\": \"atque\"",
+            "}",
+            "]"
+        ],
+        "designer|userClassName": "TimeStore",
+        "model": "TimeModel",
+        "storeId": "TimeStore"
+    },
+    "configAlternates": {
+        "designer|userClassName": "string",
+        "model": "model",
+        "storeId": "string",
+        "data": "array"
+    },
+    "name": "MyJsonStore",
+    "designerId": "c7be9b5a-a3d7-49e5-b5b7-80e849265543",
+    "cn": [
+        {
+            "type": "Ext.data.proxy.LocalStorage",
+            "reference": {
+                "name": "proxy",
+                "type": "object"
+            },
+            "codeClass": null,
+            "name": "MyLocalStorageProxy1",
+            "designerId": "3baf2e67-9547-409b-8804-d9fa0f9af345"
+        }
+    ]
+}

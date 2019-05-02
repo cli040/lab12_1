@@ -1,0 +1,34 @@
+{
+    "type": "Ext.app.Controller",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userClassName": "TimeController"
+    },
+    "configAlternates": {
+        "designer|userClassName": "string"
+    },
+    "name": "MyController",
+    "designerId": "01fe6a71-281d-4eae-82c6-ccaea08c7397",
+    "cn": [
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "addTime"
+            },
+            "configAlternates": {
+                "fn": "string"
+            },
+            "name": "addTime",
+            "designerId": "729903ca-ab08-4650-a152-7d6b8a3ee0f5"
+        }
+    ]
+}

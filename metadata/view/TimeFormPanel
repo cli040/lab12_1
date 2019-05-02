@@ -1,0 +1,443 @@
+{
+    "type": "Ext.form.Panel",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userAlias": "timeformpanel",
+        "designer|userClassName": "TimeFormPanel",
+        "title": "Add new time"
+    },
+    "configAlternates": {
+        "designer|initialView": "boolean",
+        "designer|userAlias": "string",
+        "designer|userClassName": "string",
+        "title": "string"
+    },
+    "name": "MyFormPanel",
+    "designerId": "b41e2e40-452c-4ab5-a0a8-a79d7c28fd98",
+    "viewControllerInstanceId": "279bd958-b8b4-4a2a-961e-6bd8c86e49d2",
+    "viewModelInstanceId": "4bc178ec-c52e-433e-a651-71d3afc0a124",
+    "cn": [
+        {
+            "type": "Ext.Container",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "container|align": "start",
+                "container|pack": "center",
+                "designer|displayName": "start",
+                "layout": "hbox"
+            },
+            "configAlternates": {
+                "container|align": "string",
+                "container|pack": "string",
+                "designer|displayName": "string",
+                "layout": "string"
+            },
+            "name": "MyContainer3",
+            "designerId": "bd820ce0-c8c0-4f0a-bb72-58ac58515d7b",
+            "cn": [
+                {
+                    "type": "Ext.field.Time",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|displayName": "start time",
+                        "label": "Start Time",
+                        "margin": 25,
+                        "maxWidth": 250,
+                        "placeholder": "12:00"
+                    },
+                    "configAlternates": {
+                        "designer|displayName": "string",
+                        "label": "string",
+                        "margin": "auto",
+                        "placeholder": "string",
+                        "maxWidth": "auto"
+                    },
+                    "name": "MyTime",
+                    "designerId": "3b674f7a-7e04-40a7-9c77-4a82f2233a21"
+                },
+                {
+                    "type": "Ext.field.Date",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|displayName": "start date",
+                        "label": "Start Date",
+                        "margin": 25,
+                        "maxWidth": 250,
+                        "placeholder": "13/04/2019"
+                    },
+                    "configAlternates": {
+                        "designer|displayName": "string",
+                        "label": "string",
+                        "margin": "auto",
+                        "maxWidth": "auto",
+                        "placeholder": "string"
+                    },
+                    "name": "MyDate3",
+                    "designerId": "4dd11e50-8b07-4048-b0bb-bf9fd0b385ef",
+                    "cn": [
+                        {
+                            "type": "Ext.picker.Date",
+                            "reference": {
+                                "name": "picker",
+                                "type": "object"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "title": "My Panel"
+                            },
+                            "configAlternates": {
+                                "title": "string"
+                            },
+                            "name": "MyDatePicker",
+                            "designerId": "0ea42d3b-dbeb-4f0d-a0f7-a0f81b0e70b4"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "type": "Ext.Container",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "container|pack": "center",
+                "designer|displayName": "end",
+                "layout": "hbox"
+            },
+            "configAlternates": {
+                "container|pack": "string",
+                "designer|displayName": "string",
+                "layout": "string"
+            },
+            "name": "MyContainer5",
+            "designerId": "75175d28-072d-4872-ae67-a16be22fe569",
+            "cn": [
+                {
+                    "type": "Ext.field.Time",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|displayName": "end time",
+                        "label": "End Time",
+                        "margin": 25,
+                        "maxWidth": 250,
+                        "placeholder": "14:00"
+                    },
+                    "configAlternates": {
+                        "designer|displayName": "string",
+                        "label": "string",
+                        "margin": "auto",
+                        "maxWidth": "auto",
+                        "placeholder": "string"
+                    },
+                    "name": "MyTime2",
+                    "designerId": "93f6c3a3-2e3c-400c-95e7-44ec9e081f15"
+                },
+                {
+                    "type": "Ext.field.Date",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|displayName": "end date",
+                        "label": "End Date",
+                        "margin": 25,
+                        "maxWidth": 250,
+                        "placeholder": "13/04/2019"
+                    },
+                    "configAlternates": {
+                        "designer|displayName": "string",
+                        "label": "string",
+                        "margin": "auto",
+                        "maxWidth": "auto",
+                        "placeholder": "string"
+                    },
+                    "name": "MyDate2",
+                    "designerId": "e69b0254-c694-4998-97fd-9e4926a1481d",
+                    "cn": [
+                        {
+                            "type": "Ext.picker.Date",
+                            "reference": {
+                                "name": "picker",
+                                "type": "object"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "title": "My Panel"
+                            },
+                            "configAlternates": {
+                                "title": "string"
+                            },
+                            "name": "MyDatePicker1",
+                            "designerId": "1e902240-a9a0-40bf-9350-ab113c05cb27"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "type": "Ext.Container",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "container|pack": "center",
+                "designer|displayName": "total",
+                "layout": "hbox"
+            },
+            "configAlternates": {
+                "container|pack": "string",
+                "designer|displayName": "string",
+                "layout": "string"
+            },
+            "name": "MyContainer6",
+            "designerId": "bac98b39-5ecf-4da4-9283-7a5f9765c94c",
+            "cn": [
+                {
+                    "type": "Ext.field.Number",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|displayName": "total time",
+                        "docked": null,
+                        "label": "Total time",
+                        "margin": 25,
+                        "maxWidth": 250,
+                        "minValue": 0,
+                        "placeholder": "2"
+                    },
+                    "configAlternates": {
+                        "designer|displayName": "string",
+                        "label": "string",
+                        "margin": "auto",
+                        "minValue": "number",
+                        "docked": "string",
+                        "maxWidth": "auto",
+                        "placeholder": "string"
+                    },
+                    "name": "MyNumberField",
+                    "designerId": "d182501a-c448-4ad0-a1eb-b25a109fc843"
+                }
+            ]
+        },
+        {
+            "type": "Ext.Container",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|displayName": "comment"
+            },
+            "configAlternates": {
+                "designer|displayName": "string"
+            },
+            "name": "MyContainer7",
+            "designerId": "2c2dd5c2-8b88-4dde-a631-6bbef3a7f4e4",
+            "cn": [
+                {
+                    "type": "Ext.field.Text",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|displayName": "comment",
+                        "label": "Comment",
+                        "margin": 25,
+                        "placeholder": "This is an original comment"
+                    },
+                    "configAlternates": {
+                        "designer|displayName": "string",
+                        "label": "string",
+                        "margin": "auto",
+                        "placeholder": "string"
+                    },
+                    "name": "MyTextField",
+                    "designerId": "fd2fe507-f793-4bdc-b151-22c86d2207f0"
+                }
+            ]
+        },
+        {
+            "type": "Ext.Container",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "centered": true,
+                "container|align": "start",
+                "container|pack": "center",
+                "designer|displayName": "btnContainer",
+                "docked": "bottom",
+                "layout": "box",
+                "padding": 25
+            },
+            "configAlternates": {
+                "centered": "boolean",
+                "container|align": "string",
+                "container|pack": "string",
+                "designer|displayName": "string",
+                "docked": "string",
+                "layout": "string",
+                "padding": "auto"
+            },
+            "name": "MyContainer2",
+            "designerId": "a5e18f6c-3b03-4871-bffa-20993bef1b28",
+            "cn": [
+                {
+                    "type": "Ext.Button",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|uiInterfaceName": "confirm",
+                        "docked": null,
+                        "maxWidth": 250,
+                        "minWidth": 150,
+                        "text": "Confirm",
+                        "ui": "confirm"
+                    },
+                    "configAlternates": {
+                        "designer|uiInterfaceName": "string",
+                        "docked": "string",
+                        "maxWidth": "auto",
+                        "minWidth": "auto",
+                        "text": "string",
+                        "ui": "string"
+                    },
+                    "name": "MyButton2",
+                    "designerId": "11d8218e-8506-4780-85e8-93bc0edd5520",
+                    "cn": [
+                        {
+                            "type": "fixedfunction",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "designer|params": [
+                                    "button",
+                                    "e"
+                                ],
+                                "fn": "handler",
+                                "implHandler": null
+                            },
+                            "configAlternates": {
+                                "designer|params": "typedarray",
+                                "fn": "string",
+                                "implHandler": "code"
+                            },
+                            "name": "handler",
+                            "designerId": "7fc1109a-e884-4645-b85b-eca40de6c6f5"
+                        }
+                    ]
+                },
+                {
+                    "type": "Ext.Spacer",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "width": 25
+                    },
+                    "configAlternates": {
+                        "width": "number"
+                    },
+                    "name": "MySpacer",
+                    "designerId": "caa31e88-58b6-46f0-bb3c-3be3da71af70"
+                },
+                {
+                    "type": "Ext.Button",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|uiInterfaceName": "decline",
+                        "docked": null,
+                        "maxWidth": 250,
+                        "minWidth": 150,
+                        "text": "Decline",
+                        "ui": "decline"
+                    },
+                    "configAlternates": {
+                        "designer|uiInterfaceName": "string",
+                        "docked": "string",
+                        "maxWidth": "auto",
+                        "minWidth": "auto",
+                        "text": "string",
+                        "ui": "string"
+                    },
+                    "name": "MyButton3",
+                    "designerId": "aef07e0e-4082-4930-9e2c-652ebd5df782",
+                    "cn": [
+                        {
+                            "type": "fixedfunction",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "designer|params": [
+                                    "button",
+                                    "e"
+                                ],
+                                "fn": "handler",
+                                "implHandler": [
+                                    "this.up('panel').close();"
+                                ]
+                            },
+                            "configAlternates": {
+                                "designer|params": "typedarray",
+                                "fn": "string",
+                                "implHandler": "code"
+                            },
+                            "name": "handler",
+                            "designerId": "22871f4d-b067-40cd-a625-99ad2dd55710"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

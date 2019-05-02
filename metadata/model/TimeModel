@@ -1,0 +1,124 @@
+{
+    "type": "Ext.data.Model",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userClassName": "TimeModel"
+    },
+    "configAlternates": {
+        "designer|userClassName": "string"
+    },
+    "name": "MyModel",
+    "designerId": "055383d5-dad5-4ca0-8f64-f64c0c0e0c7b",
+    "cn": [
+        {
+            "type": "Ext.data.field.Date",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "dateFormat": "d-M-Y H:i",
+                "dateReadFormat": "d-M-Y H:i",
+                "dateWriteFormat": "d-M-Y H:i",
+                "name": "Start"
+            },
+            "configAlternates": {
+                "name": "string",
+                "dateFormat": "string",
+                "dateReadFormat": "string",
+                "dateWriteFormat": "string"
+            },
+            "name": "MyDate",
+            "designerId": "b2682625-f270-4e5e-85f0-67ec0c187a39"
+        },
+        {
+            "type": "Ext.data.field.Date",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "dateFormat": "d-M-Y H:i",
+                "dateReadFormat": "d-M-Y H:i",
+                "dateWriteFormat": "d-M-Y H:i",
+                "name": "End"
+            },
+            "configAlternates": {
+                "name": "string",
+                "dateFormat": "string",
+                "dateReadFormat": "string",
+                "dateWriteFormat": "string"
+            },
+            "name": "MyDate1",
+            "designerId": "b383aef1-dbf4-42ad-a987-5402472c2363"
+        },
+        {
+            "type": "Ext.data.field.Integer",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "Time"
+            },
+            "configAlternates": {
+                "name": "string"
+            },
+            "name": "MyInteger",
+            "designerId": "0947995e-72b2-4980-a53d-36dd6040057e"
+        },
+        {
+            "type": "Ext.data.field.String",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "Comment"
+            },
+            "configAlternates": {
+                "name": "string"
+            },
+            "name": "MyString1",
+            "designerId": "0de83fc0-4a53-4433-9209-6a5e35e0ed45"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "newStart",
+                    "newEnd",
+                    "newTime",
+                    "newComment"
+                ],
+                "fn": "edit",
+                "implHandler": [
+                    "this.set(\"Start\", newStart);",
+                    "this.set(\"End\", newEnd);",
+                    "this.set(\"Time\", newTime);",
+                    "this.set(\"Comment\", newComment);"
+                ]
+            },
+            "configAlternates": {
+                "designer|params": "typedarray",
+                "fn": "string",
+                "implHandler": "code"
+            },
+            "name": "edit",
+            "designerId": "d4e7b176-3e57-4af9-aaa9-8e48a66901f4"
+        }
+    ]
+}

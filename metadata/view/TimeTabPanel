@@ -1,0 +1,415 @@
+{
+    "type": "Ext.tab.Panel",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "container|animation": false,
+        "designer|initialView": true,
+        "designer|userAlias": "timetabpanel",
+        "designer|userClassName": "TimeTabPanel",
+        "docked": null,
+        "fullscreen": false
+    },
+    "configAlternates": {
+        "container|animation": "auto",
+        "designer|initialView": "boolean",
+        "designer|userAlias": "string",
+        "designer|userClassName": "string",
+        "docked": "string",
+        "fullscreen": "boolean"
+    },
+    "name": "MyTabPanel",
+    "designerId": "d69f1807-218d-4e61-be55-5e98844e5488",
+    "viewControllerInstanceId": "45d3724c-143b-4751-a8e8-66994b9be5cd",
+    "viewModelInstanceId": "8b01b52f-dccc-4373-a1bd-2b9804dcfe02",
+    "cn": [
+        {
+            "type": "Ext.Container",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "docked": null,
+                "title": "Day"
+            },
+            "configAlternates": {
+                "docked": "string",
+                "title": "string"
+            },
+            "name": "MyContainer",
+            "designerId": "096e983d-08e2-4b71-9b0b-8ad81a911ffa",
+            "cn": [
+                {
+                    "type": "Ext.Container",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "container|align": "center",
+                        "designer|displayName": "btnContainer",
+                        "docked": null,
+                        "layout": "hbox",
+                        "margin": 15,
+                        "maxWidth": 150
+                    },
+                    "configAlternates": {
+                        "container|align": "string",
+                        "designer|displayName": "string",
+                        "docked": "string",
+                        "layout": "string",
+                        "margin": "auto",
+                        "maxWidth": "auto"
+                    },
+                    "name": "MyContainer4",
+                    "designerId": "e582cf30-69aa-4969-bdc6-0ebd88bbe7f1",
+                    "cn": [
+                        {
+                            "type": "Ext.Button",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "designer|displayName": "addtime",
+                                "designer|uiInterfaceName": "confirm",
+                                "docked": "top",
+                                "itemId": "mybutton",
+                                "text": "Add time",
+                                "ui": "confirm"
+                            },
+                            "configAlternates": {
+                                "designer|displayName": "string",
+                                "designer|uiInterfaceName": "string",
+                                "docked": "string",
+                                "itemId": "string",
+                                "text": "string",
+                                "ui": "string"
+                            },
+                            "name": "MyButton",
+                            "designerId": "c51d47d3-05aa-4e1c-b013-b785df7d42f6",
+                            "cn": [
+                                {
+                                    "type": "fixedfunction",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "designer|params": [
+                                            "button",
+                                            "e"
+                                        ],
+                                        "fn": "handler",
+                                        "implHandler": [
+                                            "Ext.create('Lab12_1.view.TimeFormPanel', {fullscreen: true});"
+                                        ]
+                                    },
+                                    "configAlternates": {
+                                        "designer|params": "typedarray",
+                                        "fn": "string",
+                                        "implHandler": "code"
+                                    },
+                                    "name": "handler",
+                                    "designerId": "b7bb91d1-b88c-4091-86b7-dffb0ca918b6"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "type": "Ext.TitleBar",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "container|align": "start",
+                        "designer|displayName": "Day",
+                        "docked": "top",
+                        "title": "Day"
+                    },
+                    "configAlternates": {
+                        "container|align": "string",
+                        "designer|displayName": "string",
+                        "docked": "string",
+                        "title": "string"
+                    },
+                    "name": "MyTitleBar",
+                    "designerId": "4ca4e429-a113-4b69-b547-6d5d475f68cb"
+                },
+                {
+                    "type": "Ext.grid.Grid",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|displayName": "DayGrid",
+                        "height": "100%",
+                        "store": "TimeStore",
+                        "width": "100%"
+                    },
+                    "configAlternates": {
+                        "designer|displayName": "string",
+                        "height": "auto",
+                        "store": "store",
+                        "width": "auto"
+                    },
+                    "name": "MyGrid",
+                    "designerId": "89a10f38-b1a8-4532-a6d1-78b2dbbf2fc7",
+                    "cn": [
+                        {
+                            "type": "Ext.grid.column.Date",
+                            "reference": {
+                                "name": "columns",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "dataIndex": "Start",
+                                "docked": null,
+                                "format": "d-M-Y H:i",
+                                "text": "Start",
+                                "width": 129
+                            },
+                            "configAlternates": {
+                                "dataIndex": "datafield",
+                                "docked": "string",
+                                "format": "string",
+                                "text": "string",
+                                "width": "auto"
+                            },
+                            "name": "MyDateColumn",
+                            "designerId": "cf422580-eedb-4183-a6d3-788f33941ac7"
+                        },
+                        {
+                            "type": "Ext.grid.column.Date",
+                            "reference": {
+                                "name": "columns",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "dataIndex": "End",
+                                "docked": null,
+                                "format": "d-M-Y H:i",
+                                "text": "End",
+                                "width": 124
+                            },
+                            "configAlternates": {
+                                "dataIndex": "datafield",
+                                "docked": "string",
+                                "format": "string",
+                                "text": "string",
+                                "width": "auto"
+                            },
+                            "name": "MyDateColumn2",
+                            "designerId": "36c81f17-cf58-4a8c-b62e-0032cbefc6d9"
+                        },
+                        {
+                            "type": "Ext.grid.column.Number",
+                            "reference": {
+                                "name": "columns",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "dataIndex": "Time",
+                                "docked": null,
+                                "text": "Time",
+                                "width": 96
+                            },
+                            "configAlternates": {
+                                "dataIndex": "datafield",
+                                "docked": "string",
+                                "text": "string",
+                                "width": "auto"
+                            },
+                            "name": "MyNumberColumn",
+                            "designerId": "6ee5ad44-be7d-4b89-9a79-9736812b52d8"
+                        },
+                        {
+                            "type": "Ext.grid.column.Column",
+                            "reference": {
+                                "name": "columns",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "dataIndex": "Comment",
+                                "designer|displayName": "Comment",
+                                "docked": null,
+                                "text": "Comment",
+                                "width": 266
+                            },
+                            "configAlternates": {
+                                "dataIndex": "datafield",
+                                "designer|displayName": "string",
+                                "docked": "string",
+                                "text": "string",
+                                "width": "auto"
+                            },
+                            "name": "MyColumn",
+                            "designerId": "747a3726-7b34-497c-a258-797d6a8af1fa"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "type": "Ext.Container",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "title": "Week"
+            },
+            "configAlternates": {
+                "title": "string"
+            },
+            "name": "MyContainer1",
+            "designerId": "46bbf884-177d-434b-98be-469c643bba57",
+            "cn": [
+                {
+                    "type": "Ext.TitleBar",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|displayName": "Week",
+                        "docked": "top",
+                        "title": "Week"
+                    },
+                    "configAlternates": {
+                        "designer|displayName": "string",
+                        "docked": "string",
+                        "title": "string"
+                    },
+                    "name": "MyTitleBar1",
+                    "designerId": "d9830ec1-814f-47a4-95a4-fa9bbf2793f0"
+                },
+                {
+                    "type": "Ext.grid.Grid",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|displayName": "WeekGrid",
+                        "height": "100%",
+                        "store": "TimeStore",
+                        "width": "100%"
+                    },
+                    "configAlternates": {
+                        "designer|displayName": "string",
+                        "height": "auto",
+                        "store": "store",
+                        "width": "auto"
+                    },
+                    "name": "MyGrid2",
+                    "designerId": "85d33a48-ef45-4ac1-8e58-d39ae6f8d554",
+                    "cn": [
+                        {
+                            "type": "Ext.grid.column.Date",
+                            "reference": {
+                                "name": "columns",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "dataIndex": "date",
+                                "docked": null,
+                                "text": "Start",
+                                "width": 129
+                            },
+                            "configAlternates": {
+                                "dataIndex": "datafield",
+                                "docked": "string",
+                                "text": "string",
+                                "width": "auto"
+                            },
+                            "name": "MyDateColumn",
+                            "designerId": "8be7dfea-ba93-4bae-a1b1-bfe9a3319766"
+                        },
+                        {
+                            "type": "Ext.grid.column.Date",
+                            "reference": {
+                                "name": "columns",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "docked": null,
+                                "text": "End",
+                                "width": 124
+                            },
+                            "configAlternates": {
+                                "docked": "string",
+                                "text": "string",
+                                "width": "auto"
+                            },
+                            "name": "MyDateColumn2",
+                            "designerId": "0ae77c7e-8a0b-474a-b61d-e2b42ed0ba2b"
+                        },
+                        {
+                            "type": "Ext.grid.column.Number",
+                            "reference": {
+                                "name": "columns",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "docked": null,
+                                "text": "Time",
+                                "width": 96
+                            },
+                            "configAlternates": {
+                                "docked": "string",
+                                "text": "string",
+                                "width": "auto"
+                            },
+                            "name": "MyNumberColumn",
+                            "designerId": "c5460795-3000-43bc-8d49-f944063b5183"
+                        },
+                        {
+                            "type": "Ext.grid.column.Column",
+                            "reference": {
+                                "name": "columns",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "docked": null,
+                                "text": "Comment",
+                                "width": 266
+                            },
+                            "configAlternates": {
+                                "docked": "string",
+                                "text": "string",
+                                "width": "auto"
+                            },
+                            "name": "MyColumn",
+                            "designerId": "046b3b7f-d717-4195-9400-641746fa0e5f"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

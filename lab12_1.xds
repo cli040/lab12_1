@@ -1,0 +1,66 @@
+{
+    "name": "lab12_1",
+    "settings": {
+        "cmd": {
+            "license": "commercial",
+            "cmdVersion": "6.7.0.63",
+            "frameworkVersion": "6.7.0.212"
+        },
+        "urlPrefixTemplate": "http://localhost:{port}/{path}",
+        "urlPrefix": "http://localhost:49977/",
+        "canvasControls": {
+            "viewportSize": {
+                "name": "Desktop (Auto Expand)",
+                "builtIn": true,
+                "height": null,
+                "width": null
+            },
+            "viewportOrientation": "portrait"
+        },
+        "exportPath": "",
+        "spacesToIndent": 4,
+        "sdkPath": "",
+        "lineEnding": "CRLF",
+        "genTimestamps": false,
+        "cacheBust": false,
+        "buildShouldOverwriteIndex": true,
+        "generateArchitectVersion": true,
+        "lastBuildSelection": {
+            "value": "webBuild",
+            "display": "Build web app",
+            "buildPlatform": false
+        }
+    },
+    "xdsVersion": "4.2.5",
+    "xdsBuild": 420,
+    "schemaVersion": 1,
+    "upgradeVersion": 310000000001,
+    "framework": "modern67",
+    "viewOrderMap": {
+        "view": [
+            "8b01b52f-dccc-4373-a1bd-2b9804dcfe02",
+            "45d3724c-143b-4751-a8e8-66994b9be5cd",
+            "b41e2e40-452c-4ab5-a0a8-a79d7c28fd98",
+            "4bc178ec-c52e-433e-a651-71d3afc0a124",
+            "279bd958-b8b4-4a2a-961e-6bd8c86e49d2",
+            "d69f1807-218d-4e61-be55-5e98844e5488"
+        ],
+        "store": [
+            "c7be9b5a-a3d7-49e5-b5b7-80e849265543"
+        ],
+        "controller": [
+            "01fe6a71-281d-4eae-82c6-ccaea08c7397"
+        ],
+        "model": [
+            "055383d5-dad5-4ca0-8f64-f64c0c0e0c7b"
+        ],
+        "resource": [
+            "c2d104e0-c2ee-4f11-b7cf-aeff578dc6ad",
+            "def7b94e-9e0b-4c31-8e12-d4a94dbfed55",
+            "90bcf4a4-b722-4acf-ba65-4799157b4473"
+        ],
+        "app": [
+            "application"
+        ]
+    }
+}

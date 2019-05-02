@@ -1,0 +1,33 @@
+{
+    "type": "Ext.app.Application",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "controllers": [
+            "TimeController"
+        ],
+        "models": [
+            "TimeModel"
+        ],
+        "name": "Lab12_1",
+        "stores": [
+            "TimeStore"
+        ],
+        "views": [
+            "TimeTabPanel",
+            "TimeFormPanel"
+        ]
+    },
+    "configAlternates": {
+        "controllers": "typedarray",
+        "models": "typedarray",
+        "name": "string",
+        "stores": "typedarray",
+        "views": "typedarray"
+    },
+    "name": "Application",
+    "designerId": "application"
+}

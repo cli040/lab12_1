@@ -197,8 +197,18 @@
         },
         "controller": true,
         "resource": true,
-        "c2d104e0-c2ee-4f11-b7cf-aeff578dc6ad": {
-            "id": "c2d104e0-c2ee-4f11-b7cf-aeff578dc6ad"
+        "e5a0aa89-efa0-456d-a74c-cb48b1cb18ef": {
+            "id": "e5a0aa89-efa0-456d-a74c-cb48b1cb18ef",
+            "cn": [
+                {
+                    "id": "0d1b607c-0bcb-41af-a1ff-b68909a22427",
+                    "cn": [
+                        {
+                            "id": "9df2fee5-700c-4114-aee0-29ca1ad2ccf9"
+                        }
+                    ]
+                }
+            ]
         },
         "def7b94e-9e0b-4c31-8e12-d4a94dbfed55": {
             "id": "def7b94e-9e0b-4c31-8e12-d4a94dbfed55"
@@ -220,7 +230,7 @@
     },
     "inspectorState": {
         "topInstance": "d69f1807-218d-4e61-be55-5e98844e5488",
-        "selectedInstance": "c51d47d3-05aa-4e1c-b013-b785df7d42f6"
+        "selectedInstance": "85d33a48-ef45-4ac1-8e58-d39ae6f8d554"
     },
     "editMode": "design",
     "userSettings": {

@@ -275,10 +275,12 @@
             },
             "codeClass": null,
             "userConfig": {
+                "docked": null,
                 "title": "Week"
             },
             "configAlternates": {
-                "title": "string"
+                "title": "string",
+                "docked": "string"
             },
             "name": "MyContainer1",
             "designerId": "46bbf884-177d-434b-98be-469c643bba57",

@@ -36,7 +36,7 @@ Ext.application({
     name: 'Lab12_1',
 
     launch: function() {
-        Ext.create('Lab12_1.view.TimeTabPanel', {fullscreen: true});
+        Ext.create('Lab12_1.view.TimeFormPanel', {fullscreen: true});
     }
 
 });

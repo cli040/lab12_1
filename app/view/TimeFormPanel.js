@@ -19,14 +19,14 @@ Ext.define('Lab12_1.view.TimeFormPanel', {
 
     requires: [
         'Lab12_1.view.TimeFormPanelViewModel',
-        'Ext.field.Time',
-        'Ext.field.Date',
-        'Ext.picker.Date',
+        'Lab12_1.view.TimeFormPanelViewController',
+        'Ext.Container',
         'Ext.field.Number',
         'Ext.Button',
         'Ext.Spacer'
     ],
 
+    controller: 'timeformpanel',
     viewModel: {
         type: 'timeformpanel'
     },
@@ -42,21 +42,14 @@ Ext.define('Lab12_1.view.TimeFormPanel', {
             },
             items: [
                 {
-                    xtype: 'timefield',
+                    xtype: 'textfield',
+                    id: 'StartTimeAndDateId',
+                    itemId: 'StartTimeAndDate',
                     margin: 25,
-                    maxWidth: 250,
-                    label: 'Start Time',
-                    placeholder: '12:00'
-                },
-                {
-                    xtype: 'datefield',
-                    margin: 25,
-                    maxWidth: 250,
-                    label: 'Start Date',
-                    placeholder: '13/04/2019',
-                    picker: {
-                        xtype: 'datepicker',
-                        title: 'My Panel'
+                    label: 'Start',
+                    placeholder: '14/02/2019 10:00',
+                    listeners: {
+                        focusleave: 'onStartTimeAndDateFocusleave'
                     }
                 }
             ]
@@ -69,21 +62,14 @@ Ext.define('Lab12_1.view.TimeFormPanel', {
             },
             items: [
                 {
-                    xtype: 'timefield',
+                    xtype: 'textfield',
+                    id: 'EndTimeAndDateId',
+                    itemId: 'EndTimeAndDate',
                     margin: 25,
-                    maxWidth: 250,
-                    label: 'End Time',
-                    placeholder: '14:00'
-                },
-                {
-                    xtype: 'datefield',
-                    margin: 25,
-                    maxWidth: 250,
-                    label: 'End Date',
-                    placeholder: '13/04/2019',
-                    picker: {
-                        xtype: 'datepicker',
-                        title: 'My Panel'
+                    label: 'End',
+                    placeholder: '14/02/2019 12:00',
+                    listeners: {
+                        focusleave: 'onEndTimeAndDateFocusleave'
                     }
                 }
             ]
@@ -97,11 +83,15 @@ Ext.define('Lab12_1.view.TimeFormPanel', {
             items: [
                 {
                     xtype: 'numberfield',
+                    id: 'TotalTimeId',
+                    itemId: 'TotalTime',
                     margin: 25,
-                    maxWidth: 250,
                     label: 'Total time',
                     placeholder: '2',
-                    minValue: 0
+                    minValue: 0,
+                    listeners: {
+                        focusleave: 'onTotalTimeFocusleave'
+                    }
                 }
             ]
         },
@@ -110,6 +100,7 @@ Ext.define('Lab12_1.view.TimeFormPanel', {
             items: [
                 {
                     xtype: 'textfield',
+                    itemId: 'Comment',
                     margin: 25,
                     label: 'Comment',
                     placeholder: 'This is an original comment'
@@ -119,7 +110,6 @@ Ext.define('Lab12_1.view.TimeFormPanel', {
         {
             xtype: 'container',
             centered: true,
-            docked: 'bottom',
             padding: 25,
             layout: {
                 type: 'box',
@@ -153,6 +143,9 @@ Ext.define('Lab12_1.view.TimeFormPanel', {
                 }
             ]
         }
-    ]
+    ],
+    listeners: {
+        added: 'onFormpanelAdded'
+    }
 
 });

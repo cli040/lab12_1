@@ -29,6 +29,38 @@
             },
             "name": "addTime",
             "designerId": "729903ca-ab08-4650-a152-7d6b8a3ee0f5"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "button#mybutton2",
+                "designer|params": [
+                    "button",
+                    "e",
+                    "eOpts"
+                ],
+                "designer|targetType": "Ext.Button",
+                "fn": "addToStore",
+                "implHandler": [
+                    ""
+                ],
+                "name": "tap"
+            },
+            "configAlternates": {
+                "designer|controlQuery": "string",
+                "designer|params": "typedarray",
+                "designer|targetType": "view",
+                "fn": "string",
+                "implHandler": "code",
+                "name": "string"
+            },
+            "name": "addToStore",
+            "designerId": "42deb150-8d59-4b49-8266-72f4a49aea6b"
         }
     ]
 }

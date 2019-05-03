@@ -17,6 +17,10 @@ Ext.define('Lab12_1.view.TimeFormPanelViewController', {
     extend: 'Ext.app.ViewController',
     alias: 'controller.timeformpanel',
 
+    requires: [
+        'Lab12_1.store.TimeStore'
+    ],
+
     onStartTimeAndDateFocusleave: function(component, event, eOpts) {
         var startTime = Ext.getCmp("StartTimeAndDateId").getValue();
         var endTime = Ext.getCmp("EndTimeAndDateId").getValue();
@@ -39,6 +43,23 @@ Ext.define('Lab12_1.view.TimeFormPanelViewController', {
         var endTime = Ext.getCmp("EndTimeAndDateId").getValue();
         var totalTime = Ext.getCmp("TotalTimeId").getValue();
         console.log(startTime + endTime + totalTime);
+    },
+
+    addToStore: function(button, e, eOpts) {
+        var store= Ext.getStore("TimeStore");
+        var startTime = Ext.getCmp("StartTimeAndDateId").getValue();
+        var endTime = Ext.getCmp("EndTimeAndDateId").getValue();
+        var totalTime = Ext.getCmp("TotalTimeId").getValue();
+        var comment= Ext.getCmp("CommentId");
+        var timeFormat={
+            Start: startTime,
+            End: endTime,
+            Time: totalTime,
+            Comment: comment
+        }
+        store.add(timeFormat);
+        store.sync();
+        this.up('panel').close();
     },
 
     onFormpanelAdded: function(component, container, index, eOpts) {

@@ -6,7 +6,6 @@
     },
     "codeClass": null,
     "userConfig": {
-        "designer|initialView": true,
         "designer|userAlias": "timeformpanel",
         "designer|userClassName": "TimeFormPanel",
         "title": "Add new time"
@@ -19,7 +18,7 @@
     },
     "name": "MyFormPanel",
     "designerId": "b41e2e40-452c-4ab5-a0a8-a79d7c28fd98",
-    "viewControllerInstanceId": "279bd958-b8b4-4a2a-961e-6bd8c86e49d2",
+    "viewControllerInstanceId": "cd8f54fe-1d23-45b4-9e82-d29e4d979a87",
     "viewModelInstanceId": "4bc178ec-c52e-433e-a651-71d3afc0a124",
     "cn": [
         {
@@ -271,10 +270,12 @@
             },
             "codeClass": null,
             "userConfig": {
-                "designer|displayName": "comment"
+                "designer|displayName": "comment",
+                "id": "CommentId"
             },
             "configAlternates": {
-                "designer|displayName": "string"
+                "designer|displayName": "string",
+                "id": "string"
             },
             "name": "MyContainer7",
             "designerId": "2c2dd5c2-8b88-4dde-a631-6bbef3a7f4e4",
@@ -343,6 +344,7 @@
                     "userConfig": {
                         "designer|uiInterfaceName": "confirm",
                         "docked": null,
+                        "itemId": "Confirm",
                         "maxWidth": 250,
                         "minWidth": 150,
                         "text": "Confirm",
@@ -354,33 +356,48 @@
                         "maxWidth": "auto",
                         "minWidth": "auto",
                         "text": "string",
-                        "ui": "string"
+                        "ui": "string",
+                        "itemId": "string"
                     },
                     "name": "MyButton2",
                     "designerId": "11d8218e-8506-4780-85e8-93bc0edd5520",
                     "cn": [
                         {
-                            "type": "fixedfunction",
+                            "type": "viewcontrollereventbinding",
                             "reference": {
-                                "name": "items",
+                                "name": "listeners",
                                 "type": "array"
                             },
                             "codeClass": null,
                             "userConfig": {
-                                "designer|params": [
-                                    "button",
-                                    "e"
+                                "fn": "addToStore",
+                                "implHandler": [
+                                    "var store= Ext.getStore(\"TimeStore\");",
+                                    "var startTime = Ext.getCmp(\"StartTimeAndDateId\").getValue();",
+                                    "        var endTime = Ext.getCmp(\"EndTimeAndDateId\").getValue();",
+                                    "        var totalTime = Ext.getCmp(\"TotalTimeId\").getValue();",
+                                    "        var comment= Ext.getCmp(\"CommentId\");",
+                                    "var timeFormat={",
+                                    "                    Start: startTime,",
+                                    "                    End: endTime,",
+                                    "                    Time: totalTime,",
+                                    "                    Comment: comment",
+                                    "                }",
+                                    "store.add(timeFormat);",
+                                    "store.sync();",
+                                    "this.up('panel').close();"
                                 ],
-                                "fn": "handler",
-                                "implHandler": null
+                                "name": "tap",
+                                "scope": "me"
                             },
                             "configAlternates": {
-                                "designer|params": "typedarray",
                                 "fn": "string",
-                                "implHandler": "code"
+                                "implHandler": "code",
+                                "name": "string",
+                                "scope": "string"
                             },
-                            "name": "handler",
-                            "designerId": "7fc1109a-e884-4645-b85b-eca40de6c6f5"
+                            "name": "addToStore",
+                            "designerId": "3ab6b8e5-ec83-448c-a8d7-fd81a82b6395"
                         }
                     ]
                 },

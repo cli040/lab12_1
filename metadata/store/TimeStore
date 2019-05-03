@@ -36,6 +36,12 @@
                 "type": "object"
             },
             "codeClass": null,
+            "userConfig": {
+                "id": "timeStore"
+            },
+            "configAlternates": {
+                "id": "string"
+            },
             "name": "MyLocalStorageProxy1",
             "designerId": "3baf2e67-9547-409b-8804-d9fa0f9af345"
         }

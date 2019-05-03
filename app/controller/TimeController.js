@@ -16,6 +16,16 @@
 Ext.define('Lab12_1.controller.TimeController', {
     extend: 'Ext.app.Controller',
 
+    control: {
+        "button#mybutton2": {
+            tap: 'addToStore'
+        }
+    },
+
+    addToStore: function(button, e, eOpts) {
+
+    },
+
     addTime: function() {
 
     }

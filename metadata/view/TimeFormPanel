@@ -30,7 +30,7 @@
             },
             "codeClass": null,
             "userConfig": {
-                "container|align": "start",
+                "container|align": "center",
                 "container|pack": "center",
                 "designer|displayName": "start",
                 "layout": "hbox"
@@ -68,37 +68,144 @@
                         "placeholder": "string"
                     },
                     "name": "MyTextField2",
-                    "designerId": "0569d77a-85c5-4321-962e-5dae642e0791",
+                    "designerId": "0569d77a-85c5-4321-962e-5dae642e0791"
+                },
+                {
+                    "type": "Ext.Button",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "text": "Calc Start"
+                    },
+                    "configAlternates": {
+                        "text": "string"
+                    },
+                    "name": "MyButton1",
+                    "designerId": "8cd7feac-94ec-4380-8cf3-031267566adc",
                     "cn": [
                         {
-                            "type": "viewcontrollereventbinding",
+                            "type": "fixedfunction",
                             "reference": {
-                                "name": "listeners",
+                                "name": "items",
                                 "type": "array"
                             },
                             "codeClass": null,
                             "userConfig": {
-                                "fn": "onStartTimeAndDateFocusleave",
-                                "implHandler": [
-                                    "var startTime = Ext.getCmp(\"StartTimeAndDateId\").getValue();",
-                                    "var endTime = Ext.getCmp(\"EndTimeAndDateId\").getValue();",
-                                    "var totalTime = Ext.getCmp(\"TotalTimeId\").getValue();",
-                                    "",
-                                    "var startDate = new Date(startTime);",
-                                    "",
-                                    "console.log(startDate);"
+                                "designer|params": [
+                                    "button",
+                                    "e"
                                 ],
-                                "name": "focusleave",
-                                "scope": "me"
+                                "fn": "handler",
+                                "implHandler": [
+                                    "        var endTime = Ext.getCmp(\"EndTimeAndDateId\").getValue();",
+                                    "        var totalTime = Ext.getCmp(\"TotalTimeId\").getValue();",
+                                    "",
+                                    "        // TODO: split values and do like in start of window. build date string!",
+                                    "",
+                                    "        var checkEndTime = new Date(endTime);",
+                                    "",
+                                    "        var endDay = checkEndTime.getMonth() + 1;",
+                                    "        var endMonth = checkEndTime.getDate() - 1;",
+                                    "",
+                                    "        checkEndTime.setMonth(endMonth);",
+                                    "        checkEndTime.setDate(endDay);",
+                                    "",
+                                    "        var checkTotalTime = totalTime.length > 0 && !isNaN(totalTime);",
+                                    "        ",
+                                    "        if(checkEndTime && checkTotalTime)",
+                                    "        {",
+                                    "            // Calc startTime",
+                                    "            ",
+                                    "            var t = endTime.toString().substring(11,16);",
+                                    "            var timeParts = t.split(\":\");",
+                                    "            var bShouldSplit = false;",
+                                    "",
+                                    "            /** Check if timeTotal contains comma **/",
+                                    "",
+                                    "            for(var x = 0; x < totalTime.length; x++)",
+                                    "            {",
+                                    "                if(totalTime.charAt(x) === \".\")",
+                                    "                {",
+                                    "                    bShouldSplit = true;",
+                                    "                }",
+                                    "            }",
+                                    "",
+                                    "            var totalTimeParts = bShouldSplit ? totalTime.split(\".\") : (totalTime + \".0\").split(\".\");",
+                                    "",
+                                    "            /** End check if timeTotal contains comma **/",
+                                    "",
+                                    "            //totalTimeParts[0] == hours",
+                                    "            //totalTimeParts[1] == minutes",
+                                    "",
+                                    "            var hh = parseInt(totalTimeParts[0], 10);",
+                                    "            var mm = 60.0 * (parseFloat(\"0.\"+totalTimeParts[1], 10));",
+                                    "",
+                                    "            var newStartTime = new Date(checkEndTime);",
+                                    "",
+                                    "            if((checkEndTime.getHours() - hh) < 0)",
+                                    "            {",
+                                    "                newStartTime.setDate(newStartTime.getDate() - 1);",
+                                    "                newStartTime.setHours(24 - (hh - checkEndTime.getHours()));",
+                                    "            }",
+                                    "            else",
+                                    "            {",
+                                    "                newStartTime.setHours(checkEndTime.getHours() - hh);",
+                                    "            }",
+                                    "",
+                                    "            if((checkEndTime.getMinutes() - mm) < 0)",
+                                    "            {",
+                                    "                newStartTime.setHours(newStartTime.getHours() - 1);",
+                                    "                newStartTime.setMinutes(60 - (mm - checkEndTime.getMinutes()));",
+                                    "            }",
+                                    "            else",
+                                    "            {",
+                                    "                newStartTime.setMinutes(checkEndTime.getMinutes() - mm);",
+                                    "            }",
+                                    "",
+                                    "",
+                                    "            /** Format Start **/",
+                                    "",
+                                    "            var dd = newStartTime.getDate();",
+                                    "            var mm = newStartTime.getMonth() + 1; //January is 0!",
+                                    "",
+                                    "            var yyyy = newStartTime.getFullYear();",
+                                    "            if (dd < 10) {",
+                                    "                dd = '0' + dd;",
+                                    "            }",
+                                    "            if (mm < 10) {",
+                                    "                mm = '0' + mm;",
+                                    "            }",
+                                    "",
+                                    "            var HH = newStartTime.getHours();",
+                                    "            var MM = newStartTime.getMinutes();",
+                                    "",
+                                    "            if(HH < 10)",
+                                    "            {",
+                                    "                HH = \"0\" + HH;",
+                                    "            }",
+                                    "            if(MM < 10)",
+                                    "            {",
+                                    "                MM = \"0\" + MM;",
+                                    "            }",
+                                    "",
+                                    "            var newStartTime = dd + '/' + mm + '/' + yyyy + \" \" + HH + \":\" + MM;",
+                                    "",
+                                    "            /** Format End **/",
+                                    "",
+                                    "            Ext.getCmp(\"StartTimeAndDateId\").setValue(newStartTime);",
+                                    "        }"
+                                ]
                             },
                             "configAlternates": {
+                                "designer|params": "typedarray",
                                 "fn": "string",
-                                "implHandler": "code",
-                                "name": "string",
-                                "scope": "string"
+                                "implHandler": "code"
                             },
-                            "name": "onStartTimeAndDateFocusleave",
-                            "designerId": "3df83dfe-6649-4139-ae71-95a80973b776"
+                            "name": "handler",
+                            "designerId": "2985927b-b8e9-43f9-ba52-24143e83877f"
                         }
                     ]
                 }
@@ -112,6 +219,7 @@
             },
             "codeClass": null,
             "userConfig": {
+                "container|align": "center",
                 "container|pack": "center",
                 "designer|displayName": "end",
                 "layout": "hbox"
@@ -119,7 +227,8 @@
             "configAlternates": {
                 "container|pack": "string",
                 "designer|displayName": "string",
-                "layout": "string"
+                "layout": "string",
+                "container|align": "string"
             },
             "name": "MyContainer5",
             "designerId": "75175d28-072d-4872-ae67-a16be22fe569",
@@ -148,34 +257,154 @@
                         "placeholder": "string"
                     },
                     "name": "MyTextField1",
-                    "designerId": "957d29cd-8d74-44af-b534-b2b3ff64f7f4",
+                    "designerId": "957d29cd-8d74-44af-b534-b2b3ff64f7f4"
+                },
+                {
+                    "type": "Ext.Button",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "text": "Calc End"
+                    },
+                    "configAlternates": {
+                        "text": "string"
+                    },
+                    "name": "MyButton4",
+                    "designerId": "25b2e23a-51e8-4cfc-b3c5-c8bebae249c0",
                     "cn": [
                         {
-                            "type": "viewcontrollereventbinding",
+                            "type": "fixedfunction",
                             "reference": {
-                                "name": "listeners",
+                                "name": "items",
                                 "type": "array"
                             },
                             "codeClass": null,
                             "userConfig": {
-                                "fn": "onEndTimeAndDateFocusleave",
+                                "designer|params": [
+                                    "button",
+                                    "e"
+                                ],
+                                "fn": "handler",
                                 "implHandler": [
                                     "        var startTime = Ext.getCmp(\"StartTimeAndDateId\").getValue();",
-                                    "        var endTime = Ext.getCmp(\"EndTimeAndDateId\").getValue();",
                                     "        var totalTime = Ext.getCmp(\"TotalTimeId\").getValue();",
-                                    "        console.log(startTime + endTime + totalTime);"
-                                ],
-                                "name": "focusleave",
-                                "scope": "me"
+                                    "",
+                                    "        // TODO: split values and do like in start of window. build date string!",
+                                    "",
+                                    "        var checkStartTime;",
+                                    "",
+                                    "        if(startTime.length > 0)",
+                                    "        {",
+                                    "            checkStartTime = new Date(startTime);",
+                                    "",
+                                    "            var startDay = checkStartTime.getMonth() + 1;",
+                                    "            var startMonth = checkStartTime.getDate() - 1;",
+                                    "",
+                                    "            checkStartTime.setMonth(startMonth);",
+                                    "            checkStartTime.setDate(startDay);",
+                                    "        }",
+                                    "        else",
+                                    "        {",
+                                    "            checkStartTime = false;",
+                                    "        }",
+                                    "",
+                                    "        var checkTotalTime = totalTime.length > 0 && !isNaN(totalTime);",
+                                    "",
+                                    "        if(checkStartTime && checkTotalTime)",
+                                    "        {",
+                                    "            // Calc endTime",
+                                    "",
+                                    "            var t = startTime.toString().substring(11,16);",
+                                    "            var timeParts = t.split(\":\");",
+                                    "            var bShouldSplit = false;",
+                                    "",
+                                    "            /** Check if timeTotal contains comma **/",
+                                    "",
+                                    "            for(var x = 0; x < totalTime.length; x++)",
+                                    "            {",
+                                    "                if(totalTime.charAt(x) === \".\")",
+                                    "                {",
+                                    "                    bShouldSplit = true;",
+                                    "                }",
+                                    "            }",
+                                    "",
+                                    "            var totalTimeParts = bShouldSplit ? totalTime.split(\".\") : (totalTime + \".0\").split(\".\");",
+                                    "",
+                                    "            /** End check if timeTotal contains comma **/",
+                                    "",
+                                    "            //totalTimeParts[0] == hours",
+                                    "            //totalTimeParts[1] == minutes",
+                                    "",
+                                    "            var hh = parseInt(totalTimeParts[0], 10);",
+                                    "            var mm = 60.0 * (parseFloat(\"0.\"+totalTimeParts[1], 10));",
+                                    "",
+                                    "            var newEndTime = new Date(checkStartTime);",
+                                    "",
+                                    "            if((checkStartTime.getHours() + hh) > 23)",
+                                    "            {",
+                                    "                newEndTime.setDate(newEndTime.getDate() + 1);",
+                                    "                newEndTime.setHours((hh + checkStartTime.getHours()) - 24);",
+                                    "            }",
+                                    "            else",
+                                    "            {",
+                                    "                newEndTime.setHours(checkStartTime.getHours() + hh);",
+                                    "            }",
+                                    "",
+                                    "            if((checkStartTime.getMinutes() + mm) > 59)",
+                                    "            {",
+                                    "                newEndTime.setHours(newEndTime.getHours() + 1);",
+                                    "                newEndTime.setMinutes((mm + checkStartTime.getMinutes()) - 60);",
+                                    "            }",
+                                    "            else",
+                                    "            {",
+                                    "                newEndTime.setMinutes(checkStartTime.getMinutes() + mm);",
+                                    "            }",
+                                    "",
+                                    "",
+                                    "            /** Format Start **/",
+                                    "",
+                                    "            var dd = newEndTime.getDate();",
+                                    "            var mm = newEndTime.getMonth() + 1; //January is 0!",
+                                    "",
+                                    "            var yyyy = newEndTime.getFullYear();",
+                                    "            if (dd < 10) {",
+                                    "                dd = '0' + dd;",
+                                    "            }",
+                                    "            if (mm < 10) {",
+                                    "                mm = '0' + mm;",
+                                    "            }",
+                                    "",
+                                    "            var HH = newEndTime.getHours();",
+                                    "            var MM = newEndTime.getMinutes();",
+                                    "",
+                                    "            if(HH < 10)",
+                                    "            {",
+                                    "                HH = \"0\" + HH;",
+                                    "            }",
+                                    "            if(MM < 10)",
+                                    "            {",
+                                    "                MM = \"0\" + MM;",
+                                    "            }",
+                                    "",
+                                    "            var newEndTime = dd + '/' + mm + '/' + yyyy + \" \" + HH + \":\" + MM;",
+                                    "",
+                                    "            /** Format End **/",
+                                    "",
+                                    "            Ext.getCmp(\"EndTimeAndDateId\").setValue(newEndTime);",
+                                    "",
+                                    "        }"
+                                ]
                             },
                             "configAlternates": {
+                                "designer|params": "typedarray",
                                 "fn": "string",
-                                "implHandler": "code",
-                                "name": "string",
-                                "scope": "string"
+                                "implHandler": "code"
                             },
-                            "name": "onEndTimeAndDateFocusleave",
-                            "designerId": "3fe9d19f-6b7d-48e4-9217-998981565083"
+                            "name": "handler",
+                            "designerId": "78a86cdb-0c2d-475c-a90b-76cc28ef116a"
                         }
                     ]
                 }
@@ -189,6 +418,7 @@
             },
             "codeClass": null,
             "userConfig": {
+                "container|align": "center",
                 "container|pack": "center",
                 "designer|displayName": "total",
                 "layout": "hbox"
@@ -196,13 +426,14 @@
             "configAlternates": {
                 "container|pack": "string",
                 "designer|displayName": "string",
-                "layout": "string"
+                "layout": "string",
+                "container|align": "string"
             },
             "name": "MyContainer6",
             "designerId": "bac98b39-5ecf-4da4-9283-7a5f9765c94c",
             "cn": [
                 {
-                    "type": "Ext.field.Number",
+                    "type": "Ext.field.Text",
                     "reference": {
                         "name": "items",
                         "type": "array"
@@ -215,8 +446,7 @@
                         "itemId": "TotalTime",
                         "label": "Total time",
                         "margin": 25,
-                        "minValue": 0,
-                        "placeholder": "2"
+                        "placeholder": "2.0"
                     },
                     "configAlternates": {
                         "designer|displayName": "string",
@@ -229,35 +459,131 @@
                         "id": "string",
                         "itemId": "string"
                     },
-                    "name": "MyNumberField",
-                    "designerId": "d182501a-c448-4ad0-a1eb-b25a109fc843",
+                    "name": "MyTextField5",
+                    "designerId": "d182501a-c448-4ad0-a1eb-b25a109fc843"
+                },
+                {
+                    "type": "Ext.Button",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "text": "Calc Total"
+                    },
+                    "configAlternates": {
+                        "text": "string"
+                    },
+                    "name": "MyButton5",
+                    "designerId": "9d7e7871-89e5-4d6d-9ffa-dd02ceb359c8",
                     "cn": [
                         {
-                            "type": "viewcontrollereventbinding",
+                            "type": "fixedfunction",
                             "reference": {
-                                "name": "listeners",
+                                "name": "items",
                                 "type": "array"
                             },
                             "codeClass": null,
                             "userConfig": {
-                                "fn": "onTotalTimeFocusleave",
+                                "designer|params": [
+                                    "button",
+                                    "e"
+                                ],
+                                "fn": "handler",
                                 "implHandler": [
                                     "        var startTime = Ext.getCmp(\"StartTimeAndDateId\").getValue();",
                                     "        var endTime = Ext.getCmp(\"EndTimeAndDateId\").getValue();",
-                                    "        var totalTime = Ext.getCmp(\"TotalTimeId\").getValue();",
-                                    "        console.log(startTime + endTime + totalTime);"
-                                ],
-                                "name": "focusleave",
-                                "scope": "me"
+                                    "",
+                                    "        // TODO: split values and do like in start of window. build date string!",
+                                    "",
+                                    "        var checkStartTime;",
+                                    "",
+                                    "        if(startTime.length > 0)",
+                                    "        {",
+                                    "            checkStartTime = new Date(startTime);",
+                                    "",
+                                    "            var startDay = checkStartTime.getMonth() + 1;",
+                                    "            var startMonth = checkStartTime.getDate() - 1;",
+                                    "",
+                                    "            checkStartTime.setMonth(startMonth);",
+                                    "            checkStartTime.setDate(startDay);",
+                                    "        }",
+                                    "        else",
+                                    "        {",
+                                    "            checkStartTime = false;",
+                                    "        }",
+                                    "",
+                                    "        var checkEndTime;",
+                                    "",
+                                    "        if(endTime.length > 0)",
+                                    "        {",
+                                    "            checkEndTime = new Date(endTime);",
+                                    "",
+                                    "            var endDay = checkEndTime.getMonth() + 1;",
+                                    "            var endMonth = checkEndTime.getDate() - 1;",
+                                    "",
+                                    "            checkEndTime.setMonth(endMonth);",
+                                    "            checkEndTime.setDate(endDay);",
+                                    "        }",
+                                    "        else",
+                                    "        {",
+                                    "            checkEndTime = false;",
+                                    "        }",
+                                    "",
+                                    "        if(checkEndTime && checkStartTime)",
+                                    "        {",
+                                    "            // Calc TotalTime",
+                                    "",
+                                    "            var endT = endTime.toString().substring(11,16);",
+                                    "            var endTimeParts = endT.split(\":\");",
+                                    "",
+                                    "            var startT = endTime.toString().substring(11,16);",
+                                    "            var startTimeParts = startT.split(\":\");",
+                                    "",
+                                    "            // TODO: EndTime.getTime() - StartTime.getTime() = hours + min + sec",
+                                    "",
+                                    "            var resDate = new Date(checkEndTime.getTime() - checkStartTime.getTime()); // 01 Jan 1970 01:00",
+                                    "",
+                                    "            var y = resDate.getYear() - 70;",
+                                    "            var m = resDate.getMonth();",
+                                    "            var d = resDate.getDate() - 1;",
+                                    "",
+                                    "            var hh = 0;",
+                                    "            var mm = 0.0;",
+                                    "",
+                                    "            if(y > 0)",
+                                    "            {",
+                                    "               hh += y * 24 * 365;",
+                                    "            }",
+                                    "            if(m > 0)",
+                                    "            {",
+                                    "               hh += m * 24 * 30;",
+                                    "            }",
+                                    "            if(d > 0)",
+                                    "            {",
+                                    "               hh += d * 24;",
+                                    "            }",
+                                    "",
+                                    "            hh += (resDate.getHours() === 0 ? resDate.getHours() : (resDate.getHours() - 1));",
+                                    "",
+                                    "            mm = String(resDate.getMinutes() / 60.0);",
+                                    "            mm = mm.substring(0, 4);",
+                                    "            mm = parseFloat(mm) === 0.0 ? \".0\" : parseFloat(mm);",
+                                    "",
+                                    "            var totalTime = hh + mm;",
+                                    "",
+                                    "            Ext.getCmp(\"TotalTimeId\").setValue(totalTime.toString());",
+                                    "        }"
+                                ]
                             },
                             "configAlternates": {
+                                "designer|params": "typedarray",
                                 "fn": "string",
-                                "implHandler": "code",
-                                "name": "string",
-                                "scope": "string"
+                                "implHandler": "code"
                             },
-                            "name": "onTotalTimeFocusleave",
-                            "designerId": "9e46edb4-54b8-49ed-bbca-ecbf797c6d97"
+                            "name": "handler",
+                            "designerId": "8ce0993f-7cb3-438a-bb45-372a6fab7be6"
                         }
                     ]
                 }
@@ -288,6 +614,7 @@
                     "codeClass": null,
                     "userConfig": {
                         "designer|displayName": "comment",
+                        "id": "CommentId",
                         "itemId": "Comment",
                         "label": "Comment",
                         "margin": 25,
@@ -298,7 +625,8 @@
                         "label": "string",
                         "margin": "auto",
                         "placeholder": "string",
-                        "itemId": "string"
+                        "itemId": "string",
+                        "id": "string"
                     },
                     "name": "MyTextField",
                     "designerId": "fd2fe507-f793-4bdc-b151-22c86d2207f0"
@@ -317,7 +645,7 @@
                 "container|align": "start",
                 "container|pack": "center",
                 "designer|displayName": "btnContainer",
-                "docked": null,
+                "docked": "bottom",
                 "layout": "box",
                 "padding": 25
             },
@@ -465,11 +793,36 @@
             "userConfig": {
                 "fn": "onFormpanelAdded",
                 "implHandler": [
-                    "var currDate = new Date();",
+                    "var today = new Date();",
                     "",
-                    "Ext.getCmp(\"StartTimeAndDateId\").setValue(currDate);",
-                    "Ext.getCmp(\"EndTimeAndDateId\").setValue(currDate);",
-                    "Ext.getCmp(\"TotalTimeId\").setValue(0);"
+                    "var dd = today.getDate();",
+                    "var mm = today.getMonth() + 1; //January is 0!",
+                    "",
+                    "var yyyy = today.getFullYear();",
+                    "if (dd < 10) {",
+                    "  dd = '0' + dd;",
+                    "}",
+                    "if (mm < 10) {",
+                    "  mm = '0' + mm;",
+                    "}",
+                    "",
+                    "var HH = today.getHours();",
+                    "var MM = today.getMinutes();",
+                    "",
+                    "if(HH < 10)",
+                    "{",
+                    "    HH = \"0\" + HH;",
+                    "}",
+                    "if(MM < 10)",
+                    "{",
+                    "    MM = \"0\" + MM;",
+                    "}",
+                    "",
+                    "var today = dd + '/' + mm + '/' + yyyy + \" \" + HH + \":\" + MM;",
+                    "",
+                    "Ext.getCmp(\"StartTimeAndDateId\").setValue(today);",
+                    "Ext.getCmp(\"EndTimeAndDateId\").setValue(today);",
+                    "Ext.getCmp(\"TotalTimeId\").setValue(\"0.0\");"
                 ],
                 "name": "added",
                 "scope": "me"

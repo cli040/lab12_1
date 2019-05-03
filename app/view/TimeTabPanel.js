@@ -39,6 +39,10 @@ Ext.define('Lab12_1.view.TimeTabPanel', {
         {
             xtype: 'container',
             title: 'Day',
+            layout: {
+                type: 'vbox',
+                align: 'center'
+            },
             items: [
                 {
                     xtype: 'container',
@@ -46,7 +50,8 @@ Ext.define('Lab12_1.view.TimeTabPanel', {
                     maxWidth: 150,
                     layout: {
                         type: 'hbox',
-                        align: 'center'
+                        align: 'center',
+                        pack: 'center'
                     },
                     items: [
                         {
@@ -64,11 +69,27 @@ Ext.define('Lab12_1.view.TimeTabPanel', {
                 {
                     xtype: 'titlebar',
                     docked: 'top',
-                    title: 'Day',
+                    title: '03/05/2019',
                     layout: {
                         type: 'hbox',
-                        align: 'start'
-                    }
+                        align: 'center',
+                        pack: 'center'
+                    },
+                    items: [
+                        {
+                            xtype: 'button',
+                            ui: 'square',
+                            margin: '0, 0, 0, 400',
+                            text: '<'
+                        },
+                        {
+                            xtype: 'button',
+                            align: 'right',
+                            ui: 'square',
+                            margin: '0, 400, 0, 0',
+                            text: '>'
+                        }
+                    ]
                 },
                 {
                     xtype: 'grid',
@@ -113,7 +134,27 @@ Ext.define('Lab12_1.view.TimeTabPanel', {
                 {
                     xtype: 'titlebar',
                     docked: 'top',
-                    title: 'Week'
+                    title: '29/04/2019 - 05/05/2019',
+                    layout: {
+                        type: 'hbox',
+                        align: 'center',
+                        pack: 'center'
+                    },
+                    items: [
+                        {
+                            xtype: 'button',
+                            ui: 'square',
+                            margin: '0, 0, 0, 400',
+                            text: '<'
+                        },
+                        {
+                            xtype: 'button',
+                            align: 'right',
+                            ui: 'square',
+                            margin: '0, 400, 0, 0',
+                            text: '>'
+                        }
+                    ]
                 },
                 {
                     xtype: 'grid',

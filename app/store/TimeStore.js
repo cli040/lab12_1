@@ -36,8 +36,7 @@ Ext.define('Lab12_1.store.TimeStore', {
                 }
             ],
             proxy: {
-                type: 'localstorage',
-                id: 'timeStore'
+                type: 'localstorage'
             }
         }, cfg)]);
     }

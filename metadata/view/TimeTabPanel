@@ -34,12 +34,16 @@
             },
             "codeClass": null,
             "userConfig": {
+                "container|align": "center",
                 "docked": null,
+                "layout": "vbox",
                 "title": "Day"
             },
             "configAlternates": {
                 "docked": "string",
-                "title": "string"
+                "title": "string",
+                "container|align": "string",
+                "layout": "string"
             },
             "name": "MyContainer",
             "designerId": "096e983d-08e2-4b71-9b0b-8ad81a911ffa",
@@ -53,6 +57,7 @@
                     "codeClass": null,
                     "userConfig": {
                         "container|align": "center",
+                        "container|pack": "center",
                         "designer|displayName": "btnContainer",
                         "docked": null,
                         "layout": "hbox",
@@ -65,7 +70,8 @@
                         "docked": "string",
                         "layout": "string",
                         "margin": "auto",
-                        "maxWidth": "auto"
+                        "maxWidth": "auto",
+                        "container|pack": "string"
                     },
                     "name": "MyContainer4",
                     "designerId": "e582cf30-69aa-4969-bdc6-0ebd88bbe7f1",
@@ -133,19 +139,71 @@
                     },
                     "codeClass": null,
                     "userConfig": {
-                        "container|align": "start",
+                        "container|align": "center",
+                        "container|pack": "center",
                         "designer|displayName": "Day",
                         "docked": "top",
-                        "title": "Day"
+                        "title": "03/05/2019"
                     },
                     "configAlternates": {
                         "container|align": "string",
                         "designer|displayName": "string",
                         "docked": "string",
-                        "title": "string"
+                        "title": "string",
+                        "container|pack": "string"
                     },
                     "name": "MyTitleBar",
-                    "designerId": "4ca4e429-a113-4b69-b547-6d5d475f68cb"
+                    "designerId": "4ca4e429-a113-4b69-b547-6d5d475f68cb",
+                    "cn": [
+                        {
+                            "type": "Ext.Button",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "designer|displayName": "<",
+                                "designer|uiInterfaceName": "square",
+                                "margin": "0, 0, 0, 400",
+                                "text": "<",
+                                "ui": "square"
+                            },
+                            "configAlternates": {
+                                "designer|displayName": "string",
+                                "designer|uiInterfaceName": "string",
+                                "margin": "auto",
+                                "text": "string",
+                                "ui": "string"
+                            },
+                            "name": "MyButton6",
+                            "designerId": "468afac9-acaf-4fd6-99a0-9648367962c5"
+                        },
+                        {
+                            "type": "Ext.Button",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "align": "right",
+                                "designer|uiInterfaceName": "square",
+                                "margin": "0, 400, 0, 0",
+                                "text": ">",
+                                "ui": "square"
+                            },
+                            "configAlternates": {
+                                "align": "string",
+                                "designer|uiInterfaceName": "string",
+                                "margin": "auto",
+                                "text": "string",
+                                "ui": "string"
+                            },
+                            "name": "MyButton7",
+                            "designerId": "df3b2958-8d93-44a8-adb4-e935d083c690"
+                        }
+                    ]
                 },
                 {
                     "type": "Ext.grid.Grid",
@@ -293,17 +351,71 @@
                     },
                     "codeClass": null,
                     "userConfig": {
+                        "container|align": "center",
+                        "container|pack": "center",
                         "designer|displayName": "Week",
                         "docked": "top",
-                        "title": "Week"
+                        "title": "29/04/2019 - 05/05/2019"
                     },
                     "configAlternates": {
+                        "container|align": "string",
                         "designer|displayName": "string",
                         "docked": "string",
-                        "title": "string"
+                        "title": "string",
+                        "container|pack": "string"
                     },
-                    "name": "MyTitleBar1",
-                    "designerId": "d9830ec1-814f-47a4-95a4-fa9bbf2793f0"
+                    "name": "MyTitleBar2",
+                    "designerId": "ccdc0aee-5c88-4308-a34d-c29f749467be",
+                    "cn": [
+                        {
+                            "type": "Ext.Button",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "designer|displayName": "<",
+                                "designer|uiInterfaceName": "square",
+                                "margin": "0, 0, 0, 400",
+                                "text": "<",
+                                "ui": "square"
+                            },
+                            "configAlternates": {
+                                "designer|displayName": "string",
+                                "designer|uiInterfaceName": "string",
+                                "margin": "auto",
+                                "text": "string",
+                                "ui": "string"
+                            },
+                            "name": "MyButton6",
+                            "designerId": "cf63b6d1-43a5-44f6-88c1-f8a14a7988aa"
+                        },
+                        {
+                            "type": "Ext.Button",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "align": "right",
+                                "designer|uiInterfaceName": "square",
+                                "margin": "0, 400, 0, 0",
+                                "text": ">",
+                                "ui": "square"
+                            },
+                            "configAlternates": {
+                                "align": "string",
+                                "designer|uiInterfaceName": "string",
+                                "margin": "auto",
+                                "text": "string",
+                                "ui": "string"
+                            },
+                            "name": "MyButton7",
+                            "designerId": "11170dbd-db39-4b1e-af88-4d2c8d952c26"
+                        }
+                    ]
                 },
                 {
                     "type": "Ext.grid.Grid",

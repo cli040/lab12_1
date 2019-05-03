@@ -15,5 +15,38 @@
 
 Ext.define('Lab12_1.view.TimeFormPanelViewController', {
     extend: 'Ext.app.ViewController',
-    alias: 'controller.timeformpanel'
+    alias: 'controller.timeformpanel',
+
+    onStartTimeAndDateFocusleave: function(component, event, eOpts) {
+        var startTime = Ext.getCmp("StartTimeAndDateId").getValue();
+        var endTime = Ext.getCmp("EndTimeAndDateId").getValue();
+        var totalTime = Ext.getCmp("TotalTimeId").getValue();
+
+        var startDate = new Date(startTime);
+
+        console.log(startDate);
+    },
+
+    onEndTimeAndDateFocusleave: function(component, event, eOpts) {
+        var startTime = Ext.getCmp("StartTimeAndDateId").getValue();
+        var endTime = Ext.getCmp("EndTimeAndDateId").getValue();
+        var totalTime = Ext.getCmp("TotalTimeId").getValue();
+        console.log(startTime + endTime + totalTime);
+    },
+
+    onTotalTimeFocusleave: function(component, event, eOpts) {
+        var startTime = Ext.getCmp("StartTimeAndDateId").getValue();
+        var endTime = Ext.getCmp("EndTimeAndDateId").getValue();
+        var totalTime = Ext.getCmp("TotalTimeId").getValue();
+        console.log(startTime + endTime + totalTime);
+    },
+
+    onFormpanelAdded: function(component, container, index, eOpts) {
+        var currDate = new Date();
+
+        Ext.getCmp("StartTimeAndDateId").setValue(currDate);
+        Ext.getCmp("EndTimeAndDateId").setValue(currDate);
+        Ext.getCmp("TotalTimeId").setValue(0);
+    }
+
 });

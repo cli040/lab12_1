@@ -6,8 +6,8 @@
             "cmdVersion": "6.7.0.63",
             "frameworkVersion": "6.7.0.212"
         },
-        "urlPrefixTemplate": "http://localhost:6666",
-        "urlPrefix": "http://localhost:6666",
+        "urlPrefixTemplate": "http://localhost:{port}/{path}",
+        "urlPrefix": "http://localhost:49622/",
         "canvasControls": {
             "viewportSize": {
                 "name": "Desktop (Auto Expand)",
@@ -55,7 +55,7 @@
             "055383d5-dad5-4ca0-8f64-f64c0c0e0c7b"
         ],
         "resource": [
-            "e5a0aa89-efa0-456d-a74c-cb48b1cb18ef",
+            "cfbf2bfa-d40e-460c-aa26-703dfde1ed6d",
             "def7b94e-9e0b-4c31-8e12-d4a94dbfed55",
             "90bcf4a4-b722-4acf-ba65-4799157b4473"
         ],

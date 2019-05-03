@@ -6,6 +6,7 @@
     },
     "codeClass": null,
     "userConfig": {
+        "designer|initialView": true,
         "designer|userAlias": "timeformpanel",
         "designer|userClassName": "TimeFormPanel",
         "title": "Add new time"
@@ -44,68 +45,60 @@
             "designerId": "bd820ce0-c8c0-4f0a-bb72-58ac58515d7b",
             "cn": [
                 {
-                    "type": "Ext.field.Time",
+                    "type": "Ext.field.Text",
                     "reference": {
                         "name": "items",
                         "type": "array"
                     },
                     "codeClass": null,
                     "userConfig": {
-                        "designer|displayName": "start time",
-                        "label": "Start Time",
+                        "designer|displayName": "startTimeAndDate",
+                        "id": "StartTimeAndDateId",
+                        "itemId": "StartTimeAndDate",
+                        "label": "Start",
                         "margin": 25,
-                        "maxWidth": 250,
-                        "placeholder": "12:00"
+                        "placeholder": "14/02/2019 10:00"
                     },
                     "configAlternates": {
                         "designer|displayName": "string",
+                        "id": "string",
+                        "itemId": "string",
                         "label": "string",
                         "margin": "auto",
-                        "placeholder": "string",
-                        "maxWidth": "auto"
-                    },
-                    "name": "MyTime",
-                    "designerId": "3b674f7a-7e04-40a7-9c77-4a82f2233a21"
-                },
-                {
-                    "type": "Ext.field.Date",
-                    "reference": {
-                        "name": "items",
-                        "type": "array"
-                    },
-                    "codeClass": null,
-                    "userConfig": {
-                        "designer|displayName": "start date",
-                        "label": "Start Date",
-                        "margin": 25,
-                        "maxWidth": 250,
-                        "placeholder": "13/04/2019"
-                    },
-                    "configAlternates": {
-                        "designer|displayName": "string",
-                        "label": "string",
-                        "margin": "auto",
-                        "maxWidth": "auto",
                         "placeholder": "string"
                     },
-                    "name": "MyDate3",
-                    "designerId": "4dd11e50-8b07-4048-b0bb-bf9fd0b385ef",
+                    "name": "MyTextField2",
+                    "designerId": "0569d77a-85c5-4321-962e-5dae642e0791",
                     "cn": [
                         {
-                            "type": "Ext.picker.Date",
+                            "type": "viewcontrollereventbinding",
                             "reference": {
-                                "name": "picker",
-                                "type": "object"
+                                "name": "listeners",
+                                "type": "array"
                             },
                             "codeClass": null,
                             "userConfig": {
-                                "title": "My Panel"
+                                "fn": "onStartTimeAndDateFocusleave",
+                                "implHandler": [
+                                    "var startTime = Ext.getCmp(\"StartTimeAndDateId\").getValue();",
+                                    "var endTime = Ext.getCmp(\"EndTimeAndDateId\").getValue();",
+                                    "var totalTime = Ext.getCmp(\"TotalTimeId\").getValue();",
+                                    "",
+                                    "var startDate = new Date(startTime);",
+                                    "",
+                                    "console.log(startDate);"
+                                ],
+                                "name": "focusleave",
+                                "scope": "me"
                             },
                             "configAlternates": {
-                                "title": "string"
+                                "fn": "string",
+                                "implHandler": "code",
+                                "name": "string",
+                                "scope": "string"
                             },
-                            "name": "MyDatePicker",
-                            "designerId": "0ea42d3b-dbeb-4f0d-a0f7-a0f81b0e70b4"
+                            "name": "onStartTimeAndDateFocusleave",
+                            "designerId": "3df83dfe-6649-4139-ae71-95a80973b776"
                         }
                     ]
                 }
@@ -132,68 +125,57 @@
             "designerId": "75175d28-072d-4872-ae67-a16be22fe569",
             "cn": [
                 {
-                    "type": "Ext.field.Time",
+                    "type": "Ext.field.Text",
                     "reference": {
                         "name": "items",
                         "type": "array"
                     },
                     "codeClass": null,
                     "userConfig": {
-                        "designer|displayName": "end time",
-                        "label": "End Time",
+                        "designer|displayName": "endTimeAndDate",
+                        "id": "EndTimeAndDateId",
+                        "itemId": "EndTimeAndDate",
+                        "label": "End",
                         "margin": 25,
-                        "maxWidth": 250,
-                        "placeholder": "14:00"
+                        "placeholder": "14/02/2019 12:00"
                     },
                     "configAlternates": {
                         "designer|displayName": "string",
+                        "id": "string",
+                        "itemId": "string",
                         "label": "string",
                         "margin": "auto",
-                        "maxWidth": "auto",
                         "placeholder": "string"
                     },
-                    "name": "MyTime2",
-                    "designerId": "93f6c3a3-2e3c-400c-95e7-44ec9e081f15"
-                },
-                {
-                    "type": "Ext.field.Date",
-                    "reference": {
-                        "name": "items",
-                        "type": "array"
-                    },
-                    "codeClass": null,
-                    "userConfig": {
-                        "designer|displayName": "end date",
-                        "label": "End Date",
-                        "margin": 25,
-                        "maxWidth": 250,
-                        "placeholder": "13/04/2019"
-                    },
-                    "configAlternates": {
-                        "designer|displayName": "string",
-                        "label": "string",
-                        "margin": "auto",
-                        "maxWidth": "auto",
-                        "placeholder": "string"
-                    },
-                    "name": "MyDate2",
-                    "designerId": "e69b0254-c694-4998-97fd-9e4926a1481d",
+                    "name": "MyTextField1",
+                    "designerId": "957d29cd-8d74-44af-b534-b2b3ff64f7f4",
                     "cn": [
                         {
-                            "type": "Ext.picker.Date",
+                            "type": "viewcontrollereventbinding",
                             "reference": {
-                                "name": "picker",
-                                "type": "object"
+                                "name": "listeners",
+                                "type": "array"
                             },
                             "codeClass": null,
                             "userConfig": {
-                                "title": "My Panel"
+                                "fn": "onEndTimeAndDateFocusleave",
+                                "implHandler": [
+                                    "        var startTime = Ext.getCmp(\"StartTimeAndDateId\").getValue();",
+                                    "        var endTime = Ext.getCmp(\"EndTimeAndDateId\").getValue();",
+                                    "        var totalTime = Ext.getCmp(\"TotalTimeId\").getValue();",
+                                    "        console.log(startTime + endTime + totalTime);"
+                                ],
+                                "name": "focusleave",
+                                "scope": "me"
                             },
                             "configAlternates": {
-                                "title": "string"
+                                "fn": "string",
+                                "implHandler": "code",
+                                "name": "string",
+                                "scope": "string"
                             },
-                            "name": "MyDatePicker1",
-                            "designerId": "1e902240-a9a0-40bf-9350-ab113c05cb27"
+                            "name": "onEndTimeAndDateFocusleave",
+                            "designerId": "3fe9d19f-6b7d-48e4-9217-998981565083"
                         }
                     ]
                 }
@@ -229,9 +211,10 @@
                     "userConfig": {
                         "designer|displayName": "total time",
                         "docked": null,
+                        "id": "TotalTimeId",
+                        "itemId": "TotalTime",
                         "label": "Total time",
                         "margin": 25,
-                        "maxWidth": 250,
                         "minValue": 0,
                         "placeholder": "2"
                     },
@@ -242,10 +225,41 @@
                         "minValue": "number",
                         "docked": "string",
                         "maxWidth": "auto",
-                        "placeholder": "string"
+                        "placeholder": "string",
+                        "id": "string",
+                        "itemId": "string"
                     },
                     "name": "MyNumberField",
-                    "designerId": "d182501a-c448-4ad0-a1eb-b25a109fc843"
+                    "designerId": "d182501a-c448-4ad0-a1eb-b25a109fc843",
+                    "cn": [
+                        {
+                            "type": "viewcontrollereventbinding",
+                            "reference": {
+                                "name": "listeners",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "fn": "onTotalTimeFocusleave",
+                                "implHandler": [
+                                    "        var startTime = Ext.getCmp(\"StartTimeAndDateId\").getValue();",
+                                    "        var endTime = Ext.getCmp(\"EndTimeAndDateId\").getValue();",
+                                    "        var totalTime = Ext.getCmp(\"TotalTimeId\").getValue();",
+                                    "        console.log(startTime + endTime + totalTime);"
+                                ],
+                                "name": "focusleave",
+                                "scope": "me"
+                            },
+                            "configAlternates": {
+                                "fn": "string",
+                                "implHandler": "code",
+                                "name": "string",
+                                "scope": "string"
+                            },
+                            "name": "onTotalTimeFocusleave",
+                            "designerId": "9e46edb4-54b8-49ed-bbca-ecbf797c6d97"
+                        }
+                    ]
                 }
             ]
         },
@@ -274,6 +288,7 @@
                     "codeClass": null,
                     "userConfig": {
                         "designer|displayName": "comment",
+                        "itemId": "Comment",
                         "label": "Comment",
                         "margin": 25,
                         "placeholder": "This is an original comment"
@@ -282,7 +297,8 @@
                         "designer|displayName": "string",
                         "label": "string",
                         "margin": "auto",
-                        "placeholder": "string"
+                        "placeholder": "string",
+                        "itemId": "string"
                     },
                     "name": "MyTextField",
                     "designerId": "fd2fe507-f793-4bdc-b151-22c86d2207f0"
@@ -301,7 +317,7 @@
                 "container|align": "start",
                 "container|pack": "center",
                 "designer|displayName": "btnContainer",
-                "docked": "bottom",
+                "docked": null,
                 "layout": "box",
                 "padding": 25
             },
@@ -438,6 +454,34 @@
                     ]
                 }
             ]
+        },
+        {
+            "type": "viewcontrollereventbinding",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "onFormpanelAdded",
+                "implHandler": [
+                    "var currDate = new Date();",
+                    "",
+                    "Ext.getCmp(\"StartTimeAndDateId\").setValue(currDate);",
+                    "Ext.getCmp(\"EndTimeAndDateId\").setValue(currDate);",
+                    "Ext.getCmp(\"TotalTimeId\").setValue(0);"
+                ],
+                "name": "added",
+                "scope": "me"
+            },
+            "configAlternates": {
+                "fn": "string",
+                "implHandler": "code",
+                "name": "string",
+                "scope": "string"
+            },
+            "name": "onFormpanelAdded",
+            "designerId": "107deb52-c025-48cd-b7e5-c1ef1d25122d"
         }
     ]
 }

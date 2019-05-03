@@ -394,6 +394,7 @@ Ext.define('Lab12_1.view.TimeFormPanel', {
         },
         {
             xtype: 'container',
+            id: 'CommentId',
             items: [
                 {
                     xtype: 'textfield',
@@ -418,13 +419,14 @@ Ext.define('Lab12_1.view.TimeFormPanel', {
             items: [
                 {
                     xtype: 'button',
-                    handler: function(button, e) {
-
-                    },
+                    itemId: 'Confirm',
                     ui: 'confirm',
                     maxWidth: 250,
                     minWidth: 150,
-                    text: 'Confirm'
+                    text: 'Confirm',
+                    listeners: {
+                        tap: 'addToStore'
+                    }
                 },
                 {
                     xtype: 'spacer',

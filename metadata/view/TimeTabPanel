@@ -7,6 +7,7 @@
     "codeClass": null,
     "userConfig": {
         "container|animation": false,
+        "designer|initialView": true,
         "designer|userAlias": "timetabpanel",
         "designer|userClassName": "TimeTabPanel",
         "docked": null,

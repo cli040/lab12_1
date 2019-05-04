@@ -8,13 +8,17 @@
     "userConfig": {
         "designer|userAlias": "timeformpanel",
         "designer|userClassName": "TimeFormPanel",
+        "requires": [
+            "Lab12_1.store.TimeStore"
+        ],
         "title": "Add new time"
     },
     "configAlternates": {
         "designer|initialView": "boolean",
         "designer|userAlias": "string",
         "designer|userClassName": "string",
-        "title": "string"
+        "title": "string",
+        "requires": "typedarray"
     },
     "name": "MyFormPanel",
     "designerId": "b41e2e40-452c-4ab5-a0a8-a79d7c28fd98",
@@ -711,7 +715,24 @@
                                 ],
                                 "fn": "handler",
                                 "implHandler": [
-                                    "this.up('panel').close();"
+                                    "",
+                                    "",
+                                    "                var store= Ext.getStore(\"TimeStore\");",
+                                    "                var startTime = Ext.getCmp(\"StartTimeAndDateId\").getValue();",
+                                    "                        var endTime = Ext.getCmp(\"EndTimeAndDateId\").getValue();",
+                                    "                        var totalTime = Ext.getCmp(\"TotalTimeId\").getValue();",
+                                    "                        var comment= Ext.getCmp(\"CommentId\").getValue();",
+                                    "                var timeFormat={",
+                                    "                                    Start: startTime,",
+                                    "                                    End: endTime,",
+                                    "                                    Time: totalTime,",
+                                    "                                    Comment: comment",
+                                    "                                }",
+                                    "                store.add(timeFormat);",
+                                    "                store.sync();",
+                                    "this.up('panel').close();",
+                                    "",
+                                    ""
                                 ]
                             },
                             "configAlternates": {
@@ -720,7 +741,7 @@
                                 "implHandler": "code"
                             },
                             "name": "handler",
-                            "designerId": "7fc1109a-e884-4645-b85b-eca40de6c6f5"
+                            "designerId": "c1da3388-9f77-4f20-a817-db934e3ac568"
                         }
                     ]
                 },

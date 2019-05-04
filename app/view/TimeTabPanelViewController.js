@@ -18,13 +18,55 @@ Ext.define('Lab12_1.view.TimeTabPanelViewController', {
     alias: 'controller.timetabpanel',
 
     OnItemSelected: function(dataview, selected, eOpts) {
-        //alert(dataview.getRecord().get("Comment"));
-        alert(dataview.child(selected));
+
     },
 
     onContainerInitialize: function(component, eOpts) {
-        /*
+
         var currDate = new Date();
+
+
+
+        var dd = currDate.getDate();
+        var mm = currDate.getMonth() + 1; //January is 0!
+
+        var yyyy = currDate.getFullYear();
+
+        if (dd < 10)
+        {
+            dd = '0' + dd;
+        }
+
+        if (mm < 10)
+        {
+            mm = '0' + mm;
+        }
+
+        var HH = currDate.getHours();
+        var MM = currDate.getMinutes();
+
+        if(HH < 10)
+        {
+            HH = "0" + HH;
+        }
+        if(MM < 10)
+        {
+            MM = "0" + MM;
+        }
+
+        currDate = dd + '/' + mm + '/' + yyyy;
+
+
+        Ext.getCmp('DayId').setTitle(currDate);
+
+
+        // TODO: Load this week
+        //this.up('tabpanel').down('tab[text=Example]').el.applyStyles('background:red');
+
+    },
+
+    onTabpanelActivate: function(newActiveItem, container, oldActiveItem, eOpts) {
+        /*var currDate = new Date();
 
 
 
@@ -60,55 +102,11 @@ Ext.define('Lab12_1.view.TimeTabPanelViewController', {
 
 
         Ext.getCmp('DayId').setTitle(currDate);
-
-
-        // TODO: Load this week
-        this.up('tabpanel').down('tab[text=Example]').el.applyStyles('background:red');
-        */
-    },
-
-    onTabpanelActivate: function(newActiveItem, container, oldActiveItem, eOpts) {
-        var currDate = new Date();
-
-        /** Format Start **/
-
-        var dd = currDate.getDate();
-        var mm = currDate.getMonth() + 1; //January is 0!
-
-        var yyyy = currDate.getFullYear();
-
-        if (dd < 10)
-        {
-            dd = '0' + dd;
-        }
-
-        if (mm < 10)
-        {
-            mm = '0' + mm;
-        }
-
-        var HH = currDate.getHours();
-        var MM = currDate.getMinutes();
-
-        if(HH < 10)
-        {
-            HH = "0" + HH;
-        }
-        if(MM < 10)
-        {
-            MM = "0" + MM;
-        }
-
-        currDate = dd + '/' + mm + '/' + yyyy;
-
-        /** Format End **/
-
-        Ext.getCmp('DayId').setTitle(currDate);
         this.down("tabpanel").getCmp("DayId").setTitle("reee");
 
 
         // TODO: Load this week
-        //this.up('tabpanel').down('tab[text=Example]').el.applyStyles('background:red');
+        //this.up('tabpanel').down('tab[text=Example]').el.applyStyles('background:red');*/
     }
 
 });

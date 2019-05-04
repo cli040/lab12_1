@@ -234,11 +234,11 @@ Ext.define('Lab12_1.view.TimeTabPanel', {
             xtype: 'container',
             title: 'Week',
             iconCls: 'x-fa fa-calendar',
-            id: 'WeekId',
             layout: 'fit',
             items: [
                 {
                     xtype: 'titlebar',
+                    id: 'WeekId',
                     docked: 'top',
                     title: '29/04/2019 - 05/05/2019',
                     layout: {
@@ -270,12 +270,184 @@ Ext.define('Lab12_1.view.TimeTabPanel', {
                         },
                         {
                             xtype: 'button',
+                            handler: function(button, e) {
+                                var currDateString = Ext.getCmp('WeekId').getTitle();
+
+                                var splitDate = currDateString.split("-");
+
+                                var firstDate = splitDate[0].trim();
+                                var lastDate = splitDate[1].trim();
+
+                                var firstSplitDate = firstDate.split("/");
+                                var lastSplitDate = lastDate.split("/");
+
+                                currDateString = firstSplitDate[1] + "/" + firstSplitDate[0] + "/" + firstSplitDate[2];
+                                var lastDateString = lastSplitDate[1] + "/" + lastSplitDate[0] + "/" + lastSplitDate[2];
+
+                                var firstDayOfWeek = new Date(currDateString);
+                                var lastDayOfWeek = new Date(lastDateString);
+
+                                firstDayOfWeek.setDate(firstDayOfWeek.getDate() - 7);
+                                lastDayOfWeek.setDate(lastDayOfWeek.getDate() - 7);
+
+                                /** Format Start **/
+
+                                var dd = firstDayOfWeek.getDate();
+                                var mm = firstDayOfWeek.getMonth() + 1; //January is 0!
+
+                                var yyyy = firstDayOfWeek.getFullYear();
+
+                                if (dd < 10)
+                                {
+                                    dd = '0' + dd;
+                                }
+
+                                if (mm < 10)
+                                {
+                                    mm = '0' + mm;
+                                }
+
+                                var HH = firstDayOfWeek.getHours();
+                                var MM = firstDayOfWeek.getMinutes();
+
+                                if(HH < 10)
+                                {
+                                    HH = "0" + HH;
+                                }
+                                if(MM < 10)
+                                {
+                                    MM = "0" + MM;
+                                }
+
+                                firstDayOfWeek = dd + '/' + mm + '/' + yyyy;
+
+                                var dd = lastDayOfWeek.getDate();
+                                var mm = lastDayOfWeek.getMonth() + 1; //January is 0!
+
+                                var yyyy = lastDayOfWeek.getFullYear();
+
+                                if (dd < 10)
+                                {
+                                    dd = '0' + dd;
+                                }
+
+                                if (mm < 10)
+                                {
+                                    mm = '0' + mm;
+                                }
+
+                                var HH = lastDayOfWeek.getHours();
+                                var MM = lastDayOfWeek.getMinutes();
+
+                                if(HH < 10)
+                                {
+                                    HH = "0" + HH;
+                                }
+                                if(MM < 10)
+                                {
+                                    MM = "0" + MM;
+                                }
+
+                                lastDayOfWeek = dd + '/' + mm + '/' + yyyy;
+
+                                /** Format End **/
+
+                                var currentWeek = firstDayOfWeek + " - " + lastDayOfWeek;
+
+                                Ext.getCmp('WeekId').setTitle(currentWeek);
+                            },
                             ui: 'square',
                             margin: '0, 0, 0, 5',
                             text: '<'
                         },
                         {
                             xtype: 'button',
+                            handler: function(button, e) {
+                                var currDateString = Ext.getCmp('WeekId').getTitle();
+
+                                var splitDate = currDateString.split("-");
+
+                                var firstDate = splitDate[0].trim();
+                                var lastDate = splitDate[1].trim();
+
+                                var firstSplitDate = firstDate.split("/");
+                                var lastSplitDate = lastDate.split("/");
+
+                                currDateString = firstSplitDate[1] + "/" + firstSplitDate[0] + "/" + firstSplitDate[2];
+                                var lastDateString = lastSplitDate[1] + "/" + lastSplitDate[0] + "/" + lastSplitDate[2];
+
+                                var firstDayOfWeek = new Date(currDateString);
+                                var lastDayOfWeek = new Date(lastDateString);
+
+                                firstDayOfWeek.setDate(firstDayOfWeek.getDate() + 7);
+                                lastDayOfWeek.setDate(lastDayOfWeek.getDate() + 7);
+
+                                /** Format Start **/
+
+                                var dd = firstDayOfWeek.getDate();
+                                var mm = firstDayOfWeek.getMonth() + 1; //January is 0!
+
+                                var yyyy = firstDayOfWeek.getFullYear();
+
+                                if (dd < 10)
+                                {
+                                    dd = '0' + dd;
+                                }
+
+                                if (mm < 10)
+                                {
+                                    mm = '0' + mm;
+                                }
+
+                                var HH = firstDayOfWeek.getHours();
+                                var MM = firstDayOfWeek.getMinutes();
+
+                                if(HH < 10)
+                                {
+                                    HH = "0" + HH;
+                                }
+                                if(MM < 10)
+                                {
+                                    MM = "0" + MM;
+                                }
+
+                                firstDayOfWeek = dd + '/' + mm + '/' + yyyy;
+
+                                var dd = lastDayOfWeek.getDate();
+                                var mm = lastDayOfWeek.getMonth() + 1; //January is 0!
+
+                                var yyyy = lastDayOfWeek.getFullYear();
+
+                                if (dd < 10)
+                                {
+                                    dd = '0' + dd;
+                                }
+
+                                if (mm < 10)
+                                {
+                                    mm = '0' + mm;
+                                }
+
+                                var HH = lastDayOfWeek.getHours();
+                                var MM = lastDayOfWeek.getMinutes();
+
+                                if(HH < 10)
+                                {
+                                    HH = "0" + HH;
+                                }
+                                if(MM < 10)
+                                {
+                                    MM = "0" + MM;
+                                }
+
+                                lastDayOfWeek = dd + '/' + mm + '/' + yyyy;
+
+                                /** Format End **/
+
+                                var currentWeek = firstDayOfWeek + " - " + lastDayOfWeek;
+
+                                Ext.getCmp('WeekId').setTitle(currentWeek);
+                            },
                             align: 'right',
                             ui: 'square',
                             margin: '0, 5, 0, 0',

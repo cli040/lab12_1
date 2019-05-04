@@ -32,6 +32,7 @@ Ext.define('Lab12_1.view.TimeTabPanel', {
         type: 'timetabpanel'
     },
     fullscreen: false,
+    tabBarPosition: 'bottom',
 
     layout: {
         type: 'card',
@@ -41,10 +42,8 @@ Ext.define('Lab12_1.view.TimeTabPanel', {
         {
             xtype: 'container',
             title: 'Day',
-            layout: {
-                type: 'vbox',
-                align: 'center'
-            },
+            iconCls: 'x-fa fa-calendar',
+            layout: 'fit',
             items: [
                 {
                     xtype: 'titlebar',
@@ -190,22 +189,22 @@ Ext.define('Lab12_1.view.TimeTabPanel', {
                 {
                     xtype: 'grid',
                     height: '100%',
+                    itemId: 'mygrid',
                     width: '100%',
                     store: 'TimeStore',
+                    title: 'Day',
                     columns: [
                         {
                             xtype: 'datecolumn',
                             width: 129,
                             dataIndex: 'Start',
-                            text: 'Start',
-                            format: 'd-M-Y H:i'
+                            text: 'Start'
                         },
                         {
                             xtype: 'datecolumn',
                             width: 124,
                             dataIndex: 'End',
-                            text: 'End',
-                            format: 'd-M-Y H:i'
+                            text: 'End'
                         },
                         {
                             xtype: 'numbercolumn',
@@ -215,11 +214,16 @@ Ext.define('Lab12_1.view.TimeTabPanel', {
                         },
                         {
                             xtype: 'gridcolumn',
+                            id: 'DayGridCommentId',
+                            itemId: 'DayGridCommentId',
                             width: 266,
                             dataIndex: 'Comment',
                             text: 'Comment'
                         }
-                    ]
+                    ],
+                    listeners: {
+                        select: 'OnItemSelected'
+                    }
                 }
             ],
             listeners: {
@@ -229,14 +233,12 @@ Ext.define('Lab12_1.view.TimeTabPanel', {
         {
             xtype: 'container',
             title: 'Week',
-            id: 'WeekId',
-            layout: {
-                type: 'vbox',
-                align: 'center'
-            },
+            iconCls: 'x-fa fa-calendar',
+            layout: 'fit',
             items: [
                 {
                     xtype: 'titlebar',
+                    id: 'WeekId',
                     docked: 'top',
                     title: '29/04/2019 - 05/05/2019',
                     layout: {
@@ -268,12 +270,184 @@ Ext.define('Lab12_1.view.TimeTabPanel', {
                         },
                         {
                             xtype: 'button',
+                            handler: function(button, e) {
+                                var currDateString = Ext.getCmp('WeekId').getTitle();
+
+                                var splitDate = currDateString.split("-");
+
+                                var firstDate = splitDate[0].trim();
+                                var lastDate = splitDate[1].trim();
+
+                                var firstSplitDate = firstDate.split("/");
+                                var lastSplitDate = lastDate.split("/");
+
+                                currDateString = firstSplitDate[1] + "/" + firstSplitDate[0] + "/" + firstSplitDate[2];
+                                var lastDateString = lastSplitDate[1] + "/" + lastSplitDate[0] + "/" + lastSplitDate[2];
+
+                                var firstDayOfWeek = new Date(currDateString);
+                                var lastDayOfWeek = new Date(lastDateString);
+
+                                firstDayOfWeek.setDate(firstDayOfWeek.getDate() - 7);
+                                lastDayOfWeek.setDate(lastDayOfWeek.getDate() - 7);
+
+                                /** Format Start **/
+
+                                var dd = firstDayOfWeek.getDate();
+                                var mm = firstDayOfWeek.getMonth() + 1; //January is 0!
+
+                                var yyyy = firstDayOfWeek.getFullYear();
+
+                                if (dd < 10)
+                                {
+                                    dd = '0' + dd;
+                                }
+
+                                if (mm < 10)
+                                {
+                                    mm = '0' + mm;
+                                }
+
+                                var HH = firstDayOfWeek.getHours();
+                                var MM = firstDayOfWeek.getMinutes();
+
+                                if(HH < 10)
+                                {
+                                    HH = "0" + HH;
+                                }
+                                if(MM < 10)
+                                {
+                                    MM = "0" + MM;
+                                }
+
+                                firstDayOfWeek = dd + '/' + mm + '/' + yyyy;
+
+                                var dd = lastDayOfWeek.getDate();
+                                var mm = lastDayOfWeek.getMonth() + 1; //January is 0!
+
+                                var yyyy = lastDayOfWeek.getFullYear();
+
+                                if (dd < 10)
+                                {
+                                    dd = '0' + dd;
+                                }
+
+                                if (mm < 10)
+                                {
+                                    mm = '0' + mm;
+                                }
+
+                                var HH = lastDayOfWeek.getHours();
+                                var MM = lastDayOfWeek.getMinutes();
+
+                                if(HH < 10)
+                                {
+                                    HH = "0" + HH;
+                                }
+                                if(MM < 10)
+                                {
+                                    MM = "0" + MM;
+                                }
+
+                                lastDayOfWeek = dd + '/' + mm + '/' + yyyy;
+
+                                /** Format End **/
+
+                                var currentWeek = firstDayOfWeek + " - " + lastDayOfWeek;
+
+                                Ext.getCmp('WeekId').setTitle(currentWeek);
+                            },
                             ui: 'square',
                             margin: '0, 0, 0, 5',
                             text: '<'
                         },
                         {
                             xtype: 'button',
+                            handler: function(button, e) {
+                                var currDateString = Ext.getCmp('WeekId').getTitle();
+
+                                var splitDate = currDateString.split("-");
+
+                                var firstDate = splitDate[0].trim();
+                                var lastDate = splitDate[1].trim();
+
+                                var firstSplitDate = firstDate.split("/");
+                                var lastSplitDate = lastDate.split("/");
+
+                                currDateString = firstSplitDate[1] + "/" + firstSplitDate[0] + "/" + firstSplitDate[2];
+                                var lastDateString = lastSplitDate[1] + "/" + lastSplitDate[0] + "/" + lastSplitDate[2];
+
+                                var firstDayOfWeek = new Date(currDateString);
+                                var lastDayOfWeek = new Date(lastDateString);
+
+                                firstDayOfWeek.setDate(firstDayOfWeek.getDate() + 7);
+                                lastDayOfWeek.setDate(lastDayOfWeek.getDate() + 7);
+
+                                /** Format Start **/
+
+                                var dd = firstDayOfWeek.getDate();
+                                var mm = firstDayOfWeek.getMonth() + 1; //January is 0!
+
+                                var yyyy = firstDayOfWeek.getFullYear();
+
+                                if (dd < 10)
+                                {
+                                    dd = '0' + dd;
+                                }
+
+                                if (mm < 10)
+                                {
+                                    mm = '0' + mm;
+                                }
+
+                                var HH = firstDayOfWeek.getHours();
+                                var MM = firstDayOfWeek.getMinutes();
+
+                                if(HH < 10)
+                                {
+                                    HH = "0" + HH;
+                                }
+                                if(MM < 10)
+                                {
+                                    MM = "0" + MM;
+                                }
+
+                                firstDayOfWeek = dd + '/' + mm + '/' + yyyy;
+
+                                var dd = lastDayOfWeek.getDate();
+                                var mm = lastDayOfWeek.getMonth() + 1; //January is 0!
+
+                                var yyyy = lastDayOfWeek.getFullYear();
+
+                                if (dd < 10)
+                                {
+                                    dd = '0' + dd;
+                                }
+
+                                if (mm < 10)
+                                {
+                                    mm = '0' + mm;
+                                }
+
+                                var HH = lastDayOfWeek.getHours();
+                                var MM = lastDayOfWeek.getMinutes();
+
+                                if(HH < 10)
+                                {
+                                    HH = "0" + HH;
+                                }
+                                if(MM < 10)
+                                {
+                                    MM = "0" + MM;
+                                }
+
+                                lastDayOfWeek = dd + '/' + mm + '/' + yyyy;
+
+                                /** Format End **/
+
+                                var currentWeek = firstDayOfWeek + " - " + lastDayOfWeek;
+
+                                Ext.getCmp('WeekId').setTitle(currentWeek);
+                            },
                             align: 'right',
                             ui: 'square',
                             margin: '0, 5, 0, 0',
@@ -286,26 +460,30 @@ Ext.define('Lab12_1.view.TimeTabPanel', {
                     height: '100%',
                     width: '100%',
                     store: 'TimeStore',
+                    title: 'Week',
                     columns: [
                         {
                             xtype: 'datecolumn',
                             width: 129,
-                            dataIndex: 'date',
+                            dataIndex: 'Start',
                             text: 'Start'
                         },
                         {
                             xtype: 'datecolumn',
                             width: 124,
+                            dataIndex: 'End',
                             text: 'End'
                         },
                         {
                             xtype: 'numbercolumn',
                             width: 96,
+                            dataIndex: 'Time',
                             text: 'Time'
                         },
                         {
                             xtype: 'gridcolumn',
                             width: 266,
+                            dataIndex: 'Comment',
                             text: 'Comment'
                         }
                     ]

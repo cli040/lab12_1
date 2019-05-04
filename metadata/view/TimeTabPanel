@@ -11,7 +11,8 @@
         "designer|userAlias": "timetabpanel",
         "designer|userClassName": "TimeTabPanel",
         "docked": null,
-        "fullscreen": false
+        "fullscreen": false,
+        "tabBarPosition": "bottom"
     },
     "configAlternates": {
         "container|animation": "auto",
@@ -19,7 +20,8 @@
         "designer|userAlias": "string",
         "designer|userClassName": "string",
         "docked": "string",
-        "fullscreen": "boolean"
+        "fullscreen": "boolean",
+        "tabBarPosition": "string"
     },
     "name": "MyTabPanel",
     "designerId": "d69f1807-218d-4e61-be55-5e98844e5488",
@@ -34,16 +36,17 @@
             },
             "codeClass": null,
             "userConfig": {
-                "container|align": "center",
                 "docked": null,
-                "layout": "vbox",
+                "iconCls": "x-fa fa-calendar",
+                "layout": "fit",
                 "title": "Day"
             },
             "configAlternates": {
                 "docked": "string",
                 "title": "string",
                 "container|align": "string",
-                "layout": "string"
+                "layout": "string",
+                "iconCls": "string"
             },
             "name": "MyContainer",
             "designerId": "096e983d-08e2-4b71-9b0b-8ad81a911ffa",
@@ -360,14 +363,18 @@
                     "userConfig": {
                         "designer|displayName": "DayGrid",
                         "height": "100%",
+                        "itemId": "mygrid",
                         "store": "TimeStore",
+                        "title": "Day",
                         "width": "100%"
                     },
                     "configAlternates": {
                         "designer|displayName": "string",
                         "height": "auto",
                         "store": "store",
-                        "width": "auto"
+                        "width": "auto",
+                        "itemId": "string",
+                        "title": "string"
                     },
                     "name": "MyGrid",
                     "designerId": "89a10f38-b1a8-4532-a6d1-78b2dbbf2fc7",
@@ -382,16 +389,15 @@
                             "userConfig": {
                                 "dataIndex": "Start",
                                 "docked": null,
-                                "format": "d-M-Y H:i",
                                 "text": "Start",
                                 "width": 129
                             },
                             "configAlternates": {
-                                "dataIndex": "datafield",
                                 "docked": "string",
                                 "format": "string",
                                 "text": "string",
-                                "width": "auto"
+                                "width": "auto",
+                                "dataIndex": "datafield"
                             },
                             "name": "MyDateColumn",
                             "designerId": "cf422580-eedb-4183-a6d3-788f33941ac7"
@@ -406,7 +412,6 @@
                             "userConfig": {
                                 "dataIndex": "End",
                                 "docked": null,
-                                "format": "d-M-Y H:i",
                                 "text": "End",
                                 "width": 124
                             },
@@ -453,6 +458,8 @@
                                 "dataIndex": "Comment",
                                 "designer|displayName": "Comment",
                                 "docked": null,
+                                "id": "DayGridCommentId",
+                                "itemId": "DayGridCommentId",
                                 "text": "Comment",
                                 "width": 266
                             },
@@ -461,10 +468,36 @@
                                 "designer|displayName": "string",
                                 "docked": "string",
                                 "text": "string",
-                                "width": "auto"
+                                "width": "auto",
+                                "id": "string",
+                                "itemId": "string"
                             },
                             "name": "MyColumn",
                             "designerId": "747a3726-7b34-497c-a258-797d6a8af1fa"
+                        },
+                        {
+                            "type": "viewcontrollereventbinding",
+                            "reference": {
+                                "name": "listeners",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "fn": "OnItemSelected",
+                                "implHandler": [
+                                    ""
+                                ],
+                                "name": "select",
+                                "scope": "me"
+                            },
+                            "configAlternates": {
+                                "fn": "string",
+                                "implHandler": "code",
+                                "name": "string",
+                                "scope": "string"
+                            },
+                            "name": "OnItemSelected",
+                            "designerId": "497a775d-aa1f-468c-94d1-9b33c3f6548a"
                         }
                     ]
                 },
@@ -478,10 +511,10 @@
                     "userConfig": {
                         "fn": "onContainerInitialize",
                         "implHandler": [
-                            "    /*",
+                            "",
                             "        var currDate = new Date();",
                             "",
-                            "       ",
+                            "",
                             "",
                             "        var dd = currDate.getDate();",
                             "        var mm = currDate.getMonth() + 1; //January is 0!",
@@ -512,14 +545,13 @@
                             "",
                             "        currDate = dd + '/' + mm + '/' + yyyy;",
                             "",
-                            "       ",
                             "",
                             "        Ext.getCmp('DayId').setTitle(currDate);",
                             "",
                             "",
                             "        // TODO: Load this week",
-                            "        this.up('tabpanel').down('tab[text=Example]').el.applyStyles('background:red');",
-                            "    */"
+                            "        //this.up('tabpanel').down('tab[text=Example]').el.applyStyles('background:red');",
+                            "    "
                         ],
                         "name": "initialize",
                         "scope": "me"
@@ -543,11 +575,10 @@
             },
             "codeClass": null,
             "userConfig": {
-                "container|align": "center",
                 "designer|displayName": "Week",
                 "docked": null,
-                "id": "WeekId",
-                "layout": "vbox",
+                "iconCls": "x-fa fa-calendar",
+                "layout": "fit",
                 "title": "Week"
             },
             "configAlternates": {
@@ -556,7 +587,8 @@
                 "layout": "string",
                 "container|align": "string",
                 "id": "string",
-                "designer|displayName": "string"
+                "designer|displayName": "string",
+                "iconCls": "string"
             },
             "name": "MyContainer1",
             "designerId": "46bbf884-177d-434b-98be-469c643bba57",
@@ -573,6 +605,7 @@
                         "container|pack": "center",
                         "designer|displayName": "Week",
                         "docked": "top",
+                        "id": "WeekId",
                         "title": "29/04/2019 - 05/05/2019"
                     },
                     "configAlternates": {
@@ -580,7 +613,8 @@
                         "designer|displayName": "string",
                         "docked": "string",
                         "title": "string",
-                        "container|pack": "string"
+                        "container|pack": "string",
+                        "id": "string"
                     },
                     "name": "MyTitleBar2",
                     "designerId": "ccdc0aee-5c88-4308-a34d-c29f749467be",
@@ -689,7 +723,117 @@
                                 "ui": "string"
                             },
                             "name": "MyButton6",
-                            "designerId": "cf63b6d1-43a5-44f6-88c1-f8a14a7988aa"
+                            "designerId": "cf63b6d1-43a5-44f6-88c1-f8a14a7988aa",
+                            "cn": [
+                                {
+                                    "type": "fixedfunction",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "designer|params": [
+                                            "button",
+                                            "e"
+                                        ],
+                                        "fn": "handler",
+                                        "implHandler": [
+                                            "var currDateString = Ext.getCmp('WeekId').getTitle();",
+                                            "",
+                                            "var splitDate = currDateString.split(\"-\");",
+                                            "",
+                                            "var firstDate = splitDate[0].trim();",
+                                            "var lastDate = splitDate[1].trim();",
+                                            "",
+                                            "var firstSplitDate = firstDate.split(\"/\");",
+                                            "var lastSplitDate = lastDate.split(\"/\");",
+                                            "",
+                                            "currDateString = firstSplitDate[1] + \"/\" + firstSplitDate[0] + \"/\" + firstSplitDate[2];",
+                                            "var lastDateString = lastSplitDate[1] + \"/\" + lastSplitDate[0] + \"/\" + lastSplitDate[2];",
+                                            "",
+                                            "var firstDayOfWeek = new Date(currDateString);",
+                                            "var lastDayOfWeek = new Date(lastDateString);",
+                                            "",
+                                            "firstDayOfWeek.setDate(firstDayOfWeek.getDate() - 7);",
+                                            "lastDayOfWeek.setDate(lastDayOfWeek.getDate() - 7);",
+                                            "",
+                                            "        /** Format Start **/",
+                                            "",
+                                            "        var dd = firstDayOfWeek.getDate();",
+                                            "        var mm = firstDayOfWeek.getMonth() + 1; //January is 0!",
+                                            "",
+                                            "        var yyyy = firstDayOfWeek.getFullYear();",
+                                            "",
+                                            "        if (dd < 10)",
+                                            "        {",
+                                            "            dd = '0' + dd;",
+                                            "        }",
+                                            "",
+                                            "        if (mm < 10)",
+                                            "        {",
+                                            "            mm = '0' + mm;",
+                                            "        }",
+                                            "",
+                                            "        var HH = firstDayOfWeek.getHours();",
+                                            "        var MM = firstDayOfWeek.getMinutes();",
+                                            "",
+                                            "        if(HH < 10)",
+                                            "        {",
+                                            "            HH = \"0\" + HH;",
+                                            "        }",
+                                            "        if(MM < 10)",
+                                            "        {",
+                                            "            MM = \"0\" + MM;",
+                                            "        }",
+                                            "",
+                                            "        firstDayOfWeek = dd + '/' + mm + '/' + yyyy;",
+                                            "",
+                                            "        var dd = lastDayOfWeek.getDate();",
+                                            "        var mm = lastDayOfWeek.getMonth() + 1; //January is 0!",
+                                            "",
+                                            "        var yyyy = lastDayOfWeek.getFullYear();",
+                                            "",
+                                            "        if (dd < 10)",
+                                            "        {",
+                                            "            dd = '0' + dd;",
+                                            "        }",
+                                            "",
+                                            "        if (mm < 10)",
+                                            "        {",
+                                            "            mm = '0' + mm;",
+                                            "        }",
+                                            "",
+                                            "        var HH = lastDayOfWeek.getHours();",
+                                            "        var MM = lastDayOfWeek.getMinutes();",
+                                            "",
+                                            "        if(HH < 10)",
+                                            "        {",
+                                            "            HH = \"0\" + HH;",
+                                            "        }",
+                                            "        if(MM < 10)",
+                                            "        {",
+                                            "            MM = \"0\" + MM;",
+                                            "        }",
+                                            "",
+                                            "        lastDayOfWeek = dd + '/' + mm + '/' + yyyy;",
+                                            "",
+                                            "        /** Format End **/",
+                                            "",
+                                            "var currentWeek = firstDayOfWeek + \" - \" + lastDayOfWeek;",
+                                            "",
+                                            "Ext.getCmp('WeekId').setTitle(currentWeek);"
+                                        ]
+                                    },
+                                    "configAlternates": {
+                                        "designer|params": "typedarray",
+                                        "fn": "string",
+                                        "implHandler": "code"
+                                    },
+                                    "name": "handler",
+                                    "designerId": "8f0b1d6f-3998-46b8-92bb-3f27fbe9de2a"
+                                }
+                            ]
                         },
                         {
                             "type": "Ext.Button",
@@ -713,7 +857,117 @@
                                 "ui": "string"
                             },
                             "name": "MyButton7",
-                            "designerId": "11170dbd-db39-4b1e-af88-4d2c8d952c26"
+                            "designerId": "11170dbd-db39-4b1e-af88-4d2c8d952c26",
+                            "cn": [
+                                {
+                                    "type": "fixedfunction",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "designer|params": [
+                                            "button",
+                                            "e"
+                                        ],
+                                        "fn": "handler",
+                                        "implHandler": [
+                                            "var currDateString = Ext.getCmp('WeekId').getTitle();",
+                                            "",
+                                            "var splitDate = currDateString.split(\"-\");",
+                                            "",
+                                            "var firstDate = splitDate[0].trim();",
+                                            "var lastDate = splitDate[1].trim();",
+                                            "",
+                                            "var firstSplitDate = firstDate.split(\"/\");",
+                                            "var lastSplitDate = lastDate.split(\"/\");",
+                                            "",
+                                            "currDateString = firstSplitDate[1] + \"/\" + firstSplitDate[0] + \"/\" + firstSplitDate[2];",
+                                            "var lastDateString = lastSplitDate[1] + \"/\" + lastSplitDate[0] + \"/\" + lastSplitDate[2];",
+                                            "",
+                                            "var firstDayOfWeek = new Date(currDateString);",
+                                            "var lastDayOfWeek = new Date(lastDateString);",
+                                            "",
+                                            "firstDayOfWeek.setDate(firstDayOfWeek.getDate() + 7);",
+                                            "lastDayOfWeek.setDate(lastDayOfWeek.getDate() + 7);",
+                                            "",
+                                            "        /** Format Start **/",
+                                            "",
+                                            "        var dd = firstDayOfWeek.getDate();",
+                                            "        var mm = firstDayOfWeek.getMonth() + 1; //January is 0!",
+                                            "",
+                                            "        var yyyy = firstDayOfWeek.getFullYear();",
+                                            "",
+                                            "        if (dd < 10)",
+                                            "        {",
+                                            "            dd = '0' + dd;",
+                                            "        }",
+                                            "",
+                                            "        if (mm < 10)",
+                                            "        {",
+                                            "            mm = '0' + mm;",
+                                            "        }",
+                                            "",
+                                            "        var HH = firstDayOfWeek.getHours();",
+                                            "        var MM = firstDayOfWeek.getMinutes();",
+                                            "",
+                                            "        if(HH < 10)",
+                                            "        {",
+                                            "            HH = \"0\" + HH;",
+                                            "        }",
+                                            "        if(MM < 10)",
+                                            "        {",
+                                            "            MM = \"0\" + MM;",
+                                            "        }",
+                                            "",
+                                            "        firstDayOfWeek = dd + '/' + mm + '/' + yyyy;",
+                                            "",
+                                            "        var dd = lastDayOfWeek.getDate();",
+                                            "        var mm = lastDayOfWeek.getMonth() + 1; //January is 0!",
+                                            "",
+                                            "        var yyyy = lastDayOfWeek.getFullYear();",
+                                            "",
+                                            "        if (dd < 10)",
+                                            "        {",
+                                            "            dd = '0' + dd;",
+                                            "        }",
+                                            "",
+                                            "        if (mm < 10)",
+                                            "        {",
+                                            "            mm = '0' + mm;",
+                                            "        }",
+                                            "",
+                                            "        var HH = lastDayOfWeek.getHours();",
+                                            "        var MM = lastDayOfWeek.getMinutes();",
+                                            "",
+                                            "        if(HH < 10)",
+                                            "        {",
+                                            "            HH = \"0\" + HH;",
+                                            "        }",
+                                            "        if(MM < 10)",
+                                            "        {",
+                                            "            MM = \"0\" + MM;",
+                                            "        }",
+                                            "",
+                                            "        lastDayOfWeek = dd + '/' + mm + '/' + yyyy;",
+                                            "",
+                                            "        /** Format End **/",
+                                            "",
+                                            "var currentWeek = firstDayOfWeek + \" - \" + lastDayOfWeek;",
+                                            "",
+                                            "Ext.getCmp('WeekId').setTitle(currentWeek);"
+                                        ]
+                                    },
+                                    "configAlternates": {
+                                        "designer|params": "typedarray",
+                                        "fn": "string",
+                                        "implHandler": "code"
+                                    },
+                                    "name": "handler",
+                                    "designerId": "a189be23-8b90-4c05-a5a6-0a768c1dc5d6"
+                                }
+                            ]
                         }
                     ]
                 },
@@ -728,13 +982,15 @@
                         "designer|displayName": "WeekGrid",
                         "height": "100%",
                         "store": "TimeStore",
+                        "title": "Week",
                         "width": "100%"
                     },
                     "configAlternates": {
                         "designer|displayName": "string",
                         "height": "auto",
                         "store": "store",
-                        "width": "auto"
+                        "width": "auto",
+                        "title": "string"
                     },
                     "name": "MyGrid2",
                     "designerId": "85d33a48-ef45-4ac1-8e58-d39ae6f8d554",
@@ -747,7 +1003,7 @@
                             },
                             "codeClass": null,
                             "userConfig": {
-                                "dataIndex": "date",
+                                "dataIndex": "Start",
                                 "docked": null,
                                 "text": "Start",
                                 "width": 129
@@ -769,6 +1025,7 @@
                             },
                             "codeClass": null,
                             "userConfig": {
+                                "dataIndex": "End",
                                 "docked": null,
                                 "text": "End",
                                 "width": 124
@@ -776,7 +1033,8 @@
                             "configAlternates": {
                                 "docked": "string",
                                 "text": "string",
-                                "width": "auto"
+                                "width": "auto",
+                                "dataIndex": "datafield"
                             },
                             "name": "MyDateColumn2",
                             "designerId": "0ae77c7e-8a0b-474a-b61d-e2b42ed0ba2b"
@@ -789,6 +1047,7 @@
                             },
                             "codeClass": null,
                             "userConfig": {
+                                "dataIndex": "Time",
                                 "docked": null,
                                 "text": "Time",
                                 "width": 96
@@ -796,7 +1055,8 @@
                             "configAlternates": {
                                 "docked": "string",
                                 "text": "string",
-                                "width": "auto"
+                                "width": "auto",
+                                "dataIndex": "datafield"
                             },
                             "name": "MyNumberColumn",
                             "designerId": "c5460795-3000-43bc-8d49-f944063b5183"
@@ -809,6 +1069,7 @@
                             },
                             "codeClass": null,
                             "userConfig": {
+                                "dataIndex": "Comment",
                                 "docked": null,
                                 "text": "Comment",
                                 "width": 266
@@ -816,7 +1077,8 @@
                             "configAlternates": {
                                 "docked": "string",
                                 "text": "string",
-                                "width": "auto"
+                                "width": "auto",
+                                "dataIndex": "datafield"
                             },
                             "name": "MyColumn",
                             "designerId": "046b3b7f-d717-4195-9400-641746fa0e5f"
@@ -835,9 +1097,9 @@
             "userConfig": {
                 "fn": "onTabpanelActivate",
                 "implHandler": [
-                    "var currDate = new Date();",
+                    "/*var currDate = new Date();",
                     "",
-                    "/** Format Start **/",
+                    "",
                     "",
                     "var dd = currDate.getDate();",
                     "var mm = currDate.getMonth() + 1; //January is 0!",
@@ -868,14 +1130,14 @@
                     "",
                     "currDate = dd + '/' + mm + '/' + yyyy;",
                     "",
-                    "/** Format End **/",
+                    "",
                     "",
                     "Ext.getCmp('DayId').setTitle(currDate);",
                     "this.down(\"tabpanel\").getCmp(\"DayId\").setTitle(\"reee\");",
                     "",
                     "",
                     "// TODO: Load this week",
-                    "//this.up('tabpanel').down('tab[text=Example]').el.applyStyles('background:red');"
+                    "//this.up('tabpanel').down('tab[text=Example]').el.applyStyles('background:red');*/"
                 ],
                 "name": "activate",
                 "scope": "me"

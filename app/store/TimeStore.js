@@ -29,10 +29,34 @@ Ext.define('Lab12_1.store.TimeStore', {
             model: 'Lab12_1.model.TimeModel',
             data: [
                 {
-                    Start: '12-18-2005 09:00',
-                    End: '7-9-2009 12:00',
-                    Time: 669,
-                    Comment: 'atque'
+                    Start: '9/25/2012',
+                    End: '11/12/2003',
+                    Time: 481,
+                    Comment: 'et'
+                },
+                {
+                    Start: '2/15/2005',
+                    End: '12/13/2009',
+                    Time: 193,
+                    Comment: 'eos'
+                },
+                {
+                    Start: '5/11/2003',
+                    End: '9/16/2012',
+                    Time: 534,
+                    Comment: 'voluptas'
+                },
+                {
+                    Start: '9/24/2002',
+                    End: '4/3/2004',
+                    Time: 947,
+                    Comment: 'sint'
+                },
+                {
+                    Start: '10/22/2008',
+                    End: '11/27/2013',
+                    Time: 947,
+                    Comment: 'quia'
                 }
             ],
             proxy: {

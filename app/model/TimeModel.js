@@ -26,17 +26,11 @@ Ext.define('Lab12_1.model.TimeModel', {
     fields: [
         {
             type: 'date',
-            name: 'Start',
-            dateFormat: 'd-M-Y H:i',
-            dateReadFormat: 'd-M-Y H:i',
-            dateWriteFormat: 'd-M-Y H:i'
+            name: 'Start'
         },
         {
             type: 'date',
-            name: 'End',
-            dateFormat: 'd-M-Y H:i',
-            dateReadFormat: 'd-M-Y H:i',
-            dateWriteFormat: 'd-M-Y H:i'
+            name: 'End'
         },
         {
             type: 'int',

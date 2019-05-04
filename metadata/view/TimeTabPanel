@@ -49,7 +49,7 @@
             "designerId": "096e983d-08e2-4b71-9b0b-8ad81a911ffa",
             "cn": [
                 {
-                    "type": "Ext.Container",
+                    "type": "Ext.TitleBar",
                     "reference": {
                         "name": "items",
                         "type": "array"
@@ -58,24 +58,108 @@
                     "userConfig": {
                         "container|align": "center",
                         "container|pack": "center",
-                        "designer|displayName": "btnContainer",
-                        "docked": null,
-                        "layout": "hbox",
-                        "margin": 15,
-                        "maxWidth": 150
+                        "designer|displayName": "Day",
+                        "docked": "top",
+                        "id": "DayId",
+                        "title": "03/05/2019"
                     },
                     "configAlternates": {
                         "container|align": "string",
                         "designer|displayName": "string",
                         "docked": "string",
-                        "layout": "string",
-                        "margin": "auto",
-                        "maxWidth": "auto",
-                        "container|pack": "string"
+                        "title": "string",
+                        "container|pack": "string",
+                        "id": "string"
                     },
-                    "name": "MyContainer4",
-                    "designerId": "e582cf30-69aa-4969-bdc6-0ebd88bbe7f1",
+                    "name": "MyTitleBar",
+                    "designerId": "4ca4e429-a113-4b69-b547-6d5d475f68cb",
                     "cn": [
+                        {
+                            "type": "Ext.Container",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "container|align": "center",
+                                "container|pack": "center",
+                                "designer|displayName": "btnContainer",
+                                "docked": null,
+                                "layout": "hbox",
+                                "maxWidth": 100
+                            },
+                            "configAlternates": {
+                                "container|align": "string",
+                                "designer|displayName": "string",
+                                "docked": "string",
+                                "layout": "string",
+                                "margin": "auto",
+                                "maxWidth": "auto",
+                                "container|pack": "string"
+                            },
+                            "name": "MyContainer4",
+                            "designerId": "e582cf30-69aa-4969-bdc6-0ebd88bbe7f1",
+                            "cn": [
+                                {
+                                    "type": "Ext.Button",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "designer|displayName": "addtime",
+                                        "designer|uiInterfaceName": "confirm",
+                                        "docked": "top",
+                                        "itemId": "AddTimeDayId",
+                                        "margin": 0,
+                                        "padding": 0,
+                                        "text": "+",
+                                        "ui": "confirm"
+                                    },
+                                    "configAlternates": {
+                                        "designer|displayName": "string",
+                                        "designer|uiInterfaceName": "string",
+                                        "docked": "string",
+                                        "itemId": "string",
+                                        "text": "string",
+                                        "ui": "string",
+                                        "margin": "auto",
+                                        "padding": "auto"
+                                    },
+                                    "name": "MyButton",
+                                    "designerId": "c51d47d3-05aa-4e1c-b013-b785df7d42f6",
+                                    "cn": [
+                                        {
+                                            "type": "fixedfunction",
+                                            "reference": {
+                                                "name": "items",
+                                                "type": "array"
+                                            },
+                                            "codeClass": null,
+                                            "userConfig": {
+                                                "designer|params": [
+                                                    "button",
+                                                    "e"
+                                                ],
+                                                "fn": "handler",
+                                                "implHandler": [
+                                                    "Ext.create('Lab12_1.view.TimeFormPanel', {fullscreen: true});"
+                                                ]
+                                            },
+                                            "configAlternates": {
+                                                "designer|params": "typedarray",
+                                                "fn": "string",
+                                                "implHandler": "code"
+                                            },
+                                            "name": "handler",
+                                            "designerId": "b7bb91d1-b88c-4091-86b7-dffb0ca918b6"
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
                         {
                             "type": "Ext.Button",
                             "reference": {
@@ -84,23 +168,21 @@
                             },
                             "codeClass": null,
                             "userConfig": {
-                                "designer|displayName": "addtime",
-                                "designer|uiInterfaceName": "confirm",
-                                "docked": "top",
-                                "itemId": "mybutton",
-                                "text": "Add time",
-                                "ui": "confirm"
+                                "align": "right",
+                                "designer|uiInterfaceName": "square",
+                                "margin": "0, 5, 0, 0",
+                                "text": ">",
+                                "ui": "square"
                             },
                             "configAlternates": {
-                                "designer|displayName": "string",
+                                "align": "string",
                                 "designer|uiInterfaceName": "string",
-                                "docked": "string",
-                                "itemId": "string",
+                                "margin": "auto",
                                 "text": "string",
                                 "ui": "string"
                             },
-                            "name": "MyButton",
-                            "designerId": "c51d47d3-05aa-4e1c-b013-b785df7d42f6",
+                            "name": "MyButton7",
+                            "designerId": "df3b2958-8d93-44a8-adb4-e935d083c690",
                             "cn": [
                                 {
                                     "type": "fixedfunction",
@@ -116,7 +198,50 @@
                                         ],
                                         "fn": "handler",
                                         "implHandler": [
-                                            "Ext.create('Lab12_1.view.TimeFormPanel', {fullscreen: true});"
+                                            "var currDateString = Ext.getCmp('DayId').getTitle();",
+                                            "",
+                                            "var splitDate = currDateString.split(\"/\");",
+                                            "",
+                                            "currDateString = splitDate[1] + \"/\" + splitDate[0] + \"/\" + splitDate[2];",
+                                            "",
+                                            "var currDate = new Date(currDateString);",
+                                            "",
+                                            "currDate.setDate(currDate.getDate() + 1);",
+                                            "",
+                                            "        /** Format Start **/",
+                                            "",
+                                            "        var dd = currDate.getDate();",
+                                            "        var mm = currDate.getMonth() + 1; //January is 0!",
+                                            "",
+                                            "        var yyyy = currDate.getFullYear();",
+                                            "        ",
+                                            "        if (dd < 10) ",
+                                            "        {",
+                                            "            dd = '0' + dd;",
+                                            "        }",
+                                            "        ",
+                                            "        if (mm < 10) ",
+                                            "        {",
+                                            "            mm = '0' + mm;",
+                                            "        }",
+                                            "",
+                                            "        var HH = currDate.getHours();",
+                                            "        var MM = currDate.getMinutes();",
+                                            "",
+                                            "        if(HH < 10)",
+                                            "        {",
+                                            "            HH = \"0\" + HH;",
+                                            "        }",
+                                            "        if(MM < 10)",
+                                            "        {",
+                                            "            MM = \"0\" + MM;",
+                                            "        }",
+                                            "",
+                                            "        currDate = dd + '/' + mm + '/' + yyyy;",
+                                            "",
+                                            "        /** Format End **/",
+                                            "",
+                                            "Ext.getCmp('DayId').setTitle(currDate);"
                                         ]
                                     },
                                     "configAlternates": {
@@ -125,36 +250,10 @@
                                         "implHandler": "code"
                                     },
                                     "name": "handler",
-                                    "designerId": "b7bb91d1-b88c-4091-86b7-dffb0ca918b6"
+                                    "designerId": "48ddb1f1-ec15-452a-9a58-fa1c19148ca7"
                                 }
                             ]
-                        }
-                    ]
-                },
-                {
-                    "type": "Ext.TitleBar",
-                    "reference": {
-                        "name": "items",
-                        "type": "array"
-                    },
-                    "codeClass": null,
-                    "userConfig": {
-                        "container|align": "center",
-                        "container|pack": "center",
-                        "designer|displayName": "Day",
-                        "docked": "top",
-                        "title": "03/05/2019"
-                    },
-                    "configAlternates": {
-                        "container|align": "string",
-                        "designer|displayName": "string",
-                        "docked": "string",
-                        "title": "string",
-                        "container|pack": "string"
-                    },
-                    "name": "MyTitleBar",
-                    "designerId": "4ca4e429-a113-4b69-b547-6d5d475f68cb",
-                    "cn": [
+                        },
                         {
                             "type": "Ext.Button",
                             "reference": {
@@ -165,7 +264,7 @@
                             "userConfig": {
                                 "designer|displayName": "<",
                                 "designer|uiInterfaceName": "square",
-                                "margin": "0, 0, 0, 400",
+                                "margin": "0, 0, 0, 5",
                                 "text": "<",
                                 "ui": "square"
                             },
@@ -177,31 +276,77 @@
                                 "ui": "string"
                             },
                             "name": "MyButton6",
-                            "designerId": "468afac9-acaf-4fd6-99a0-9648367962c5"
-                        },
-                        {
-                            "type": "Ext.Button",
-                            "reference": {
-                                "name": "items",
-                                "type": "array"
-                            },
-                            "codeClass": null,
-                            "userConfig": {
-                                "align": "right",
-                                "designer|uiInterfaceName": "square",
-                                "margin": "0, 400, 0, 0",
-                                "text": ">",
-                                "ui": "square"
-                            },
-                            "configAlternates": {
-                                "align": "string",
-                                "designer|uiInterfaceName": "string",
-                                "margin": "auto",
-                                "text": "string",
-                                "ui": "string"
-                            },
-                            "name": "MyButton7",
-                            "designerId": "df3b2958-8d93-44a8-adb4-e935d083c690"
+                            "designerId": "468afac9-acaf-4fd6-99a0-9648367962c5",
+                            "cn": [
+                                {
+                                    "type": "fixedfunction",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "designer|params": [
+                                            "button",
+                                            "e"
+                                        ],
+                                        "fn": "handler",
+                                        "implHandler": [
+                                            "var currDateString = Ext.getCmp('DayId').getTitle();",
+                                            "",
+                                            "var splitDate = currDateString.split(\"/\");",
+                                            "",
+                                            "currDateString = splitDate[1] + \"/\" + splitDate[0] + \"/\" + splitDate[2];",
+                                            "",
+                                            "var currDate = new Date(currDateString);",
+                                            "",
+                                            "currDate.setDate(currDate.getDate() - 1);",
+                                            "",
+                                            "        /** Format Start **/",
+                                            "",
+                                            "        var dd = currDate.getDate();",
+                                            "        var mm = currDate.getMonth() + 1; //January is 0!",
+                                            "",
+                                            "        var yyyy = currDate.getFullYear();",
+                                            "        ",
+                                            "        if (dd < 10) ",
+                                            "        {",
+                                            "            dd = '0' + dd;",
+                                            "        }",
+                                            "        ",
+                                            "        if (mm < 10) ",
+                                            "        {",
+                                            "            mm = '0' + mm;",
+                                            "        }",
+                                            "",
+                                            "        var HH = currDate.getHours();",
+                                            "        var MM = currDate.getMinutes();",
+                                            "",
+                                            "        if(HH < 10)",
+                                            "        {",
+                                            "            HH = \"0\" + HH;",
+                                            "        }",
+                                            "        if(MM < 10)",
+                                            "        {",
+                                            "            MM = \"0\" + MM;",
+                                            "        }",
+                                            "",
+                                            "        currDate = dd + '/' + mm + '/' + yyyy;",
+                                            "",
+                                            "        /** Format End **/",
+                                            "",
+                                            "Ext.getCmp('DayId').setTitle(currDate);"
+                                        ]
+                                    },
+                                    "configAlternates": {
+                                        "designer|params": "typedarray",
+                                        "fn": "string",
+                                        "implHandler": "code"
+                                    },
+                                    "name": "handler",
+                                    "designerId": "0f951fab-366a-4386-ad99-1ca35e172537"
+                                }
+                            ]
                         }
                     ]
                 },
@@ -322,6 +467,71 @@
                             "designerId": "747a3726-7b34-497c-a258-797d6a8af1fa"
                         }
                     ]
+                },
+                {
+                    "type": "viewcontrollereventbinding",
+                    "reference": {
+                        "name": "listeners",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "fn": "onContainerInitialize",
+                        "implHandler": [
+                            "    /*",
+                            "        var currDate = new Date();",
+                            "",
+                            "       ",
+                            "",
+                            "        var dd = currDate.getDate();",
+                            "        var mm = currDate.getMonth() + 1; //January is 0!",
+                            "",
+                            "        var yyyy = currDate.getFullYear();",
+                            "",
+                            "        if (dd < 10)",
+                            "        {",
+                            "            dd = '0' + dd;",
+                            "        }",
+                            "",
+                            "        if (mm < 10)",
+                            "        {",
+                            "            mm = '0' + mm;",
+                            "        }",
+                            "",
+                            "        var HH = currDate.getHours();",
+                            "        var MM = currDate.getMinutes();",
+                            "",
+                            "        if(HH < 10)",
+                            "        {",
+                            "            HH = \"0\" + HH;",
+                            "        }",
+                            "        if(MM < 10)",
+                            "        {",
+                            "            MM = \"0\" + MM;",
+                            "        }",
+                            "",
+                            "        currDate = dd + '/' + mm + '/' + yyyy;",
+                            "",
+                            "       ",
+                            "",
+                            "        Ext.getCmp('DayId').setTitle(currDate);",
+                            "",
+                            "",
+                            "        // TODO: Load this week",
+                            "        this.up('tabpanel').down('tab[text=Example]').el.applyStyles('background:red');",
+                            "    */"
+                        ],
+                        "name": "initialize",
+                        "scope": "me"
+                    },
+                    "configAlternates": {
+                        "fn": "string",
+                        "implHandler": "code",
+                        "name": "string",
+                        "scope": "string"
+                    },
+                    "name": "onContainerInitialize",
+                    "designerId": "18addfb3-9048-4465-8f6a-d504b370ab39"
                 }
             ]
         },
@@ -333,12 +543,20 @@
             },
             "codeClass": null,
             "userConfig": {
+                "container|align": "center",
+                "designer|displayName": "Week",
                 "docked": null,
+                "id": "WeekId",
+                "layout": "vbox",
                 "title": "Week"
             },
             "configAlternates": {
                 "title": "string",
-                "docked": "string"
+                "docked": "string",
+                "layout": "string",
+                "container|align": "string",
+                "id": "string",
+                "designer|displayName": "string"
             },
             "name": "MyContainer1",
             "designerId": "46bbf884-177d-434b-98be-469c643bba57",
@@ -368,6 +586,88 @@
                     "designerId": "ccdc0aee-5c88-4308-a34d-c29f749467be",
                     "cn": [
                         {
+                            "type": "Ext.Container",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "container|align": "center",
+                                "container|pack": "center",
+                                "designer|displayName": "btnContainer",
+                                "docked": null,
+                                "layout": "hbox",
+                                "maxWidth": 150
+                            },
+                            "configAlternates": {
+                                "container|align": "string",
+                                "designer|displayName": "string",
+                                "docked": "string",
+                                "layout": "string",
+                                "margin": "auto",
+                                "maxWidth": "auto",
+                                "container|pack": "string"
+                            },
+                            "name": "MyContainer8",
+                            "designerId": "0d46ab10-9c56-47af-9642-72f6838811e1",
+                            "cn": [
+                                {
+                                    "type": "Ext.Button",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "designer|displayName": "addtime",
+                                        "designer|uiInterfaceName": "confirm",
+                                        "docked": "top",
+                                        "itemId": "AddTimeWeekId",
+                                        "text": "+",
+                                        "ui": "confirm"
+                                    },
+                                    "configAlternates": {
+                                        "designer|displayName": "string",
+                                        "designer|uiInterfaceName": "string",
+                                        "docked": "string",
+                                        "itemId": "string",
+                                        "text": "string",
+                                        "ui": "string"
+                                    },
+                                    "name": "MyButton",
+                                    "designerId": "a261ce4d-4e34-4dce-8831-4cf7e60de91d",
+                                    "cn": [
+                                        {
+                                            "type": "fixedfunction",
+                                            "reference": {
+                                                "name": "items",
+                                                "type": "array"
+                                            },
+                                            "codeClass": null,
+                                            "userConfig": {
+                                                "designer|params": [
+                                                    "button",
+                                                    "e"
+                                                ],
+                                                "fn": "handler",
+                                                "implHandler": [
+                                                    "Ext.create('Lab12_1.view.TimeFormPanel', {fullscreen: true});"
+                                                ]
+                                            },
+                                            "configAlternates": {
+                                                "designer|params": "typedarray",
+                                                "fn": "string",
+                                                "implHandler": "code"
+                                            },
+                                            "name": "handler",
+                                            "designerId": "cddd64a8-7a7b-4abf-807a-00b6954e93ae"
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
                             "type": "Ext.Button",
                             "reference": {
                                 "name": "items",
@@ -377,7 +677,7 @@
                             "userConfig": {
                                 "designer|displayName": "<",
                                 "designer|uiInterfaceName": "square",
-                                "margin": "0, 0, 0, 400",
+                                "margin": "0, 0, 0, 5",
                                 "text": "<",
                                 "ui": "square"
                             },
@@ -401,7 +701,7 @@
                             "userConfig": {
                                 "align": "right",
                                 "designer|uiInterfaceName": "square",
-                                "margin": "0, 400, 0, 0",
+                                "margin": "0, 5, 0, 0",
                                 "text": ">",
                                 "ui": "square"
                             },
@@ -524,6 +824,70 @@
                     ]
                 }
             ]
+        },
+        {
+            "type": "viewcontrollereventbinding",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "onTabpanelActivate",
+                "implHandler": [
+                    "var currDate = new Date();",
+                    "",
+                    "/** Format Start **/",
+                    "",
+                    "var dd = currDate.getDate();",
+                    "var mm = currDate.getMonth() + 1; //January is 0!",
+                    "",
+                    "var yyyy = currDate.getFullYear();",
+                    "",
+                    "if (dd < 10)",
+                    "{",
+                    "    dd = '0' + dd;",
+                    "}",
+                    "",
+                    "if (mm < 10)",
+                    "{",
+                    "    mm = '0' + mm;",
+                    "}",
+                    "",
+                    "var HH = currDate.getHours();",
+                    "var MM = currDate.getMinutes();",
+                    "",
+                    "if(HH < 10)",
+                    "{",
+                    "    HH = \"0\" + HH;",
+                    "}",
+                    "if(MM < 10)",
+                    "{",
+                    "    MM = \"0\" + MM;",
+                    "}",
+                    "",
+                    "currDate = dd + '/' + mm + '/' + yyyy;",
+                    "",
+                    "/** Format End **/",
+                    "",
+                    "Ext.getCmp('DayId').setTitle(currDate);",
+                    "this.down(\"tabpanel\").getCmp(\"DayId\").setTitle(\"reee\");",
+                    "",
+                    "",
+                    "// TODO: Load this week",
+                    "//this.up('tabpanel').down('tab[text=Example]').el.applyStyles('background:red');"
+                ],
+                "name": "activate",
+                "scope": "me"
+            },
+            "configAlternates": {
+                "fn": "string",
+                "implHandler": "code",
+                "name": "string",
+                "scope": "string"
+            },
+            "name": "onTabpanelActivate",
+            "designerId": "87d32b6d-8942-4629-ac3a-e68e7a2057f2"
         }
     ]
 }

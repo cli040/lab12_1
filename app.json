@@ -1,4 +1,19 @@
 {
+   "builds": {
+      "web": {
+         "default": true
+      },
+      "native": {
+         "packager": "cordova",
+         "cordova": {
+            "config": {
+               "id": "com.domain.Lab12_1",
+               "name": "Lab12_1",
+               "platforms": "android"
+            }
+         }
+      }
+   },
    "name": "Lab12_1",
    "namespace": "Lab12_1",
    "version": "1.0.0.0",

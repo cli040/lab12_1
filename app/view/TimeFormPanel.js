@@ -19,14 +19,12 @@ Ext.define('Lab12_1.view.TimeFormPanel', {
 
     requires: [
         'Lab12_1.view.TimeFormPanelViewModel',
-        'Lab12_1.view.TimeFormPanelViewController',
         'Ext.Container',
         'Ext.field.Text',
         'Ext.Button',
         'Ext.Spacer'
     ],
 
-    controller: 'timeformpanel',
     viewModel: {
         type: 'timeformpanel'
     },
@@ -143,7 +141,7 @@ Ext.define('Lab12_1.view.TimeFormPanel', {
                                 MM = "0" + MM;
                             }
 
-                            var newStartTime = dd + '/' + mm + '/' + yyyy + " " + HH + ":" + MM;
+                            newStartTime = dd + '/' + mm + '/' + yyyy + " " + HH + ":" + MM;
 
                             /** Format End **/
 
@@ -273,7 +271,7 @@ Ext.define('Lab12_1.view.TimeFormPanel', {
                                 MM = "0" + MM;
                             }
 
-                            var newEndTime = dd + '/' + mm + '/' + yyyy + " " + HH + ":" + MM;
+                            newEndTime = dd + '/' + mm + '/' + yyyy + " " + HH + ":" + MM;
 
                             /** Format End **/
 
@@ -419,7 +417,7 @@ Ext.define('Lab12_1.view.TimeFormPanel', {
                 {
                     xtype: 'button',
                     handler: function(button, e) {
-
+                        this.up('panel').close();
                     },
                     ui: 'confirm',
                     maxWidth: 250,
@@ -445,6 +443,39 @@ Ext.define('Lab12_1.view.TimeFormPanel', {
     ],
     listeners: {
         added: 'onFormpanelAdded'
+    },
+
+    onFormpanelAdded: function(component, container, index, eOpts) {
+        var today = new Date();
+
+        var dd = today.getDate();
+        var mm = today.getMonth() + 1; //January is 0!
+
+        var yyyy = today.getFullYear();
+        if (dd < 10) {
+          dd = '0' + dd;
+        }
+        if (mm < 10) {
+          mm = '0' + mm;
+        }
+
+        var HH = today.getHours();
+        var MM = today.getMinutes();
+
+        if(HH < 10)
+        {
+            HH = "0" + HH;
+        }
+        if(MM < 10)
+        {
+            MM = "0" + MM;
+        }
+
+        var today = dd + '/' + mm + '/' + yyyy + " " + HH + ":" + MM;
+
+        Ext.getCmp("StartTimeAndDateId").setValue(today);
+        Ext.getCmp("EndTimeAndDateId").setValue(today);
+        Ext.getCmp("TotalTimeId").setValue("0.0");
     }
 
 });

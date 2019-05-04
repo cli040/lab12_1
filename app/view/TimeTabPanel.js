@@ -19,13 +19,15 @@ Ext.define('Lab12_1.view.TimeTabPanel', {
 
     requires: [
         'Lab12_1.view.TimeTabPanelViewModel',
-        'Ext.Button',
+        'Lab12_1.view.TimeTabPanelViewController',
         'Ext.TitleBar',
+        'Ext.Button',
         'Ext.grid.Grid',
         'Ext.grid.column.Date',
         'Ext.grid.column.Number'
     ],
 
+    controller: 'timetabpanel',
     viewModel: {
         type: 'timetabpanel'
     },
@@ -45,29 +47,8 @@ Ext.define('Lab12_1.view.TimeTabPanel', {
             },
             items: [
                 {
-                    xtype: 'container',
-                    margin: 15,
-                    maxWidth: 150,
-                    layout: {
-                        type: 'hbox',
-                        align: 'center',
-                        pack: 'center'
-                    },
-                    items: [
-                        {
-                            xtype: 'button',
-                            handler: function(button, e) {
-                                Ext.create('Lab12_1.view.TimeFormPanel', {fullscreen: true});
-                            },
-                            itemId: 'mybutton',
-                            ui: 'confirm',
-                            docked: 'top',
-                            text: 'Add time'
-                        }
-                    ]
-                },
-                {
                     xtype: 'titlebar',
+                    id: 'DayId',
                     docked: 'top',
                     title: '03/05/2019',
                     layout: {
@@ -77,17 +58,132 @@ Ext.define('Lab12_1.view.TimeTabPanel', {
                     },
                     items: [
                         {
-                            xtype: 'button',
-                            ui: 'square',
-                            margin: '0, 0, 0, 400',
-                            text: '<'
+                            xtype: 'container',
+                            maxWidth: 100,
+                            layout: {
+                                type: 'hbox',
+                                align: 'center',
+                                pack: 'center'
+                            },
+                            items: [
+                                {
+                                    xtype: 'button',
+                                    handler: function(button, e) {
+                                        Ext.create('Lab12_1.view.TimeFormPanel', {fullscreen: true});
+                                    },
+                                    itemId: 'AddTimeDayId',
+                                    ui: 'confirm',
+                                    docked: 'top',
+                                    margin: 0,
+                                    padding: 0,
+                                    text: '+'
+                                }
+                            ]
                         },
                         {
                             xtype: 'button',
+                            handler: function(button, e) {
+                                var currDateString = Ext.getCmp('DayId').getTitle();
+
+                                var splitDate = currDateString.split("/");
+
+                                currDateString = splitDate[1] + "/" + splitDate[0] + "/" + splitDate[2];
+
+                                var currDate = new Date(currDateString);
+
+                                currDate.setDate(currDate.getDate() + 1);
+
+                                /** Format Start **/
+
+                                var dd = currDate.getDate();
+                                var mm = currDate.getMonth() + 1; //January is 0!
+
+                                var yyyy = currDate.getFullYear();
+
+                                if (dd < 10)
+                                {
+                                    dd = '0' + dd;
+                                }
+
+                                if (mm < 10)
+                                {
+                                    mm = '0' + mm;
+                                }
+
+                                var HH = currDate.getHours();
+                                var MM = currDate.getMinutes();
+
+                                if(HH < 10)
+                                {
+                                    HH = "0" + HH;
+                                }
+                                if(MM < 10)
+                                {
+                                    MM = "0" + MM;
+                                }
+
+                                currDate = dd + '/' + mm + '/' + yyyy;
+
+                                /** Format End **/
+
+                                Ext.getCmp('DayId').setTitle(currDate);
+                            },
                             align: 'right',
                             ui: 'square',
-                            margin: '0, 400, 0, 0',
+                            margin: '0, 5, 0, 0',
                             text: '>'
+                        },
+                        {
+                            xtype: 'button',
+                            handler: function(button, e) {
+                                var currDateString = Ext.getCmp('DayId').getTitle();
+
+                                var splitDate = currDateString.split("/");
+
+                                currDateString = splitDate[1] + "/" + splitDate[0] + "/" + splitDate[2];
+
+                                var currDate = new Date(currDateString);
+
+                                currDate.setDate(currDate.getDate() - 1);
+
+                                /** Format Start **/
+
+                                var dd = currDate.getDate();
+                                var mm = currDate.getMonth() + 1; //January is 0!
+
+                                var yyyy = currDate.getFullYear();
+
+                                if (dd < 10)
+                                {
+                                    dd = '0' + dd;
+                                }
+
+                                if (mm < 10)
+                                {
+                                    mm = '0' + mm;
+                                }
+
+                                var HH = currDate.getHours();
+                                var MM = currDate.getMinutes();
+
+                                if(HH < 10)
+                                {
+                                    HH = "0" + HH;
+                                }
+                                if(MM < 10)
+                                {
+                                    MM = "0" + MM;
+                                }
+
+                                currDate = dd + '/' + mm + '/' + yyyy;
+
+                                /** Format End **/
+
+                                Ext.getCmp('DayId').setTitle(currDate);
+                            },
+                            ui: 'square',
+                            margin: '0, 0, 0, 5',
+                            text: '<'
                         }
                     ]
                 },
@@ -125,11 +221,19 @@ Ext.define('Lab12_1.view.TimeTabPanel', {
                         }
                     ]
                 }
-            ]
+            ],
+            listeners: {
+                initialize: 'onContainerInitialize'
+            }
         },
         {
             xtype: 'container',
             title: 'Week',
+            id: 'WeekId',
+            layout: {
+                type: 'vbox',
+                align: 'center'
+            },
             items: [
                 {
                     xtype: 'titlebar',
@@ -142,16 +246,37 @@ Ext.define('Lab12_1.view.TimeTabPanel', {
                     },
                     items: [
                         {
+                            xtype: 'container',
+                            maxWidth: 150,
+                            layout: {
+                                type: 'hbox',
+                                align: 'center',
+                                pack: 'center'
+                            },
+                            items: [
+                                {
+                                    xtype: 'button',
+                                    handler: function(button, e) {
+                                        Ext.create('Lab12_1.view.TimeFormPanel', {fullscreen: true});
+                                    },
+                                    itemId: 'AddTimeWeekId',
+                                    ui: 'confirm',
+                                    docked: 'top',
+                                    text: '+'
+                                }
+                            ]
+                        },
+                        {
                             xtype: 'button',
                             ui: 'square',
-                            margin: '0, 0, 0, 400',
+                            margin: '0, 0, 0, 5',
                             text: '<'
                         },
                         {
                             xtype: 'button',
                             align: 'right',
                             ui: 'square',
-                            margin: '0, 400, 0, 0',
+                            margin: '0, 5, 0, 0',
                             text: '>'
                         }
                     ]
@@ -187,6 +312,9 @@ Ext.define('Lab12_1.view.TimeTabPanel', {
                 }
             ]
         }
-    ]
+    ],
+    listeners: {
+        activate: 'onTabpanelActivate'
+    }
 
 });

@@ -113,11 +113,11 @@
                                     "        checkEndTime.setDate(endDay);",
                                     "",
                                     "        var checkTotalTime = totalTime.length > 0 && !isNaN(totalTime);",
-                                    "        ",
+                                    "",
                                     "        if(checkEndTime && checkTotalTime)",
                                     "        {",
                                     "            // Calc startTime",
-                                    "            ",
+                                    "",
                                     "            var t = endTime.toString().substring(11,16);",
                                     "            var timeParts = t.split(\":\");",
                                     "            var bShouldSplit = false;",
@@ -190,7 +190,7 @@
                                     "                MM = \"0\" + MM;",
                                     "            }",
                                     "",
-                                    "            var newStartTime = dd + '/' + mm + '/' + yyyy + \" \" + HH + \":\" + MM;",
+                                    "            newStartTime = dd + '/' + mm + '/' + yyyy + \" \" + HH + \":\" + MM;",
                                     "",
                                     "            /** Format End **/",
                                     "",
@@ -388,7 +388,7 @@
                                     "                MM = \"0\" + MM;",
                                     "            }",
                                     "",
-                                    "            var newEndTime = dd + '/' + mm + '/' + yyyy + \" \" + HH + \":\" + MM;",
+                                    "            newEndTime = dd + '/' + mm + '/' + yyyy + \" \" + HH + \":\" + MM;",
                                     "",
                                     "            /** Format End **/",
                                     "",
@@ -699,7 +699,9 @@
                                     "e"
                                 ],
                                 "fn": "handler",
-                                "implHandler": null
+                                "implHandler": [
+                                    "this.up('panel').close();"
+                                ]
                             },
                             "configAlternates": {
                                 "designer|params": "typedarray",

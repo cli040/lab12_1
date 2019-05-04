@@ -7,13 +7,13 @@
             "frameworkVersion": "6.7.0.212"
         },
         "urlPrefixTemplate": "http://localhost:{port}/{path}",
-        "urlPrefix": "http://localhost:50107/",
+        "urlPrefix": "http://localhost:63661/",
         "canvasControls": {
             "viewportSize": {
-                "name": "Desktop (Auto Expand)",
+                "name": "iPhone 6",
                 "builtIn": true,
-                "height": null,
-                "width": null
+                "height": 667,
+                "width": 375
             },
             "viewportOrientation": "portrait"
         },
@@ -29,6 +29,11 @@
             "value": "webBuild",
             "display": "Build web app",
             "buildPlatform": false
+        },
+        "lastNativeBuildSelection": {
+            "value": "emulate",
+            "display": "Build & Emulate",
+            "buildPlatform": false
         }
     },
     "xdsVersion": "4.2.5",
@@ -38,11 +43,11 @@
     "framework": "modern67",
     "viewOrderMap": {
         "view": [
+            "cd8f54fe-1d23-45b4-9e82-d29e4d979a87",
             "8b01b52f-dccc-4373-a1bd-2b9804dcfe02",
             "45d3724c-143b-4751-a8e8-66994b9be5cd",
             "b41e2e40-452c-4ab5-a0a8-a79d7c28fd98",
             "4bc178ec-c52e-433e-a651-71d3afc0a124",
-            "279bd958-b8b4-4a2a-961e-6bd8c86e49d2",
             "d69f1807-218d-4e61-be55-5e98844e5488"
         ],
         "store": [
@@ -55,9 +60,10 @@
             "055383d5-dad5-4ca0-8f64-f64c0c0e0c7b"
         ],
         "resource": [
-            "5bba01db-2c3d-49da-ad67-b9872b61a3a7",
+            "ae6d2629-4068-40b8-baa1-08443def4090",
             "def7b94e-9e0b-4c31-8e12-d4a94dbfed55",
-            "90bcf4a4-b722-4acf-ba65-4799157b4473"
+            "90bcf4a4-b722-4acf-ba65-4799157b4473",
+            "13c27f34-101e-4b35-981b-bcd89d35ea1d"
         ],
         "app": [
             "application"

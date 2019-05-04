@@ -32,6 +32,7 @@ Ext.define('Lab12_1.view.TimeTabPanel', {
         type: 'timetabpanel'
     },
     fullscreen: false,
+    tabBarPosition: 'bottom',
 
     layout: {
         type: 'card',
@@ -41,10 +42,8 @@ Ext.define('Lab12_1.view.TimeTabPanel', {
         {
             xtype: 'container',
             title: 'Day',
-            layout: {
-                type: 'vbox',
-                align: 'center'
-            },
+            iconCls: 'x-fa fa-calendar',
+            layout: 'fit',
             items: [
                 {
                     xtype: 'titlebar',
@@ -190,22 +189,22 @@ Ext.define('Lab12_1.view.TimeTabPanel', {
                 {
                     xtype: 'grid',
                     height: '100%',
+                    itemId: 'mygrid',
                     width: '100%',
                     store: 'TimeStore',
+                    title: 'Day',
                     columns: [
                         {
                             xtype: 'datecolumn',
                             width: 129,
                             dataIndex: 'Start',
-                            text: 'Start',
-                            format: 'd-M-Y H:i'
+                            text: 'Start'
                         },
                         {
                             xtype: 'datecolumn',
                             width: 124,
                             dataIndex: 'End',
-                            text: 'End',
-                            format: 'd-M-Y H:i'
+                            text: 'End'
                         },
                         {
                             xtype: 'numbercolumn',
@@ -215,11 +214,16 @@ Ext.define('Lab12_1.view.TimeTabPanel', {
                         },
                         {
                             xtype: 'gridcolumn',
+                            id: 'DayGridCommentId',
+                            itemId: 'DayGridCommentId',
                             width: 266,
                             dataIndex: 'Comment',
                             text: 'Comment'
                         }
-                    ]
+                    ],
+                    listeners: {
+                        select: 'OnItemSelected'
+                    }
                 }
             ],
             listeners: {
@@ -229,11 +233,9 @@ Ext.define('Lab12_1.view.TimeTabPanel', {
         {
             xtype: 'container',
             title: 'Week',
+            iconCls: 'x-fa fa-calendar',
             id: 'WeekId',
-            layout: {
-                type: 'vbox',
-                align: 'center'
-            },
+            layout: 'fit',
             items: [
                 {
                     xtype: 'titlebar',
@@ -286,26 +288,30 @@ Ext.define('Lab12_1.view.TimeTabPanel', {
                     height: '100%',
                     width: '100%',
                     store: 'TimeStore',
+                    title: 'Week',
                     columns: [
                         {
                             xtype: 'datecolumn',
                             width: 129,
-                            dataIndex: 'date',
+                            dataIndex: 'Start',
                             text: 'Start'
                         },
                         {
                             xtype: 'datecolumn',
                             width: 124,
+                            dataIndex: 'End',
                             text: 'End'
                         },
                         {
                             xtype: 'numbercolumn',
                             width: 96,
+                            dataIndex: 'Time',
                             text: 'Time'
                         },
                         {
                             xtype: 'gridcolumn',
                             width: 266,
+                            dataIndex: 'Comment',
                             text: 'Comment'
                         }
                     ]

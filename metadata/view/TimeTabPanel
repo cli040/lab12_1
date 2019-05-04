@@ -11,7 +11,8 @@
         "designer|userAlias": "timetabpanel",
         "designer|userClassName": "TimeTabPanel",
         "docked": null,
-        "fullscreen": false
+        "fullscreen": false,
+        "tabBarPosition": "bottom"
     },
     "configAlternates": {
         "container|animation": "auto",
@@ -19,7 +20,8 @@
         "designer|userAlias": "string",
         "designer|userClassName": "string",
         "docked": "string",
-        "fullscreen": "boolean"
+        "fullscreen": "boolean",
+        "tabBarPosition": "string"
     },
     "name": "MyTabPanel",
     "designerId": "d69f1807-218d-4e61-be55-5e98844e5488",
@@ -34,16 +36,17 @@
             },
             "codeClass": null,
             "userConfig": {
-                "container|align": "center",
                 "docked": null,
-                "layout": "vbox",
+                "iconCls": "x-fa fa-calendar",
+                "layout": "fit",
                 "title": "Day"
             },
             "configAlternates": {
                 "docked": "string",
                 "title": "string",
                 "container|align": "string",
-                "layout": "string"
+                "layout": "string",
+                "iconCls": "string"
             },
             "name": "MyContainer",
             "designerId": "096e983d-08e2-4b71-9b0b-8ad81a911ffa",
@@ -360,14 +363,18 @@
                     "userConfig": {
                         "designer|displayName": "DayGrid",
                         "height": "100%",
+                        "itemId": "mygrid",
                         "store": "TimeStore",
+                        "title": "Day",
                         "width": "100%"
                     },
                     "configAlternates": {
                         "designer|displayName": "string",
                         "height": "auto",
                         "store": "store",
-                        "width": "auto"
+                        "width": "auto",
+                        "itemId": "string",
+                        "title": "string"
                     },
                     "name": "MyGrid",
                     "designerId": "89a10f38-b1a8-4532-a6d1-78b2dbbf2fc7",
@@ -382,16 +389,15 @@
                             "userConfig": {
                                 "dataIndex": "Start",
                                 "docked": null,
-                                "format": "d-M-Y H:i",
                                 "text": "Start",
                                 "width": 129
                             },
                             "configAlternates": {
-                                "dataIndex": "datafield",
                                 "docked": "string",
                                 "format": "string",
                                 "text": "string",
-                                "width": "auto"
+                                "width": "auto",
+                                "dataIndex": "datafield"
                             },
                             "name": "MyDateColumn",
                             "designerId": "cf422580-eedb-4183-a6d3-788f33941ac7"
@@ -406,7 +412,6 @@
                             "userConfig": {
                                 "dataIndex": "End",
                                 "docked": null,
-                                "format": "d-M-Y H:i",
                                 "text": "End",
                                 "width": 124
                             },
@@ -453,6 +458,8 @@
                                 "dataIndex": "Comment",
                                 "designer|displayName": "Comment",
                                 "docked": null,
+                                "id": "DayGridCommentId",
+                                "itemId": "DayGridCommentId",
                                 "text": "Comment",
                                 "width": 266
                             },
@@ -461,10 +468,37 @@
                                 "designer|displayName": "string",
                                 "docked": "string",
                                 "text": "string",
-                                "width": "auto"
+                                "width": "auto",
+                                "id": "string",
+                                "itemId": "string"
                             },
                             "name": "MyColumn",
                             "designerId": "747a3726-7b34-497c-a258-797d6a8af1fa"
+                        },
+                        {
+                            "type": "viewcontrollereventbinding",
+                            "reference": {
+                                "name": "listeners",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "fn": "OnItemSelected",
+                                "implHandler": [
+                                    "     //alert(dataview.getRecord().get(\"Comment\"));",
+                                    "alert(dataview.child(selected));"
+                                ],
+                                "name": "select",
+                                "scope": "me"
+                            },
+                            "configAlternates": {
+                                "fn": "string",
+                                "implHandler": "code",
+                                "name": "string",
+                                "scope": "string"
+                            },
+                            "name": "OnItemSelected",
+                            "designerId": "497a775d-aa1f-468c-94d1-9b33c3f6548a"
                         }
                     ]
                 },
@@ -543,11 +577,11 @@
             },
             "codeClass": null,
             "userConfig": {
-                "container|align": "center",
                 "designer|displayName": "Week",
                 "docked": null,
+                "iconCls": "x-fa fa-calendar",
                 "id": "WeekId",
-                "layout": "vbox",
+                "layout": "fit",
                 "title": "Week"
             },
             "configAlternates": {
@@ -556,7 +590,8 @@
                 "layout": "string",
                 "container|align": "string",
                 "id": "string",
-                "designer|displayName": "string"
+                "designer|displayName": "string",
+                "iconCls": "string"
             },
             "name": "MyContainer1",
             "designerId": "46bbf884-177d-434b-98be-469c643bba57",
@@ -728,13 +763,15 @@
                         "designer|displayName": "WeekGrid",
                         "height": "100%",
                         "store": "TimeStore",
+                        "title": "Week",
                         "width": "100%"
                     },
                     "configAlternates": {
                         "designer|displayName": "string",
                         "height": "auto",
                         "store": "store",
-                        "width": "auto"
+                        "width": "auto",
+                        "title": "string"
                     },
                     "name": "MyGrid2",
                     "designerId": "85d33a48-ef45-4ac1-8e58-d39ae6f8d554",
@@ -747,7 +784,7 @@
                             },
                             "codeClass": null,
                             "userConfig": {
-                                "dataIndex": "date",
+                                "dataIndex": "Start",
                                 "docked": null,
                                 "text": "Start",
                                 "width": 129
@@ -769,6 +806,7 @@
                             },
                             "codeClass": null,
                             "userConfig": {
+                                "dataIndex": "End",
                                 "docked": null,
                                 "text": "End",
                                 "width": 124
@@ -776,7 +814,8 @@
                             "configAlternates": {
                                 "docked": "string",
                                 "text": "string",
-                                "width": "auto"
+                                "width": "auto",
+                                "dataIndex": "datafield"
                             },
                             "name": "MyDateColumn2",
                             "designerId": "0ae77c7e-8a0b-474a-b61d-e2b42ed0ba2b"
@@ -789,6 +828,7 @@
                             },
                             "codeClass": null,
                             "userConfig": {
+                                "dataIndex": "Time",
                                 "docked": null,
                                 "text": "Time",
                                 "width": 96
@@ -796,7 +836,8 @@
                             "configAlternates": {
                                 "docked": "string",
                                 "text": "string",
-                                "width": "auto"
+                                "width": "auto",
+                                "dataIndex": "datafield"
                             },
                             "name": "MyNumberColumn",
                             "designerId": "c5460795-3000-43bc-8d49-f944063b5183"
@@ -809,6 +850,7 @@
                             },
                             "codeClass": null,
                             "userConfig": {
+                                "dataIndex": "Comment",
                                 "docked": null,
                                 "text": "Comment",
                                 "width": 266
@@ -816,7 +858,8 @@
                             "configAlternates": {
                                 "docked": "string",
                                 "text": "string",
-                                "width": "auto"
+                                "width": "auto",
+                                "dataIndex": "datafield"
                             },
                             "name": "MyColumn",
                             "designerId": "046b3b7f-d717-4195-9400-641746fa0e5f"

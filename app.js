@@ -30,9 +30,6 @@ Ext.application({
         'TimeTabPanel',
         'TimeFormPanel'
     ],
-    controllers: [
-        'TimeController'
-    ],
     name: 'Lab12_1',
 
     launch: function() {

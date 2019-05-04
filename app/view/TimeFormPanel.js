@@ -33,10 +33,7 @@ Ext.define('Lab12_1.view.TimeFormPanel', {
     items: [
         {
             xtype: 'container',
-            layout: {
-                type: 'vbox',
-                align: 'stretchmax'
-            },
+            layout: 'center',
             items: [
                 {
                     xtype: 'textfield',
@@ -154,10 +151,7 @@ Ext.define('Lab12_1.view.TimeFormPanel', {
         },
         {
             xtype: 'container',
-            layout: {
-                type: 'vbox',
-                align: 'stretchmax'
-            },
+            layout: 'center',
             items: [
                 {
                     xtype: 'textfield',
@@ -285,10 +279,7 @@ Ext.define('Lab12_1.view.TimeFormPanel', {
         },
         {
             xtype: 'container',
-            layout: {
-                type: 'vbox',
-                align: 'stretchmax'
-            },
+            layout: 'center',
             items: [
                 {
                     xtype: 'textfield',
@@ -393,10 +384,7 @@ Ext.define('Lab12_1.view.TimeFormPanel', {
         },
         {
             xtype: 'container',
-            layout: {
-                type: 'vbox',
-                align: 'stretchmax'
-            },
+            layout: 'center',
             items: [
                 {
                     xtype: 'textfield',

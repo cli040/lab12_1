@@ -17,6 +17,11 @@ Ext.define('Lab12_1.view.TimeTabPanelViewController', {
     extend: 'Ext.app.ViewController',
     alias: 'controller.timetabpanel',
 
+    OnItemSelected: function(dataview, selected, eOpts) {
+        //alert(dataview.getRecord().get("Comment"));
+        alert(dataview.child(selected));
+    },
+
     onContainerInitialize: function(component, eOpts) {
         /*
         var currDate = new Date();

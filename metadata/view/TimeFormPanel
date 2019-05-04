@@ -29,10 +29,9 @@
             },
             "codeClass": null,
             "userConfig": {
-                "container|align": "stretchmax",
                 "designer|displayName": "start",
                 "docked": null,
-                "layout": "vbox"
+                "layout": "center"
             },
             "configAlternates": {
                 "container|align": "string",
@@ -221,9 +220,8 @@
             },
             "codeClass": null,
             "userConfig": {
-                "container|align": "stretchmax",
                 "designer|displayName": "end",
-                "layout": "vbox"
+                "layout": "center"
             },
             "configAlternates": {
                 "container|pack": "string",
@@ -421,9 +419,8 @@
             },
             "codeClass": null,
             "userConfig": {
-                "container|align": "stretchmax",
                 "designer|displayName": "total",
-                "layout": "vbox"
+                "layout": "center"
             },
             "configAlternates": {
                 "container|pack": "string",
@@ -605,9 +602,8 @@
             },
             "codeClass": null,
             "userConfig": {
-                "container|align": "stretchmax",
                 "designer|displayName": "comment",
-                "layout": "vbox"
+                "layout": "center"
             },
             "configAlternates": {
                 "designer|displayName": "string",

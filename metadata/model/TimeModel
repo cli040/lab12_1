@@ -22,9 +22,6 @@
             },
             "codeClass": null,
             "userConfig": {
-                "dateFormat": "d-M-Y H:i",
-                "dateReadFormat": "d-M-Y H:i",
-                "dateWriteFormat": "d-M-Y H:i",
                 "name": "Start"
             },
             "configAlternates": {
@@ -44,9 +41,6 @@
             },
             "codeClass": null,
             "userConfig": {
-                "dateFormat": "d-M-Y H:i",
-                "dateReadFormat": "d-M-Y H:i",
-                "dateWriteFormat": "d-M-Y H:i",
                 "name": "End"
             },
             "configAlternates": {

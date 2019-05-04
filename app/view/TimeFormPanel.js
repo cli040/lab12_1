@@ -34,17 +34,17 @@ Ext.define('Lab12_1.view.TimeFormPanel', {
         {
             xtype: 'container',
             layout: {
-                type: 'hbox',
-                align: 'center',
-                pack: 'center'
+                type: 'vbox',
+                align: 'stretchmax'
             },
             items: [
                 {
                     xtype: 'textfield',
                     id: 'StartTimeAndDateId',
                     itemId: 'StartTimeAndDate',
-                    margin: 25,
+                    margin: 5,
                     label: 'Start',
+                    labelWidth: 100,
                     placeholder: '14/02/2019 10:00'
                 },
                 {
@@ -155,17 +155,17 @@ Ext.define('Lab12_1.view.TimeFormPanel', {
         {
             xtype: 'container',
             layout: {
-                type: 'hbox',
-                align: 'center',
-                pack: 'center'
+                type: 'vbox',
+                align: 'stretchmax'
             },
             items: [
                 {
                     xtype: 'textfield',
                     id: 'EndTimeAndDateId',
                     itemId: 'EndTimeAndDate',
-                    margin: 25,
+                    margin: 5,
                     label: 'End',
+                    labelWidth: 100,
                     placeholder: '14/02/2019 12:00'
                 },
                 {
@@ -286,17 +286,17 @@ Ext.define('Lab12_1.view.TimeFormPanel', {
         {
             xtype: 'container',
             layout: {
-                type: 'hbox',
-                align: 'center',
-                pack: 'center'
+                type: 'vbox',
+                align: 'stretchmax'
             },
             items: [
                 {
                     xtype: 'textfield',
                     id: 'TotalTimeId',
                     itemId: 'TotalTime',
-                    margin: 25,
+                    margin: 5,
                     label: 'Total time',
+                    labelWidth: 100,
                     placeholder: '2.0'
                 },
                 {
@@ -386,19 +386,25 @@ Ext.define('Lab12_1.view.TimeFormPanel', {
                             Ext.getCmp("TotalTimeId").setValue(totalTime.toString());
                         }
                     },
+                    ui: '',
                     text: 'Calc Total'
                 }
             ]
         },
         {
             xtype: 'container',
+            layout: {
+                type: 'vbox',
+                align: 'stretchmax'
+            },
             items: [
                 {
                     xtype: 'textfield',
                     id: 'CommentId',
                     itemId: 'Comment',
-                    margin: 25,
+                    margin: 5,
                     label: 'Comment',
+                    labelWidth: 100,
                     placeholder: 'This is an original comment'
                 }
             ]

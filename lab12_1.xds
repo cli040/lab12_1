@@ -31,9 +31,9 @@
             "buildPlatform": false
         },
         "lastNativeBuildSelection": {
-            "value": "emulate",
-            "display": "Build & Emulate",
-            "buildPlatform": false
+            "value": "emulateAndroid",
+            "display": "Android",
+            "buildPlatform": "android"
         }
     },
     "xdsVersion": "4.2.5",

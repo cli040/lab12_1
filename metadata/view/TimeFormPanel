@@ -29,16 +29,17 @@
             },
             "codeClass": null,
             "userConfig": {
-                "container|align": "center",
-                "container|pack": "center",
+                "container|align": "stretchmax",
                 "designer|displayName": "start",
-                "layout": "hbox"
+                "docked": null,
+                "layout": "vbox"
             },
             "configAlternates": {
                 "container|align": "string",
                 "container|pack": "string",
                 "designer|displayName": "string",
-                "layout": "string"
+                "layout": "string",
+                "docked": "string"
             },
             "name": "MyContainer3",
             "designerId": "bd820ce0-c8c0-4f0a-bb72-58ac58515d7b",
@@ -55,7 +56,8 @@
                         "id": "StartTimeAndDateId",
                         "itemId": "StartTimeAndDate",
                         "label": "Start",
-                        "margin": 25,
+                        "labelWidth": 100,
+                        "margin": 5,
                         "placeholder": "14/02/2019 10:00"
                     },
                     "configAlternates": {
@@ -64,7 +66,8 @@
                         "itemId": "string",
                         "label": "string",
                         "margin": "auto",
-                        "placeholder": "string"
+                        "placeholder": "string",
+                        "labelWidth": "auto"
                     },
                     "name": "MyTextField2",
                     "designerId": "0569d77a-85c5-4321-962e-5dae642e0791"
@@ -218,10 +221,9 @@
             },
             "codeClass": null,
             "userConfig": {
-                "container|align": "center",
-                "container|pack": "center",
+                "container|align": "stretchmax",
                 "designer|displayName": "end",
-                "layout": "hbox"
+                "layout": "vbox"
             },
             "configAlternates": {
                 "container|pack": "string",
@@ -244,7 +246,8 @@
                         "id": "EndTimeAndDateId",
                         "itemId": "EndTimeAndDate",
                         "label": "End",
-                        "margin": 25,
+                        "labelWidth": 100,
+                        "margin": 5,
                         "placeholder": "14/02/2019 12:00"
                     },
                     "configAlternates": {
@@ -253,7 +256,8 @@
                         "itemId": "string",
                         "label": "string",
                         "margin": "auto",
-                        "placeholder": "string"
+                        "placeholder": "string",
+                        "labelWidth": "auto"
                     },
                     "name": "MyTextField1",
                     "designerId": "957d29cd-8d74-44af-b534-b2b3ff64f7f4"
@@ -417,10 +421,9 @@
             },
             "codeClass": null,
             "userConfig": {
-                "container|align": "center",
-                "container|pack": "center",
+                "container|align": "stretchmax",
                 "designer|displayName": "total",
-                "layout": "hbox"
+                "layout": "vbox"
             },
             "configAlternates": {
                 "container|pack": "string",
@@ -444,7 +447,8 @@
                         "id": "TotalTimeId",
                         "itemId": "TotalTime",
                         "label": "Total time",
-                        "margin": 25,
+                        "labelWidth": 100,
+                        "margin": 5,
                         "placeholder": "2.0"
                     },
                     "configAlternates": {
@@ -456,7 +460,8 @@
                         "maxWidth": "auto",
                         "placeholder": "string",
                         "id": "string",
-                        "itemId": "string"
+                        "itemId": "string",
+                        "labelWidth": "auto"
                     },
                     "name": "MyTextField5",
                     "designerId": "d182501a-c448-4ad0-a1eb-b25a109fc843"
@@ -469,10 +474,14 @@
                     },
                     "codeClass": null,
                     "userConfig": {
-                        "text": "Calc Total"
+                        "docked": null,
+                        "text": "Calc Total",
+                        "ui": ""
                     },
                     "configAlternates": {
-                        "text": "string"
+                        "text": "string",
+                        "docked": "string",
+                        "ui": "string"
                     },
                     "name": "MyButton5",
                     "designerId": "9d7e7871-89e5-4d6d-9ffa-dd02ceb359c8",
@@ -596,10 +605,14 @@
             },
             "codeClass": null,
             "userConfig": {
-                "designer|displayName": "comment"
+                "container|align": "stretchmax",
+                "designer|displayName": "comment",
+                "layout": "vbox"
             },
             "configAlternates": {
-                "designer|displayName": "string"
+                "designer|displayName": "string",
+                "container|align": "string",
+                "layout": "string"
             },
             "name": "MyContainer7",
             "designerId": "2c2dd5c2-8b88-4dde-a631-6bbef3a7f4e4",
@@ -616,7 +629,8 @@
                         "id": "CommentId",
                         "itemId": "Comment",
                         "label": "Comment",
-                        "margin": 25,
+                        "labelWidth": 100,
+                        "margin": 5,
                         "placeholder": "This is an original comment"
                     },
                     "configAlternates": {
@@ -625,7 +639,8 @@
                         "margin": "auto",
                         "placeholder": "string",
                         "itemId": "string",
-                        "id": "string"
+                        "id": "string",
+                        "labelWidth": "auto"
                     },
                     "name": "MyTextField",
                     "designerId": "fd2fe507-f793-4bdc-b151-22c86d2207f0"

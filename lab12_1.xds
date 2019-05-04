@@ -7,7 +7,7 @@
             "frameworkVersion": "6.7.0.212"
         },
         "urlPrefixTemplate": "http://localhost:{port}/{path}",
-        "urlPrefix": "http://localhost:63661/",
+        "urlPrefix": "http://localhost:61453/",
         "canvasControls": {
             "viewportSize": {
                 "name": "iPhone 6",

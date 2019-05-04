@@ -18,11 +18,13 @@ Ext.define('Lab12_1.view.TimeFormPanel', {
     alias: 'widget.timeformpanel',
 
     requires: [
-        'Lab12_1.view.TimeFormPanelViewModel',
-        'Ext.Container',
-        'Ext.field.Text',
         'Ext.Button',
-        'Ext.Spacer'
+        'Ext.Container',
+        'Ext.Spacer',
+        'Ext.field.Text',
+        'Ext.layout.Box',
+        'Ext.layout.VBox',
+        'Lab12_1.view.TimeFormPanelViewModel'
     ],
 
     viewModel: {

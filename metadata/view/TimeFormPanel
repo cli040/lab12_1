@@ -810,7 +810,8 @@
                                 ],
                                 "fn": "handler",
                                 "implHandler": [
-                                    "this.up('panel').close();"
+                                    "        var panel = button.up('timeformpanel');",
+                                    "        panel.destroy();"
                                 ]
                             },
                             "configAlternates": {

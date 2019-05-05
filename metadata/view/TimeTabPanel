@@ -516,7 +516,7 @@
                                     "console.log(index);",
                                     "",
                                     "console.log(record.get(\"Comment\"));",
-                                    "Ext.create('Lab12_1.view.TimeFormPanel', {fullscreen: true, record: record});"
+                                    "Ext.create('Lab12_1.view.UpdateTimeFormPanel', {fullscreen: true, record: record});"
                                 ],
                                 "name": "select",
                                 "scope": "me"
@@ -1313,6 +1313,492 @@
                     },
                     "name": "MyLabel1",
                     "designerId": "3975f8f1-719e-485f-9820-29bb4363f820"
+                }
+            ]
+        },
+        {
+            "type": "Ext.Container",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|displayName": "Month",
+                "docked": null,
+                "iconCls": "x-fa fa-calendar",
+                "layout": "fit",
+                "title": "Month"
+            },
+            "configAlternates": {
+                "title": "string",
+                "docked": "string",
+                "layout": "string",
+                "container|align": "string",
+                "id": "string",
+                "designer|displayName": "string",
+                "iconCls": "string"
+            },
+            "name": "MyContainer9",
+            "designerId": "21e9edb5-7a65-49ce-8f5c-5b5a7493fdb3",
+            "cn": [
+                {
+                    "type": "Ext.TitleBar",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "container|align": "center",
+                        "container|pack": "center",
+                        "designer|displayName": "Month",
+                        "docked": "top",
+                        "id": "MonthId",
+                        "title": "May"
+                    },
+                    "configAlternates": {
+                        "container|align": "string",
+                        "designer|displayName": "string",
+                        "docked": "string",
+                        "title": "string",
+                        "container|pack": "string",
+                        "id": "string"
+                    },
+                    "name": "MyTitleBar2",
+                    "designerId": "52079e0a-fab1-42fb-9793-2763d382580e",
+                    "cn": [
+                        {
+                            "type": "Ext.Container",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "container|align": "center",
+                                "container|pack": "center",
+                                "designer|displayName": "btnContainer",
+                                "docked": null,
+                                "layout": "hbox",
+                                "maxWidth": 150
+                            },
+                            "configAlternates": {
+                                "container|align": "string",
+                                "designer|displayName": "string",
+                                "docked": "string",
+                                "layout": "string",
+                                "margin": "auto",
+                                "maxWidth": "auto",
+                                "container|pack": "string"
+                            },
+                            "name": "MyContainer8",
+                            "designerId": "6882f894-b69f-407c-bd56-5b11aafad3fe",
+                            "cn": [
+                                {
+                                    "type": "Ext.Button",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "designer|displayName": "addtime",
+                                        "designer|uiInterfaceName": "confirm",
+                                        "docked": "top",
+                                        "itemId": "AddTimeMonthId",
+                                        "text": "+",
+                                        "ui": "confirm"
+                                    },
+                                    "configAlternates": {
+                                        "designer|displayName": "string",
+                                        "designer|uiInterfaceName": "string",
+                                        "docked": "string",
+                                        "itemId": "string",
+                                        "text": "string",
+                                        "ui": "string"
+                                    },
+                                    "name": "MyButton",
+                                    "designerId": "a356d599-1c05-458b-bbc8-2bb92dcd7aba",
+                                    "cn": [
+                                        {
+                                            "type": "fixedfunction",
+                                            "reference": {
+                                                "name": "items",
+                                                "type": "array"
+                                            },
+                                            "codeClass": null,
+                                            "userConfig": {
+                                                "designer|params": [
+                                                    "button",
+                                                    "e"
+                                                ],
+                                                "fn": "handler",
+                                                "implHandler": [
+                                                    "Ext.create('Lab12_1.view.TimeFormPanel', {fullscreen: true});"
+                                                ]
+                                            },
+                                            "configAlternates": {
+                                                "designer|params": "typedarray",
+                                                "fn": "string",
+                                                "implHandler": "code"
+                                            },
+                                            "name": "handler",
+                                            "designerId": "865fdb45-83ea-4f07-b720-2d31d993a98e"
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "type": "Ext.Button",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "designer|displayName": "<",
+                                "designer|uiInterfaceName": "square",
+                                "margin": "0, 0, 0, 5",
+                                "text": "<",
+                                "ui": "square"
+                            },
+                            "configAlternates": {
+                                "designer|displayName": "string",
+                                "designer|uiInterfaceName": "string",
+                                "margin": "auto",
+                                "text": "string",
+                                "ui": "string"
+                            },
+                            "name": "MyButton6",
+                            "designerId": "02b90be8-b95e-413d-b5cc-47d05396c5ec",
+                            "cn": [
+                                {
+                                    "type": "fixedfunction",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "designer|params": [
+                                            "button",
+                                            "e"
+                                        ],
+                                        "fn": "handler",
+                                        "implHandler": [
+                                            "        var currMonth = [\"January\", \"Februry\", \"March\", \"April\", \"May\", \"June\", \"July\", \"August\", \"September\", \"October\", \"November\", \"December\"];",
+                                            "        var currDate = currMonth.indexOf(Ext.getCmp('MonthId').getTitle());",
+                                            "",
+                                            "        var index = currDate <= 0 ? 11 : currDate - 1;",
+                                            "",
+                                            "        Ext.getCmp('MonthId').setTitle(currMonth[index]);"
+                                        ]
+                                    },
+                                    "configAlternates": {
+                                        "designer|params": "typedarray",
+                                        "fn": "string",
+                                        "implHandler": "code"
+                                    },
+                                    "name": "handler",
+                                    "designerId": "84773b96-12fa-423f-8d94-fcd208f1bf6e"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "Ext.Button",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "align": "right",
+                                "designer|uiInterfaceName": "square",
+                                "margin": "0, 5, 0, 0",
+                                "text": ">",
+                                "ui": "square"
+                            },
+                            "configAlternates": {
+                                "align": "string",
+                                "designer|uiInterfaceName": "string",
+                                "margin": "auto",
+                                "text": "string",
+                                "ui": "string"
+                            },
+                            "name": "MyButton7",
+                            "designerId": "d79013e3-71b2-4911-8b57-faae0dd59aed",
+                            "cn": [
+                                {
+                                    "type": "fixedfunction",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "designer|params": [
+                                            "button",
+                                            "e"
+                                        ],
+                                        "fn": "handler",
+                                        "implHandler": [
+                                            "        var currMonth = [\"January\", \"Februry\", \"March\", \"April\", \"May\", \"June\", \"July\", \"August\", \"September\", \"October\", \"November\", \"December\"];",
+                                            "        var currDate = currMonth.indexOf(Ext.getCmp('MonthId').getTitle());",
+                                            "",
+                                            "        var index = currDate >= 11 ? 0 : currDate + 1;",
+                                            "",
+                                            "        Ext.getCmp('MonthId').setTitle(currMonth[index]);"
+                                        ]
+                                    },
+                                    "configAlternates": {
+                                        "designer|params": "typedarray",
+                                        "fn": "string",
+                                        "implHandler": "code"
+                                    },
+                                    "name": "handler",
+                                    "designerId": "6b9de9bd-9aa4-4008-a7f7-e508279cfb38"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "type": "Ext.grid.Grid",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|displayName": "MonthGrid",
+                        "height": "100%",
+                        "store": "TimeStore",
+                        "title": "Month",
+                        "width": "100%"
+                    },
+                    "configAlternates": {
+                        "designer|displayName": "string",
+                        "height": "auto",
+                        "store": "store",
+                        "width": "auto",
+                        "title": "string"
+                    },
+                    "name": "MyGrid2",
+                    "designerId": "4abb2bc8-7a2d-45b5-b25c-1a1ca5d07dfb",
+                    "cn": [
+                        {
+                            "type": "Ext.grid.column.Date",
+                            "reference": {
+                                "name": "columns",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "dataIndex": "Start",
+                                "docked": null,
+                                "text": "Start",
+                                "width": 129
+                            },
+                            "configAlternates": {
+                                "dataIndex": "datafield",
+                                "docked": "string",
+                                "text": "string",
+                                "width": "auto"
+                            },
+                            "name": "MyDateColumn",
+                            "designerId": "4864fddc-f5c9-4796-a672-decc051b21c1"
+                        },
+                        {
+                            "type": "Ext.grid.column.Date",
+                            "reference": {
+                                "name": "columns",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "dataIndex": "End",
+                                "docked": null,
+                                "text": "End",
+                                "width": 124
+                            },
+                            "configAlternates": {
+                                "docked": "string",
+                                "text": "string",
+                                "width": "auto",
+                                "dataIndex": "datafield"
+                            },
+                            "name": "MyDateColumn2",
+                            "designerId": "f7ffe5c0-b90e-43a3-8da4-836925397ddd"
+                        },
+                        {
+                            "type": "Ext.grid.column.Number",
+                            "reference": {
+                                "name": "columns",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "dataIndex": "Time",
+                                "docked": null,
+                                "text": "Time",
+                                "width": 96
+                            },
+                            "configAlternates": {
+                                "docked": "string",
+                                "text": "string",
+                                "width": "auto",
+                                "dataIndex": "datafield"
+                            },
+                            "name": "MyNumberColumn",
+                            "designerId": "b494b0de-46d7-426d-8310-85ce75a01b1f"
+                        },
+                        {
+                            "type": "Ext.grid.column.Column",
+                            "reference": {
+                                "name": "columns",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "dataIndex": "Comment",
+                                "docked": null,
+                                "text": "Comment",
+                                "width": 266
+                            },
+                            "configAlternates": {
+                                "docked": "string",
+                                "text": "string",
+                                "width": "auto",
+                                "dataIndex": "datafield"
+                            },
+                            "name": "MyColumn",
+                            "designerId": "093b1e0b-dfb0-4997-a675-be9c71c0cee7"
+                        }
+                    ]
+                },
+                {
+                    "type": "Ext.Label",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|displayName": "Sum",
+                        "docked": "bottom",
+                        "html": "Sum: ",
+                        "id": "SumMonthId",
+                        "itemId": "SumMonthId"
+                    },
+                    "configAlternates": {
+                        "designer|displayName": "string",
+                        "docked": "string",
+                        "html": "string",
+                        "id": "string",
+                        "itemId": "string"
+                    },
+                    "name": "MyLabel1",
+                    "designerId": "347e0739-be75-42d3-8982-d1586b3d4908"
+                },
+                {
+                    "type": "viewcontrollereventbinding",
+                    "reference": {
+                        "name": "listeners",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "fn": "monthContainerInit",
+                        "implHandler": [
+                            "        var currDate = new Date();",
+                            "        var currMonth = [\"January\", \"Februry\", \"March\", \"April\", \"May\", \"June\", \"July\", \"August\", \"September\", \"October\", \"November\", \"December\"];",
+                            "",
+                            "        /*switch(currDate.getMonth())",
+                            "        {",
+                            "            case 0:",
+                            "                currMonth = \"January\";",
+                            "                break;",
+                            "            case 1:",
+                            "                currMonth = \"Februry\";",
+                            "                break;",
+                            "            case 2:",
+                            "                currMonth = \"March\";",
+                            "                break;",
+                            "            case 3:",
+                            "                currMonth = \"April\";",
+                            "                break;",
+                            "            case 4:",
+                            "                currMonth = \"May\";",
+                            "                break;",
+                            "            case 5:",
+                            "                currMonth = \"June\";",
+                            "                break;",
+                            "            case 6:",
+                            "                currMonth = \"July\";",
+                            "                break;",
+                            "            case 7:",
+                            "                currMonth = \"August\";",
+                            "                break;",
+                            "            case 8:",
+                            "                currMonth = \"September\";",
+                            "                break;",
+                            "            case 9:",
+                            "                currMonth = \"October\";",
+                            "                break;",
+                            "            case 10:",
+                            "                currMonth = \"November\";",
+                            "                break;",
+                            "            case 11:",
+                            "                currMonth = \"December\";",
+                            "                break;",
+                            "            default:",
+                            "                break;",
+                            "        }*/",
+                            "",
+                            "        Ext.getCmp('MonthId').setTitle(currMonth[currDate.getMonth()]);",
+                            ""
+                        ],
+                        "name": "initialize",
+                        "scope": "me"
+                    },
+                    "configAlternates": {
+                        "fn": "string",
+                        "implHandler": "code",
+                        "name": "string",
+                        "scope": "string"
+                    },
+                    "name": "monthContainerInit",
+                    "designerId": "c2744dc9-c94e-41bc-b6cc-deb6f9377dbe"
+                },
+                {
+                    "type": "viewcontrollereventbinding",
+                    "reference": {
+                        "name": "listeners",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "fn": "monthContainerActivate",
+                        "implHandler": [
+                            "        var store= Ext.getStore(\"TimeStore\");",
+                            "        var sumValue = store.sum('Time');",
+                            "",
+                            "        Ext.getCmp('SumMonthId').setHtml(\"Sum: \" + sumValue);",
+                            ""
+                        ],
+                        "name": "activate",
+                        "scope": "me"
+                    },
+                    "configAlternates": {
+                        "fn": "string",
+                        "implHandler": "code",
+                        "name": "string",
+                        "scope": "string"
+                    },
+                    "name": "monthContainerActivate",
+                    "designerId": "8dab15e8-5d02-4701-8bf0-4f361bee1167"
                 }
             ]
         }

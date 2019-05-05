@@ -7,7 +7,7 @@
             "frameworkVersion": "6.7.0.212"
         },
         "urlPrefixTemplate": "http://localhost:{port}/{path}",
-        "urlPrefix": "http://localhost:50093/",
+        "urlPrefix": "http://localhost:52627/",
         "canvasControls": {
             "viewportSize": {
                 "name": "iPhone 6",
@@ -62,7 +62,7 @@
             "055383d5-dad5-4ca0-8f64-f64c0c0e0c7b"
         ],
         "resource": [
-            "c68f8e0e-1116-411a-b97d-26c0246c35dd",
+            "e9a1bf9b-9b85-41ff-9386-57cad2c586a8",
             "def7b94e-9e0b-4c31-8e12-d4a94dbfed55",
             "90bcf4a4-b722-4acf-ba65-4799157b4473",
             "13c27f34-101e-4b35-981b-bcd89d35ea1d"

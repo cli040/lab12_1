@@ -18,7 +18,7 @@ Ext.define('Lab12_1.view.UpdateTimeFormPanel', {
     alias: 'widget.updatetimeformpanel',
 
     requires: [
-        'Lab12_1.view.TimeFormPanelViewModel1',
+        'Lab12_1.view.UpdateTimeFormPanelViewModel',
         'Ext.Container',
         'Ext.field.Text',
         'Ext.Button',

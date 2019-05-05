@@ -171,8 +171,6 @@ Ext.define('Lab12_1.view.TimeFormPanel', {
                         var startTime = Ext.getCmp("StartTimeAndDateId").getValue();
                         var totalTime = Ext.getCmp("TotalTimeId").getValue();
 
-                        // TODO: split values and do like in start of window. build date string!
-
                         var checkStartTime;
 
                         if(startTime.length > 0)
@@ -189,6 +187,8 @@ Ext.define('Lab12_1.view.TimeFormPanel', {
                         }
 
                         var checkTotalTime = totalTime.length > 0 && !isNaN(totalTime);
+
+
 
                         if(checkStartTime && checkTotalTime)
                         {
@@ -211,9 +211,6 @@ Ext.define('Lab12_1.view.TimeFormPanel', {
                             var totalTimeParts = bShouldSplit ? totalTime.split(".") : (totalTime + ".0").split(".");
 
                             /** End check if timeTotal contains comma **/
-
-                            //totalTimeParts[0] == hours
-                            //totalTimeParts[1] == minutes
 
                             var hh = parseInt(totalTimeParts[0], 10);
                             var mm = 60.0 * (parseFloat("0."+totalTimeParts[1], 10));
@@ -296,8 +293,6 @@ Ext.define('Lab12_1.view.TimeFormPanel', {
                     handler: function(button, e) {
                         var startTime = Ext.getCmp("StartTimeAndDateId").getValue();
                         var endTime = Ext.getCmp("EndTimeAndDateId").getValue();
-
-                        // TODO: split values and do like in start of window. build date string!
 
                         var checkStartTime;
 

@@ -227,7 +227,7 @@ Ext.define('Lab12_1.view.TimeTabPanel', {
                 }
             ],
             listeners: {
-                initialize: 'onContainerInitialize'
+                initialize: 'dayContainerInit'
             }
         },
         {
@@ -488,7 +488,10 @@ Ext.define('Lab12_1.view.TimeTabPanel', {
                         }
                     ]
                 }
-            ]
+            ],
+            listeners: {
+                initialize: 'weekContainerInit'
+            }
         }
     ],
     listeners: {

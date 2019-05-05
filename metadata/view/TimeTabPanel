@@ -514,12 +514,9 @@
                     },
                     "codeClass": null,
                     "userConfig": {
-                        "fn": "onContainerInitialize",
+                        "fn": "dayContainerInit",
                         "implHandler": [
-                            "",
-                            "        /*var currDate = new Date();",
-                            "",
-                            "",
+                            "        var currDate = new Date();",
                             "",
                             "        var dd = currDate.getDate();",
                             "        var mm = currDate.getMonth() + 1; //January is 0!",
@@ -551,11 +548,7 @@
                             "        currDate = dd + '/' + mm + '/' + yyyy;",
                             "",
                             "",
-                            "        Ext.getCmp('DayId').setTitle(currDate);*/",
-                            "",
-                            "",
-                            "        // TODO: Load this week",
-                            "        //this.up('tabpanel').down('tab[text=Example]').el.applyStyles('background:red');"
+                            "        Ext.getCmp('DayId').setTitle(currDate);"
                         ],
                         "name": "initialize",
                         "scope": "me"
@@ -566,8 +559,8 @@
                         "name": "string",
                         "scope": "string"
                     },
-                    "name": "onContainerInitialize",
-                    "designerId": "18addfb3-9048-4465-8f6a-d504b370ab39"
+                    "name": "dayContainerInit",
+                    "designerId": "3770b1dd-726e-45eb-9d9e-8ca4538997f2"
                 }
             ]
         },
@@ -1088,6 +1081,106 @@
                             "designerId": "046b3b7f-d717-4195-9400-641746fa0e5f"
                         }
                     ]
+                },
+                {
+                    "type": "viewcontrollereventbinding",
+                    "reference": {
+                        "name": "listeners",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "fn": "weekContainerInit",
+                        "implHandler": [
+                            "        var firstDayOfWeek = new Date();",
+                            "        var lastDayOfWeek = new Date();",
+                            "",
+                            "        if(lastDayOfWeek.getUTCDay() > 0)",
+                            "        {",
+                            "            do",
+                            "            {",
+                            "                lastDayOfWeek.setDate(lastDayOfWeek.getDate() + 1);",
+                            "                console.log(lastDayOfWeek.getDate());",
+                            "            }while(lastDayOfWeek.getUTCDay() !== 0);",
+                            "            ",
+                            "        }",
+                            "",
+                            "        firstDayOfWeek.setDate(lastDayOfWeek.getDate());",
+                            "        firstDayOfWeek.setDate(firstDayOfWeek.getDate() - 6);",
+                            "",
+                            "        var dd = firstDayOfWeek.getDate();",
+                            "        var mm = firstDayOfWeek.getMonth() + 1; //January is 0!",
+                            "",
+                            "        var yyyy = firstDayOfWeek.getFullYear();",
+                            "",
+                            "        if (dd < 10)",
+                            "        {",
+                            "            dd = '0' + dd;",
+                            "        }",
+                            "",
+                            "        if (mm < 10)",
+                            "        {",
+                            "            mm = '0' + mm;",
+                            "        }",
+                            "",
+                            "        var HH = firstDayOfWeek.getHours();",
+                            "        var MM = firstDayOfWeek.getMinutes();",
+                            "",
+                            "        if(HH < 10)",
+                            "        {",
+                            "            HH = \"0\" + HH;",
+                            "        }",
+                            "        if(MM < 10)",
+                            "        {",
+                            "            MM = \"0\" + MM;",
+                            "        }",
+                            "",
+                            "        firstDayOfWeek = dd + '/' + mm + '/' + yyyy;",
+                            "",
+                            "        var dd = lastDayOfWeek.getDate();",
+                            "        var mm = lastDayOfWeek.getMonth() + 1; //January is 0!",
+                            "",
+                            "        var yyyy = lastDayOfWeek.getFullYear();",
+                            "",
+                            "        if (dd < 10)",
+                            "        {",
+                            "            dd = '0' + dd;",
+                            "        }",
+                            "",
+                            "        if (mm < 10)",
+                            "        {",
+                            "            mm = '0' + mm;",
+                            "        }",
+                            "",
+                            "        var HH = lastDayOfWeek.getHours();",
+                            "        var MM = lastDayOfWeek.getMinutes();",
+                            "",
+                            "        if(HH < 10)",
+                            "        {",
+                            "            HH = \"0\" + HH;",
+                            "        }",
+                            "        if(MM < 10)",
+                            "        {",
+                            "            MM = \"0\" + MM;",
+                            "        }",
+                            "",
+                            "        lastDayOfWeek = dd + '/' + mm + '/' + yyyy;",
+                            "",
+                            "        var finalWeekDate = firstDayOfWeek + \" - \" + lastDayOfWeek;",
+                            "",
+                            "        Ext.getCmp('WeekId').setTitle(finalWeekDate);"
+                        ],
+                        "name": "initialize",
+                        "scope": "me"
+                    },
+                    "configAlternates": {
+                        "fn": "string",
+                        "implHandler": "code",
+                        "name": "string",
+                        "scope": "string"
+                    },
+                    "name": "weekContainerInit",
+                    "designerId": "44eb1cd3-19d6-4892-a2ba-a511106c7b49"
                 }
             ]
         },

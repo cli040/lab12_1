@@ -29,7 +29,7 @@ Ext.define('Lab12_1.view.TimeFormPanelViewModel', {
                                     End: endTime,
                                     Time: totalTime,
                                     Comment: comment
-                                }
+                                };
                 store.add(timeFormat);
                 store.sync();
 

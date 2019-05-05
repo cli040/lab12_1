@@ -415,7 +415,7 @@
                                 "docked": null,
                                 "format": "d/m/Y H:i",
                                 "text": "Start",
-                                "width": 129
+                                "width": 130
                             },
                             "configAlternates": {
                                 "docked": "string",
@@ -439,7 +439,7 @@
                                 "docked": null,
                                 "format": "d/m/Y H:i",
                                 "text": "End",
-                                "width": 124
+                                "width": 130
                             },
                             "configAlternates": {
                                 "dataIndex": "datafield",
@@ -1072,7 +1072,7 @@
                                 "dataIndex": "Start",
                                 "docked": null,
                                 "text": "Start",
-                                "width": 129
+                                "width": 130
                             },
                             "configAlternates": {
                                 "dataIndex": "datafield",
@@ -1094,7 +1094,7 @@
                                 "dataIndex": "End",
                                 "docked": null,
                                 "text": "End",
-                                "width": 124
+                                "width": 130
                             },
                             "configAlternates": {
                                 "docked": "string",
@@ -1587,7 +1587,7 @@
                                 "dataIndex": "Start",
                                 "docked": null,
                                 "text": "Start",
-                                "width": 129
+                                "width": 130
                             },
                             "configAlternates": {
                                 "dataIndex": "datafield",
@@ -1609,7 +1609,7 @@
                                 "dataIndex": "End",
                                 "docked": null,
                                 "text": "End",
-                                "width": 124
+                                "width": 130
                             },
                             "configAlternates": {
                                 "docked": "string",

@@ -425,7 +425,8 @@ Ext.define('Lab12_1.view.UpdateTimeFormPanel', {
                         };
                         store.add(timeFormat);
                         store.sync();
-                        this.up('panel').close();
+                        var panel = button.up('panel');
+                        panel.destroy();
 
 
                     },

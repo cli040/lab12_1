@@ -7,13 +7,13 @@
             "frameworkVersion": "6.7.0.212"
         },
         "urlPrefixTemplate": "http://localhost:{port}/{path}",
-        "urlPrefix": "http://localhost:62147/",
+        "urlPrefix": "http://localhost:49726/",
         "canvasControls": {
             "viewportSize": {
-                "name": "iPhone 6",
+                "name": "Samsung S6",
                 "builtIn": true,
-                "height": 667,
-                "width": 375
+                "height": 640,
+                "width": 360
             },
             "viewportOrientation": "portrait"
         },
@@ -53,17 +53,14 @@
         "store": [
             "c7be9b5a-a3d7-49e5-b5b7-80e849265543"
         ],
-        "controller": [
-            "7ebfac20-32fc-4001-8a17-ac48cc8823c4"
-        ],
+        "controller": [],
         "model": [
             "055383d5-dad5-4ca0-8f64-f64c0c0e0c7b"
         ],
         "resource": [
-            "cfee9327-e0e3-4926-a96a-59f6a138e152",
+            "a86aa484-b92d-4da7-bf24-1b0b7eb6fb07",
             "def7b94e-9e0b-4c31-8e12-d4a94dbfed55",
-            "90bcf4a4-b722-4acf-ba65-4799157b4473",
-            "13c27f34-101e-4b35-981b-bcd89d35ea1d"
+            "90bcf4a4-b722-4acf-ba65-4799157b4473"
         ],
         "app": [
             "application"

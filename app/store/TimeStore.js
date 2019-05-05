@@ -17,70 +17,34 @@ Ext.define('Lab12_1.store.TimeStore', {
     extend: 'Ext.data.Store',
 
     requires: [
-        'Ext.data.proxy.LocalStorage',
-        'Lab12_1.model.TimeModel'
+        'Lab12_1.model.TimeModel',
+        'Ext.data.proxy.LocalStorage'
     ],
-  constructor: function(cfg) {
+
+    constructor: function(cfg) {
         var me = this;
         cfg = cfg || {};
         me.callParent([Ext.apply({
             storeId: 'TimeStore',
+            autoLoad: 'getStore',
+            autoSync: true,
             model: 'Lab12_1.model.TimeModel',
-            data: getStore()/*[
-                {
-                    Start: '9/25/2012',
-                    End: '11/12/2003',
-                    Time: 481,
-                    Comment: 'et'
-                },
-                {
-                    Start: '2/15/2005',
-                    End: '12/13/2009',
-                    Time: 193,
-                    Comment: 'eos'
-                },
-                {
-                    Start: '5/11/2003',
-                    End: '9/16/2012',
-                    Time: 534,
-                    Comment: 'voluptas'
-                },
-                {
-                    Start: '9/24/2002',
-                    End: '4/3/2004',
-                    Time: 947,
-                    Comment: 'sint'
-                },
-                {
-                    Start: '10/22/2008',
-                    End: '11/27/2013',
-                    Time: 947,
-                    Comment: 'quia'
-                }
-            ]*/,
             proxy: {
                 type: 'localstorage',
                 id: 'timeStore'
             }
         }, cfg)]);
+    },
+
+    getStore: function() {
+            var i,obj;
+            var store=[];
+            for(i=0;i<localStorage.getItem('timeStore-counter');i++) {
+                    obj = JSON.parse(localStorage.getItem('timeStore-' + (i + 1)));
+                    store.push(obj);
+
+            }
+        return store;
     }
 
 });
-function getStore() {
-    var options = {
-        year: 'numeric',
-        month: 'numeric',
-        day: 'numeric',
-        hour: 'numeric',
-        minute: 'numeric'
-    };
-
-    var i,obj;
-    var store=[];
-    for(i=0;i<localStorage.getItem('timeStore-counter');i++) {
-            obj = JSON.parse(localStorage.getItem('timeStore-' + (i + 1)));
-            store.push(obj);
-
-    }
-    return store;
-}

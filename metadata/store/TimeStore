@@ -6,40 +6,10 @@
     },
     "codeClass": null,
     "userConfig": {
-        "data": [
-            "[",
-            "    {",
-            "        \"Start\": \"9/25/2012\",",
-            "        \"End\": \"11/12/2003\",",
-            "        \"Time\": 481,",
-            "        \"Comment\": \"et\"",
-            "    },",
-            "    {",
-            "        \"Start\": \"2/15/2005\",",
-            "        \"End\": \"12/13/2009\",",
-            "        \"Time\": 193,",
-            "        \"Comment\": \"eos\"",
-            "    },",
-            "    {",
-            "        \"Start\": \"5/11/2003\",",
-            "        \"End\": \"9/16/2012\",",
-            "        \"Time\": 534,",
-            "        \"Comment\": \"voluptas\"",
-            "    },",
-            "    {",
-            "        \"Start\": \"9/24/2002\",",
-            "        \"End\": \"4/3/2004\",",
-            "        \"Time\": 947,",
-            "        \"Comment\": \"sint\"",
-            "    },",
-            "    {",
-            "        \"Start\": \"10/22/2008\",",
-            "        \"End\": \"11/27/2013\",",
-            "        \"Time\": 947,",
-            "        \"Comment\": \"quia\"",
-            "    }",
-            "]"
+        "autoLoad": [
+            "getStore"
         ],
+        "autoSync": true,
         "designer|userClassName": "TimeStore",
         "model": "TimeModel",
         "storeId": "TimeStore"
@@ -48,7 +18,8 @@
         "designer|userClassName": "string",
         "model": "model",
         "storeId": "string",
-        "data": "array"
+        "autoLoad": "object",
+        "autoSync": "boolean"
     },
     "name": "MyJsonStore",
     "designerId": "c7be9b5a-a3d7-49e5-b5b7-80e849265543",
@@ -68,6 +39,33 @@
             },
             "name": "MyLocalStorageProxy1",
             "designerId": "3baf2e67-9547-409b-8804-d9fa0f9af345"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "getStore",
+                "implHandler": [
+                    "    var i,obj;",
+                    "    var store=[];",
+                    "    for(i=0;i<localStorage.getItem('timeStore-counter');i++) {",
+                    "            obj = JSON.parse(localStorage.getItem('timeStore-' + (i + 1)));",
+                    "            store.push(obj);",
+                    "",
+                    "    }",
+                    "return store;"
+                ]
+            },
+            "configAlternates": {
+                "fn": "string",
+                "implHandler": "code"
+            },
+            "name": "getStore",
+            "designerId": "b2af1589-3b16-4a60-b7f7-46e77740d98d"
         }
     ]
 }

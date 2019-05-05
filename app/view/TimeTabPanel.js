@@ -18,20 +18,14 @@ Ext.define('Lab12_1.view.TimeTabPanel', {
     alias: 'widget.timetabpanel',
 
     requires: [
-        'Ext.Button',
+        'Lab12_1.view.TimeTabPanelViewModel',
+        'Lab12_1.view.TimeTabPanelViewController',
         'Ext.TitleBar',
+        'Ext.Button',
         'Ext.Label',
         'Ext.grid.Grid',
-        'Ext.grid.column.Column',
         'Ext.grid.column.Date',
-        'Ext.grid.column.Number',
-        'Ext.layout.Card',
-        'Ext.layout.Fit',
-        'Ext.layout.HBox',
-        'Lab12_1.store.TimeStore',
-        'Lab12_1.view.TimeFormPanel',
-        'Lab12_1.view.TimeTabPanelViewController',
-        'Lab12_1.view.TimeTabPanelViewModel'
+        'Ext.grid.column.Number'
     ],
 
     controller: 'timetabpanel',
@@ -212,15 +206,15 @@ Ext.define('Lab12_1.view.TimeTabPanel', {
                             xtype: 'datecolumn',
                             width: 129,
                             dataIndex: 'Start',
-                            format:'d/m/Y H:i',
-                            text: 'Start'
+                            text: 'Start',
+                            format: 'd/m/Y H:i'
                         },
                         {
                             xtype: 'datecolumn',
                             width: 124,
                             dataIndex: 'End',
-                            format:'d/m/Y H:i',
-                            text: 'End'
+                            text: 'End',
+                            format: 'd/m/Y H:i'
                         },
                         {
                             xtype: 'numbercolumn',

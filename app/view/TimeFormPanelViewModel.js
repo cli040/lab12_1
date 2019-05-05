@@ -19,19 +19,19 @@ Ext.define('Lab12_1.view.TimeFormPanelViewModel', {
 
     addToStore: function() {
 
-                var store= Ext.getStore("timeStore");
-                var startTime = Ext.getCmp("StartTimeAndDateId").getValue();
-                        var endTime = Ext.getCmp("EndTimeAndDateId").getValue();
-                        var totalTime = Ext.getCmp("TotalTimeId").getValue();
-                        var comment= Ext.getCmp("Comment").getValue();
-                var timeFormat={
-                                    Start: startTime,
-                                    End: endTime,
-                                    Time: totalTime,
-                                    Comment: comment
-                                };
-                store.add(timeFormat);
-                store.sync();
+        var store= Ext.getStore("timeStore");
+        var startTime = Ext.getCmp("StartTimeAndDateId").getValue();
+        var endTime = Ext.getCmp("EndTimeAndDateId").getValue();
+        var totalTime = Ext.getCmp("TotalTimeId").getValue();
+        var comment= Ext.getCmp("Comment").getValue();
+        var timeFormat={
+            Start: startTime,
+            End: endTime,
+            Time: totalTime,
+            Comment: comment
+        };
+        store.add(timeFormat);
+        store.sync();
 
 
     }

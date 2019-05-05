@@ -17,10 +17,6 @@ Ext.define('Lab12_1.view.TimeTabPanelViewController', {
     extend: 'Ext.app.ViewController',
     alias: 'controller.timetabpanel',
 
-    requires: [
-        'Lab12_1.view.TimeFormPanel'
-    ],
-
     OnItemSelected: function(dataview, selected, eOpts) {
         var index = dataview.indexOf(selected);
         var record = dataview.getStore().getAt(1);

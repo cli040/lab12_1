@@ -22,6 +22,7 @@
             },
             "codeClass": null,
             "userConfig": {
+                "dateFormat": "d/m/Y H:i",
                 "name": "Start"
             },
             "configAlternates": {
@@ -41,6 +42,7 @@
             },
             "codeClass": null,
             "userConfig": {
+                "dateFormat": "d/m/Y H:i",
                 "name": "End"
             },
             "configAlternates": {

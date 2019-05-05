@@ -18,14 +18,13 @@ Ext.define('Lab12_1.view.TimeFormPanel', {
     alias: 'widget.timeformpanel',
 
     requires: [
+        'Lab12_1.view.TimeFormPanelViewModel',
+        'Ext.Container',
+        'Ext.field.Text',
         'Ext.Button',
         'Ext.Container',
         'Ext.Spacer',
-        'Ext.field.Text',
-        'Ext.layout.Box',
-        'Ext.layout.Center',
-        'Lab12_1.store.TimeStore',
-        'Lab12_1.view.TimeFormPanelViewModel'
+        'Lab12_1.store.TimeStore'
     ],
 
     viewModel: {
@@ -411,11 +410,13 @@ Ext.define('Lab12_1.view.TimeFormPanel', {
             items: [
                 {
                     xtype: 'button',
-                    handler: function(button, e){
+                    handler: function(button, e) {
+
+
                         var store= Ext.getStore("TimeStore");
 
-                        var startTime =formatTime(Ext.getCmp("StartTimeAndDateId").getValue());
-                        var endTime = formatTime(Ext.getCmp("EndTimeAndDateId").getValue());
+                        var startTime =formatTime(Ext.getCmp("StartTimeAndDateId"));
+                        var endTime = formatTime(Ext.getCmp("EndTimeAndDateId"));
                         var totalTime = Ext.getCmp("TotalTimeId").getValue();
                         var comment= Ext.getCmp("CommentId").getValue();
                         var timeFormat={
@@ -430,6 +431,8 @@ Ext.define('Lab12_1.view.TimeFormPanel', {
 
                         store.sync();
                         this.up('panel').close();
+
+
                     },
                     ui: 'confirm',
                     maxWidth: 250,
@@ -452,12 +455,13 @@ Ext.define('Lab12_1.view.TimeFormPanel', {
                 }
             ]
         }
-    ]
+    ],
+
+    formatTime: function(date) {
+         var dateParts;
+            dateParts=date.split("/");
+            var newDate=dateParts[1]+"/"+dateParts[0]+"/"+dateParts[2];
+        return new Date(newDate);
+    }
 
 });
-function formatTime(date){
-    var dateParts;
-    dateParts=date.split("/");
-    var newDate=dateParts[1]+"/"+dateParts[0]+"/"+dateParts[2];
-    return new Date(newDate);
-}

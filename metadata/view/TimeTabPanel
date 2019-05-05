@@ -413,6 +413,7 @@
                             "userConfig": {
                                 "dataIndex": "Start",
                                 "docked": null,
+                                "format": "d/m/Y H:i",
                                 "text": "Start",
                                 "width": 129
                             },
@@ -436,6 +437,7 @@
                             "userConfig": {
                                 "dataIndex": "End",
                                 "docked": null,
+                                "format": "d/m/Y H:i",
                                 "text": "End",
                                 "width": 124
                             },

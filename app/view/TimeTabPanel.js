@@ -212,12 +212,14 @@ Ext.define('Lab12_1.view.TimeTabPanel', {
                             xtype: 'datecolumn',
                             width: 129,
                             dataIndex: 'Start',
+                            format:'d/m/Y H:i',
                             text: 'Start'
                         },
                         {
                             xtype: 'datecolumn',
                             width: 124,
                             dataIndex: 'End',
+                            format:'d/m/Y H:i',
                             text: 'End'
                         },
                         {

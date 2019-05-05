@@ -411,15 +411,15 @@ Ext.define('Lab12_1.view.TimeFormPanel', {
             items: [
                 {
                     xtype: 'button',
-                    handler: function(button, e) {
+                    handler: function(button, e){
                         var store= Ext.getStore("TimeStore");
 
-                        var startTime = Ext.getCmp("StartTimeAndDateId").getTime();
-                        var endTime = Ext.getCmp("EndTimeAndDateId").getTime();
+                        var startTime =formatTime(Ext.getCmp("StartTimeAndDateId").getValue());
+                        var endTime = formatTime(Ext.getCmp("EndTimeAndDateId").getValue());
                         var totalTime = Ext.getCmp("TotalTimeId").getValue();
                         var comment= Ext.getCmp("CommentId").getValue();
                         var timeFormat={
-                            Start: Ext.Date.Format(startTime,'d/m/Y'),
+                            Start: startTime,
                             End: endTime,
                             Time: totalTime,
                             Comment: comment
@@ -430,8 +430,6 @@ Ext.define('Lab12_1.view.TimeFormPanel', {
 
                         store.sync();
                         this.up('panel').close();
-
-
                     },
                     ui: 'confirm',
                     maxWidth: 250,
@@ -457,3 +455,9 @@ Ext.define('Lab12_1.view.TimeFormPanel', {
     ]
 
 });
+function formatTime(date){
+    var dateParts;
+    dateParts=date.split("/");
+    var newDate=dateParts[1]+"/"+dateParts[0]+"/"+dateParts[2];
+    return new Date(newDate);
+}

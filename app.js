@@ -31,7 +31,7 @@ Ext.application({
         'TimeFormPanel'
     ],
     controllers: [
-        'MyController'
+        'TimeController'
     ],
     name: 'Lab12_1',
 

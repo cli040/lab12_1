@@ -67,15 +67,20 @@ Ext.define('Lab12_1.store.TimeStore', {
 
 });
 function getStore() {
+    var options = {
+        year: 'numeric',
+        month: 'numeric',
+        day: 'numeric',
+        hour: 'numeric',
+        minute: 'numeric'
+    };
+
     var i,obj;
     var store=[];
     for(i=0;i<localStorage.getItem('timeStore-counter');i++) {
             obj = JSON.parse(localStorage.getItem('timeStore-' + (i + 1)));
+            store.push(obj);
 
-if(obj!=null) {
-  //  var start=Ext.Date.Format(obj.start,'d/m/Y');
-    //console.log(start);
-}
     }
     return store;
 }

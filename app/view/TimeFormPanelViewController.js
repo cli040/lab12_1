@@ -17,6 +17,7 @@ Ext.define('Lab12_1.view.TimeFormPanelViewController', {
     extend: 'Ext.app.ViewController',
     alias: 'controller.timeformpanel',
 
+
     onFormpanelAdded: function(component, container, index, eOpts) {
         var today = new Date();
 
@@ -48,6 +49,34 @@ Ext.define('Lab12_1.view.TimeFormPanelViewController', {
         Ext.getCmp("StartTimeAndDateId").setValue(today);
         Ext.getCmp("EndTimeAndDateId").setValue(today);
         Ext.getCmp("TotalTimeId").setValue("0.0");
+    },
+    addToStore: function(button, e) {
+        var store= Ext.getStore("TimeStore");
+
+        var startTime =formatTime(Ext.getCmp("StartTimeAndDateId"));
+        var endTime = formatTime(Ext.getCmp("EndTimeAndDateId"));
+        var totalTime = Ext.getCmp("TotalTimeId").getValue();
+        var comment= Ext.getCmp("CommentId").getValue();
+        var timeFormat={
+            Start: startTime,
+            End: endTime,
+            Time: totalTime,
+            Comment: comment
+        };
+
+        store.add(timeFormat);
+
+
+        store.sync();
+
+
+
+
     }
 
 });
+function formatTime(date){
+    var dateParts=date.split("/");
+    date=dateParts[1]+"/"+dateParts[0]+"/"+dateParts[2];
+    return new Date(date);
+}

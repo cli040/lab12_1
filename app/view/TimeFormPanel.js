@@ -18,18 +18,20 @@ Ext.define('Lab12_1.view.TimeFormPanel', {
     alias: 'widget.timeformpanel',
 
     requires: [
-        'Lab12_1.view.TimeFormPanelViewModel',
-        'Ext.Container',
-        'Ext.field.Text',
         'Ext.Button',
-        'Lab12_1.view.TimeFormPanelViewModel',
+        'Ext.Button',
+        'Ext.Container',
         'Ext.Container',
         'Ext.Spacer',
-        'Lab12_1.store.TimeStore'
-        'Ext.field.Text',
-        'Ext.Button',
         'Ext.Spacer',
-        'Lab12_1.store.TimeStore'
+        'Ext.field.Text',
+        'Ext.field.Text',
+        'Ext.layout.Box',
+        'Ext.layout.Center',
+        'Lab12_1.store.TimeStore',
+        'Lab12_1.store.TimeStore',
+        'Lab12_1.view.TimeFormPanelViewModel',
+        'Lab12_1.view.TimeFormPanelViewModel'
     ],
 
     viewModel: {
@@ -422,8 +424,6 @@ Ext.define('Lab12_1.view.TimeFormPanel', {
 
                         var startTime =formatTime(Ext.getCmp("StartTimeAndDateId"));
                         var endTime = formatTime(Ext.getCmp("EndTimeAndDateId"));
-                        var startTime = Ext.getCmp("StartTimeAndDateId").getValue();
-                        var endTime = Ext.getCmp("EndTimeAndDateId").getValue();
                         var totalTime = Ext.getCmp("TotalTimeId").getValue();
                         var comment= Ext.getCmp("CommentId").getValue();
                         var timeFormat={

@@ -18,43 +18,21 @@ Ext.define('Lab12_1.view.TimeTabPanelViewController', {
     alias: 'controller.timetabpanel',
 
     OnItemSelected: function(dataview, selected, eOpts) {
-        //var index = dataview.indexOf(selected);
-        //var record = dataview.getStore().getAt(1);
-        //console.log(index);
-
-        var s;
-        Ext.each(selected, function (item)
-        {
-            s = item.data;
-        });
-
-        console.log(s);
-
-        //console.log(record.get("Comment"));
-        //Ext.create('Lab12_1.view.UpdateTimeFormPanel', {fullscreen: true, record: selected});
+        Ext.create('Lab12_1.view.UpdateTimeFormPanel', {fullscreen: true, record: selected[0]});
     },
 
     onItemAddDay: function(eOpts) {
         var store= Ext.getStore("TimeStore");
         var sumValue = store.sum('Time');
 
-        Ext.getCmp('SumDayId').setHtml("Sum: " + sumValue);
+        Ext.getCmp('SumDayId').setHtml("Sum: " + sumValue + " Hours");
     },
 
     dayContainerActivate: function(newActiveItem, container, oldActiveItem, eOpts) {
-        /*
-        store.each(function(record,id){
-        console.log(record);
-        });
-
-        var sumValue=store.sum('Time');
-        console.log(sumValue);
-        */
-
         var store= Ext.getStore("TimeStore");
         var sumValue = store.sum('Time');
 
-        Ext.getCmp('SumDayId').setHtml("Sum: " + sumValue);
+        Ext.getCmp('SumDayId').setHtml("Sum: " + sumValue + " Hours");
     },
 
     dayContainerInit: function(component, eOpts) {
@@ -96,20 +74,20 @@ Ext.define('Lab12_1.view.TimeTabPanelViewController', {
         var store= Ext.getStore("TimeStore");
         var sumValue = store.sum('Time');
 
-        Ext.getCmp('SumDayId').setHtml("Sum: " + sumValue);
+        Ext.getCmp('SumDayId').setHtml("Sum: " + sumValue + " Hours");
     },
 
     weekContainerInit: function(component, eOpts) {
         var firstDayOfWeek = new Date();
         var lastDayOfWeek = new Date();
 
-        if(lastDayOfWeek.getUTCDay() > 0)
+        if(lastDayOfWeek.getDay() > 0)
         {
             do
             {
                 lastDayOfWeek.setDate(lastDayOfWeek.getDate() + 1);
                 console.log(lastDayOfWeek.getDate());
-            }while(lastDayOfWeek.getUTCDay() !== 0);
+            }while(lastDayOfWeek.getDay() !== 0);
 
         }
 
@@ -183,61 +161,19 @@ Ext.define('Lab12_1.view.TimeTabPanelViewController', {
         var store= Ext.getStore("TimeStore");
         var sumValue = store.sum('Time');
 
-        Ext.getCmp('SumWeekId').setHtml("Sum: " + sumValue);
+        Ext.getCmp('SumWeekId').setHtml("Sum: " + sumValue + " Hours");
     },
 
     onItemAddMonth: function(eOpts) {
         var store= Ext.getStore("TimeStore");
         var sumValue = store.sum('Time');
 
-        Ext.getCmp('SumDayId').setHtml("Sum: " + sumValue);
+        Ext.getCmp('SumDayId').setHtml("Sum: " + sumValue + " Hours");
     },
 
     monthContainerInit: function(component, eOpts) {
         var currDate = new Date();
         var currMonth = ["January", "Februry", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-
-        /*switch(currDate.getMonth())
-        {
-        case 0:
-        currMonth = "January";
-        break;
-        case 1:
-        currMonth = "Februry";
-        break;
-        case 2:
-        currMonth = "March";
-        break;
-        case 3:
-        currMonth = "April";
-        break;
-        case 4:
-        currMonth = "May";
-        break;
-        case 5:
-        currMonth = "June";
-        break;
-        case 6:
-        currMonth = "July";
-        break;
-        case 7:
-        currMonth = "August";
-        break;
-        case 8:
-        currMonth = "September";
-        break;
-        case 9:
-        currMonth = "October";
-        break;
-        case 10:
-        currMonth = "November";
-        break;
-        case 11:
-        currMonth = "December";
-        break;
-        default:
-        break;
-        }*/
 
         Ext.getCmp('MonthId').setTitle(currMonth[currDate.getMonth()]);
 
@@ -247,7 +183,7 @@ Ext.define('Lab12_1.view.TimeTabPanelViewController', {
         var store= Ext.getStore("TimeStore");
         var sumValue = store.sum('Time');
 
-        Ext.getCmp('SumMonthId').setHtml("Sum: " + sumValue);
+        Ext.getCmp('SumMonthId').setHtml("Sum: " + sumValue + " Hours");
 
     }
 

@@ -432,9 +432,8 @@ Ext.define('Lab12_1.view.TimeFormPanel', {
                         }
 
                         store.add(timeFormat);
-
-
                         store.sync();
+
                         var panel = button.up('panel');
                         panel.destroy();
 
@@ -466,6 +465,7 @@ Ext.define('Lab12_1.view.TimeFormPanel', {
 
     initialize: function() {
                 this.callParent();
+
                 var today = new Date();
 
                 var dd = today.getDate();

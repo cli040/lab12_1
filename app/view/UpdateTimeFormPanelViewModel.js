@@ -34,6 +34,22 @@ Ext.define('Lab12_1.view.UpdateTimeFormPanelViewModel', {
                 store.sync();
 
 
+    },
+
+    updateStore: function() {
+                var store= Ext.getStore("timeStore");
+                var startTime = Ext.getCmp("StartTimeAndDateId").getValue();
+                var endTime = Ext.getCmp("EndTimeAndDateId").getValue();
+                var totalTime = Ext.getCmp("TotalTimeId").getValue();
+                var comment= Ext.getCmp("Comment").getValue();
+                var timeFormat={
+                                    Start: startTime,
+                                    End: endTime,
+                                    Time: totalTime,
+                                    Comment: comment
+                                };
+                store.update(timeFormat);
+                store.sync();
     }
 
 });

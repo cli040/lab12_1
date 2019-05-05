@@ -22,6 +22,7 @@ Ext.define('Lab12_1.view.TimeTabPanel', {
         'Lab12_1.view.TimeTabPanelViewController',
         'Ext.TitleBar',
         'Ext.Button',
+        'Ext.Label',
         'Ext.grid.Grid',
         'Ext.grid.column.Date',
         'Ext.grid.column.Number'
@@ -187,6 +188,13 @@ Ext.define('Lab12_1.view.TimeTabPanel', {
                     ]
                 },
                 {
+                    xtype: 'label',
+                    id: 'SumDayId',
+                    itemId: 'SumDayId',
+                    docked: 'bottom',
+                    html: 'Sum: '
+                },
+                {
                     xtype: 'grid',
                     height: '100%',
                     itemId: 'mygrid',
@@ -222,11 +230,13 @@ Ext.define('Lab12_1.view.TimeTabPanel', {
                         }
                     ],
                     listeners: {
-                        select: 'OnItemSelected'
+                        select: 'OnItemSelected',
+                        added: 'onMygridAdded'
                     }
                 }
             ],
             listeners: {
+                activate: 'dayContainerActivate',
                 initialize: 'dayContainerInit'
             }
         },
@@ -487,15 +497,20 @@ Ext.define('Lab12_1.view.TimeTabPanel', {
                             text: 'Comment'
                         }
                     ]
+                },
+                {
+                    xtype: 'label',
+                    id: 'SumWeekId',
+                    itemId: 'SumWeekId',
+                    docked: 'bottom',
+                    html: 'Sum: '
                 }
             ],
             listeners: {
-                initialize: 'weekContainerInit'
+                initialize: 'weekContainerInit',
+                activate: 'weekContainerActivate'
             }
         }
-    ],
-    listeners: {
-        initialize: 'onTabpanelInitialize'
-    }
+    ]
 
 });

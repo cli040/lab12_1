@@ -26,6 +26,22 @@ Ext.define('Lab12_1.view.TimeTabPanelViewController', {
         Ext.create('Lab12_1.view.TimeFormPanel', {fullscreen: true, record: record});
     },
 
+    onMygridAdded: function(component, container, index, eOpts) {
+        store.each(function(record,id){
+            console.log(record);
+        });
+
+        var sumValue=store.sum('Time');
+        console.log(sumValue);
+    },
+
+    dayContainerActivate: function(newActiveItem, container, oldActiveItem, eOpts) {
+        var store= Ext.getStore("TimeStore");
+        var sumValue = store.sum('Time');
+
+        Ext.getCmp('SumDayId').setHtml("Sum: " + sumValue);
+    },
+
     dayContainerInit: function(component, eOpts) {
         var currDate = new Date();
 
@@ -57,9 +73,8 @@ Ext.define('Lab12_1.view.TimeTabPanelViewController', {
         }
 
         currDate = dd + '/' + mm + '/' + yyyy;
-
-
         Ext.getCmp('DayId').setTitle(currDate);
+
     },
 
     weekContainerInit: function(component, eOpts) {
@@ -142,46 +157,11 @@ Ext.define('Lab12_1.view.TimeTabPanelViewController', {
         Ext.getCmp('WeekId').setTitle(finalWeekDate);
     },
 
-    onTabpanelInitialize: function(component, eOpts) {
-        var currDate = new Date();
+    weekContainerActivate: function(newActiveItem, container, oldActiveItem, eOpts) {
+        var store= Ext.getStore("TimeStore");
+        var sumValue = store.sum('Time');
 
-
-
-        var dd = currDate.getDate();
-        var mm = currDate.getMonth() + 1; //January is 0!
-
-        var yyyy = currDate.getFullYear();
-
-        if (dd < 10)
-        {
-            dd = '0' + dd;
-        }
-
-        if (mm < 10)
-        {
-            mm = '0' + mm;
-        }
-
-        var HH = currDate.getHours();
-        var MM = currDate.getMinutes();
-
-        if(HH < 10)
-        {
-            HH = "0" + HH;
-        }
-        if(MM < 10)
-        {
-            MM = "0" + MM;
-        }
-
-        currDate = dd + '/' + mm + '/' + yyyy;
-
-
-        Ext.getCmp('DayId').setTitle(currDate);
-
-
-        // TODO: Load this week
-        //this.up('tabpanel').down('tab[text=Example]').el.applyStyles('background:red');
+        Ext.getCmp('SumWeekId').setHtml("Sum: " + sumValue);
     }
 
 });

@@ -22,12 +22,6 @@ Ext.define('Lab12_1.view.TimeFormPanel', {
         'Ext.Container',
         'Ext.field.Text',
         'Ext.Button',
-        'Lab12_1.view.TimeFormPanelViewModel',
-        'Ext.Container',
-        'Ext.Spacer',
-        'Lab12_1.store.TimeStore'
-        'Ext.field.Text',
-        'Ext.Button',
         'Ext.Spacer',
         'Lab12_1.store.TimeStore'
     ],
@@ -419,9 +413,6 @@ Ext.define('Lab12_1.view.TimeFormPanel', {
 
 
                         var store= Ext.getStore("TimeStore");
-
-                        var startTime =formatTime(Ext.getCmp("StartTimeAndDateId"));
-                        var endTime = formatTime(Ext.getCmp("EndTimeAndDateId"));
                         var startTime = Ext.getCmp("StartTimeAndDateId").getValue();
                         var endTime = Ext.getCmp("EndTimeAndDateId").getValue();
                         var totalTime = Ext.getCmp("TotalTimeId").getValue();
@@ -462,12 +453,38 @@ Ext.define('Lab12_1.view.TimeFormPanel', {
         }
     ],
 
-    formatTime: function(date) {
-         var dateParts;
-            dateParts=date.split("/");
-            var newDate=dateParts[1]+"/"+dateParts[0]+"/"+dateParts[2];
-        return new Date(newDate);
+    initialize: function() {
+                this.callParent();
+                var today = new Date();
+
+                var dd = today.getDate();
+                var mm = today.getMonth() + 1; //January is 0!
+
+                var yyyy = today.getFullYear();
+                if (dd < 10) {
+                  dd = '0' + dd;
+                }
+                if (mm < 10) {
+                  mm = '0' + mm;
+                }
+
+                var HH = today.getHours();
+                var MM = today.getMinutes();
+
+                if(HH < 10)
+                {
+                    HH = "0" + HH;
+                }
+                if(MM < 10)
+                {
+                    MM = "0" + MM;
+                }
+
+                var today = dd + '/' + mm + '/' + yyyy + " " + HH + ":" + MM;
+
+                Ext.getCmp("StartTimeAndDateId").setValue(today);
+                Ext.getCmp("EndTimeAndDateId").setValue(today);
+                Ext.getCmp("TotalTimeId").setValue("0.0");
     }
 
-});
 });

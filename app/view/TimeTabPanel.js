@@ -232,8 +232,7 @@ Ext.define('Lab12_1.view.TimeTabPanel', {
                         }
                     ],
                     listeners: {
-                        select: 'OnItemSelected',
-                        added: 'onMygridAdded'
+                        select: 'OnItemSelected'
                     }
                 }
             ],

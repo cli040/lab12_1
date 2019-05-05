@@ -511,12 +511,20 @@
                             "userConfig": {
                                 "fn": "OnItemSelected",
                                 "implHandler": [
-                                    "var index = dataview.indexOf(selected);",
-                                    "var record = dataview.getStore().getAt(1);",
-                                    "console.log(index);",
+                                    "    //var index = dataview.indexOf(selected);",
+                                    "    //var record = dataview.getStore().getAt(1);",
+                                    "    //console.log(index);",
                                     "",
-                                    "console.log(record.get(\"Comment\"));",
-                                    "Ext.create('Lab12_1.view.UpdateTimeFormPanel', {fullscreen: true, record: record});"
+                                    "    var s;",
+                                    "    Ext.each(selected, function (item)",
+                                    "    {",
+                                    "      s = item.data;",
+                                    "    });",
+                                    "",
+                                    "    console.log(s);",
+                                    "",
+                                    "    //console.log(record.get(\"Comment\"));",
+                                    "    //Ext.create('Lab12_1.view.UpdateTimeFormPanel', {fullscreen: true, record: selected});"
                                 ],
                                 "name": "select",
                                 "scope": "me"
@@ -529,35 +537,6 @@
                             },
                             "name": "OnItemSelected",
                             "designerId": "497a775d-aa1f-468c-94d1-9b33c3f6548a"
-                        },
-                        {
-                            "type": "viewcontrollereventbinding",
-                            "reference": {
-                                "name": "listeners",
-                                "type": "array"
-                            },
-                            "codeClass": null,
-                            "userConfig": {
-                                "fn": "onMygridAdded",
-                                "implHandler": [
-                                    "    store.each(function(record,id){",
-                                    "        console.log(record);",
-                                    "    });",
-                                    "",
-                                    "    var sumValue=store.sum('Time');",
-                                    "    console.log(sumValue);"
-                                ],
-                                "name": "added",
-                                "scope": "me"
-                            },
-                            "configAlternates": {
-                                "fn": "string",
-                                "implHandler": "code",
-                                "name": "string",
-                                "scope": "string"
-                            },
-                            "name": "onMygridAdded",
-                            "designerId": "4aac9338-9069-4055-82f6-bea167a9ecd7"
                         }
                     ]
                 },
@@ -571,6 +550,15 @@
                     "userConfig": {
                         "fn": "dayContainerActivate",
                         "implHandler": [
+                            "        /*",
+                            "        store.each(function(record,id){",
+                            "        console.log(record);",
+                            "        });",
+                            "",
+                            "        var sumValue=store.sum('Time');",
+                            "        console.log(sumValue);",
+                            "        */",
+                            "",
                             "        var store= Ext.getStore(\"TimeStore\");",
                             "        var sumValue = store.sum('Time');",
                             "",

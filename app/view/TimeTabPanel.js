@@ -18,13 +18,19 @@ Ext.define('Lab12_1.view.TimeTabPanel', {
     alias: 'widget.timetabpanel',
 
     requires: [
-        'Lab12_1.view.TimeTabPanelViewModel',
-        'Lab12_1.view.TimeTabPanelViewController',
-        'Ext.TitleBar',
         'Ext.Button',
+        'Ext.TitleBar',
         'Ext.grid.Grid',
+        'Ext.grid.column.Column',
         'Ext.grid.column.Date',
-        'Ext.grid.column.Number'
+        'Ext.grid.column.Number',
+        'Ext.layout.Card',
+        'Ext.layout.Fit',
+        'Ext.layout.HBox',
+        'Lab12_1.store.TimeStore',
+        'Lab12_1.view.TimeFormPanel',
+        'Lab12_1.view.TimeTabPanelViewController',
+        'Lab12_1.view.TimeTabPanelViewModel'
     ],
 
     controller: 'timetabpanel',

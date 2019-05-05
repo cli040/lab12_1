@@ -17,17 +17,16 @@ Ext.define('Lab12_1.store.TimeStore', {
     extend: 'Ext.data.Store',
 
     requires: [
-        'Lab12_1.model.TimeModel',
-        'Ext.data.proxy.LocalStorage'
+        'Ext.data.proxy.LocalStorage',
+        'Lab12_1.model.TimeModel'
     ],
-
-    constructor: function(cfg) {
+  constructor: function(cfg) {
         var me = this;
         cfg = cfg || {};
         me.callParent([Ext.apply({
             storeId: 'TimeStore',
             model: 'Lab12_1.model.TimeModel',
-            data: [
+            data: getStore()/*[
                 {
                     Start: '9/25/2012',
                     End: '11/12/2003',
@@ -58,11 +57,25 @@ Ext.define('Lab12_1.store.TimeStore', {
                     Time: 947,
                     Comment: 'quia'
                 }
-            ],
+            ]*/,
             proxy: {
                 type: 'localstorage',
                 id: 'timeStore'
             }
         }, cfg)]);
     }
+
 });
+function getStore() {
+    var i,obj;
+    var store=[];
+    for(i=0;i<localStorage.getItem('timeStore-counter');i++) {
+            obj = JSON.parse(localStorage.getItem('timeStore-' + (i + 1)));
+
+if(obj!=null) {
+  //  var start=Ext.Date.Format(obj.start,'d/m/Y');
+    //console.log(start);
+}
+    }
+    return store;
+}

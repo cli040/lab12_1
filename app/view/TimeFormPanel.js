@@ -18,12 +18,13 @@ Ext.define('Lab12_1.view.TimeFormPanel', {
     alias: 'widget.timeformpanel',
 
     requires: [
-        'Lab12_1.view.TimeFormPanelViewModel',
-        'Ext.Container',
-        'Ext.field.Text',
         'Ext.Button',
+        'Ext.Container',
         'Ext.Spacer',
-        'Lab12_1.store.TimeStore'
+        'Ext.field.Text',
+        'Ext.layout.Box',
+        'Ext.layout.Center',
+        'Lab12_1.view.TimeFormPanelViewModel'
     ],
 
     viewModel: {
@@ -412,20 +413,22 @@ Ext.define('Lab12_1.view.TimeFormPanel', {
                 {
                     xtype: 'button',
                     handler: function(button, e) {
-
-
                         var store= Ext.getStore("TimeStore");
-                        var startTime = Ext.getCmp("StartTimeAndDateId").getValue();
-                        var endTime = Ext.getCmp("EndTimeAndDateId").getValue();
+
+                        var startTime = Ext.getCmp("StartTimeAndDateId").getTime();
+                        var endTime = Ext.getCmp("EndTimeAndDateId").getTime();
                         var totalTime = Ext.getCmp("TotalTimeId").getValue();
                         var comment= Ext.getCmp("CommentId").getValue();
                         var timeFormat={
-                            Start: startTime,
+                            Start: Ext.Date.Format(startTime,'d/m/Y'),
                             End: endTime,
                             Time: totalTime,
                             Comment: comment
-                        }
+                        };
+
                         store.add(timeFormat);
+
+
                         store.sync();
                         this.up('panel').close();
 

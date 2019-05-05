@@ -18,14 +18,32 @@ Ext.define('Lab12_1.view.TimeTabPanelViewController', {
     alias: 'controller.timetabpanel',
 
     OnItemSelected: function(dataview, selected, eOpts) {
+        var index = dataview.indexOf(selected);
+        var record = dataview.getStore().getAt(1);
+        console.log(index);
 
+        console.log(record.get("Comment"));
+        Ext.create('Lab12_1.view.TimeFormPanel', {fullscreen: true, record: record});
     },
 
-    onContainerInitialize: function(component, eOpts) {
+    onMygridAdded: function(component, container, index, eOpts) {
+        store.each(function(record,id){
+            console.log(record);
+        });
 
+        var sumValue=store.sum('Time');
+        console.log(sumValue);
+    },
+
+    dayContainerActivate: function(newActiveItem, container, oldActiveItem, eOpts) {
+        var store= Ext.getStore("TimeStore");
+        var sumValue = store.sum('Time');
+
+        Ext.getCmp('SumDayId').setHtml("Sum: " + sumValue);
+    },
+
+    dayContainerInit: function(component, eOpts) {
         var currDate = new Date();
-
-
 
         var dd = currDate.getDate();
         var mm = currDate.getMonth() + 1; //January is 0!
@@ -55,58 +73,95 @@ Ext.define('Lab12_1.view.TimeTabPanelViewController', {
         }
 
         currDate = dd + '/' + mm + '/' + yyyy;
-
-
         Ext.getCmp('DayId').setTitle(currDate);
-
-
-        // TODO: Load this week
-        //this.up('tabpanel').down('tab[text=Example]').el.applyStyles('background:red');
 
     },
 
-    onTabpanelActivate: function(newActiveItem, container, oldActiveItem, eOpts) {
-        /*var currDate = new Date();
+    weekContainerInit: function(component, eOpts) {
+        var firstDayOfWeek = new Date();
+        var lastDayOfWeek = new Date();
 
+        if(lastDayOfWeek.getUTCDay() > 0)
+        {
+            do
+            {
+                lastDayOfWeek.setDate(lastDayOfWeek.getDate() + 1);
+                console.log(lastDayOfWeek.getDate());
+            }while(lastDayOfWeek.getUTCDay() !== 0);
 
+        }
 
-        var dd = currDate.getDate();
-        var mm = currDate.getMonth() + 1; //January is 0!
+        firstDayOfWeek.setDate(lastDayOfWeek.getDate());
+        firstDayOfWeek.setDate(firstDayOfWeek.getDate() - 6);
 
-        var yyyy = currDate.getFullYear();
+        var dd = firstDayOfWeek.getDate();
+        var mm = firstDayOfWeek.getMonth() + 1; //January is 0!
+
+        var yyyy = firstDayOfWeek.getFullYear();
 
         if (dd < 10)
         {
-        dd = '0' + dd;
+            dd = '0' + dd;
         }
 
         if (mm < 10)
         {
-        mm = '0' + mm;
+            mm = '0' + mm;
         }
 
-        var HH = currDate.getHours();
-        var MM = currDate.getMinutes();
+        var HH = firstDayOfWeek.getHours();
+        var MM = firstDayOfWeek.getMinutes();
 
         if(HH < 10)
         {
-        HH = "0" + HH;
+            HH = "0" + HH;
         }
         if(MM < 10)
         {
-        MM = "0" + MM;
+            MM = "0" + MM;
         }
 
-        currDate = dd + '/' + mm + '/' + yyyy;
+        firstDayOfWeek = dd + '/' + mm + '/' + yyyy;
 
+        var dd = lastDayOfWeek.getDate();
+        var mm = lastDayOfWeek.getMonth() + 1; //January is 0!
 
+        var yyyy = lastDayOfWeek.getFullYear();
 
-        Ext.getCmp('DayId').setTitle(currDate);
-        this.down("tabpanel").getCmp("DayId").setTitle("reee");
+        if (dd < 10)
+        {
+            dd = '0' + dd;
+        }
 
+        if (mm < 10)
+        {
+            mm = '0' + mm;
+        }
 
-        // TODO: Load this week
-        //this.up('tabpanel').down('tab[text=Example]').el.applyStyles('background:red');*/
+        var HH = lastDayOfWeek.getHours();
+        var MM = lastDayOfWeek.getMinutes();
+
+        if(HH < 10)
+        {
+            HH = "0" + HH;
+        }
+        if(MM < 10)
+        {
+            MM = "0" + MM;
+        }
+
+        lastDayOfWeek = dd + '/' + mm + '/' + yyyy;
+
+        var finalWeekDate = firstDayOfWeek + " - " + lastDayOfWeek;
+
+        Ext.getCmp('WeekId').setTitle(finalWeekDate);
+    },
+
+    weekContainerActivate: function(newActiveItem, container, oldActiveItem, eOpts) {
+        var store= Ext.getStore("TimeStore");
+        var sumValue = store.sum('Time');
+
+        Ext.getCmp('SumWeekId').setHtml("Sum: " + sumValue);
     }
 
 });

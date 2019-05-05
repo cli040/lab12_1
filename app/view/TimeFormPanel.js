@@ -24,6 +24,7 @@ Ext.define('Lab12_1.view.TimeFormPanel', {
         'Ext.field.Text',
         'Ext.layout.Box',
         'Ext.layout.Center',
+        'Lab12_1.store.TimeStore',
         'Lab12_1.view.TimeFormPanelViewModel'
     ],
 
@@ -52,15 +53,17 @@ Ext.define('Lab12_1.view.TimeFormPanel', {
                         var endTime = Ext.getCmp("EndTimeAndDateId").getValue();
                         var totalTime = Ext.getCmp("TotalTimeId").getValue();
 
-                        // TODO: split values and do like in start of window. build date string!
+                        if(endTime.length > 0)
+                        {
+                            var endTimeParts = endTime.split("/");
+                            endTime = endTimeParts[1] + "/" + endTimeParts[0] + "/" + endTimeParts[2];
 
-                        var checkEndTime = new Date(endTime);
-
-                        var endDay = checkEndTime.getMonth() + 1;
-                        var endMonth = checkEndTime.getDate() - 1;
-
-                        checkEndTime.setMonth(endMonth);
-                        checkEndTime.setDate(endDay);
+                            var checkEndTime = new Date(endTime);
+                        }
+                        else
+                        {
+                            checkStartTime = false;
+                        }
 
                         var checkTotalTime = totalTime.length > 0 && !isNaN(totalTime);
 
@@ -170,19 +173,15 @@ Ext.define('Lab12_1.view.TimeFormPanel', {
                         var startTime = Ext.getCmp("StartTimeAndDateId").getValue();
                         var totalTime = Ext.getCmp("TotalTimeId").getValue();
 
-                        // TODO: split values and do like in start of window. build date string!
-
                         var checkStartTime;
 
                         if(startTime.length > 0)
                         {
+                            var startTimeParts = startTime.split("/");
+
+                            startTime = startTimeParts[1] + "/" + startTimeParts[0] + "/" + startTimeParts[2];
+
                             checkStartTime = new Date(startTime);
-
-                            var startDay = checkStartTime.getMonth() + 1;
-                            var startMonth = checkStartTime.getDate() - 1;
-
-                            checkStartTime.setMonth(startMonth);
-                            checkStartTime.setDate(startDay);
                         }
                         else
                         {
@@ -190,6 +189,8 @@ Ext.define('Lab12_1.view.TimeFormPanel', {
                         }
 
                         var checkTotalTime = totalTime.length > 0 && !isNaN(totalTime);
+
+
 
                         if(checkStartTime && checkTotalTime)
                         {
@@ -212,9 +213,6 @@ Ext.define('Lab12_1.view.TimeFormPanel', {
                             var totalTimeParts = bShouldSplit ? totalTime.split(".") : (totalTime + ".0").split(".");
 
                             /** End check if timeTotal contains comma **/
-
-                            //totalTimeParts[0] == hours
-                            //totalTimeParts[1] == minutes
 
                             var hh = parseInt(totalTimeParts[0], 10);
                             var mm = 60.0 * (parseFloat("0."+totalTimeParts[1], 10));
@@ -298,19 +296,15 @@ Ext.define('Lab12_1.view.TimeFormPanel', {
                         var startTime = Ext.getCmp("StartTimeAndDateId").getValue();
                         var endTime = Ext.getCmp("EndTimeAndDateId").getValue();
 
-                        // TODO: split values and do like in start of window. build date string!
-
                         var checkStartTime;
 
                         if(startTime.length > 0)
                         {
+                            var startTimeParts = startTime.split("/");
+
+                            startTime = startTimeParts[1] + "/" + startTimeParts[0] + "/" + startTimeParts[2];
+
                             checkStartTime = new Date(startTime);
-
-                            var startDay = checkStartTime.getMonth() + 1;
-                            var startMonth = checkStartTime.getDate() - 1;
-
-                            checkStartTime.setMonth(startMonth);
-                            checkStartTime.setDate(startDay);
                         }
                         else
                         {
@@ -321,20 +315,19 @@ Ext.define('Lab12_1.view.TimeFormPanel', {
 
                         if(endTime.length > 0)
                         {
+                            var endTimeParts = endTime.split("/");
+
+                            endTime = endTimeParts[1] + "/" + endTimeParts[0] + "/" + endTimeParts[2];
+
                             checkEndTime = new Date(endTime);
-
-                            var endDay = checkEndTime.getMonth() + 1;
-                            var endMonth = checkEndTime.getDate() - 1;
-
-                            checkEndTime.setMonth(endMonth);
-                            checkEndTime.setDate(endDay);
                         }
                         else
                         {
                             checkEndTime = false;
                         }
 
-                        if(checkEndTime && checkStartTime)
+
+                        if(checkEndTime && checkStartTime && (checkEndTime >= checkStartTime))
                         {
                             // Calc TotalTime
 
@@ -343,8 +336,6 @@ Ext.define('Lab12_1.view.TimeFormPanel', {
 
                             var startT = endTime.toString().substring(11,16);
                             var startTimeParts = startT.split(":");
-
-                            // TODO: EndTime.getTime() - StartTime.getTime() = hours + min + sec
 
                             var resDate = new Date(checkEndTime.getTime() - checkStartTime.getTime()); // 01 Jan 1970 01:00
 
@@ -377,6 +368,14 @@ Ext.define('Lab12_1.view.TimeFormPanel', {
                             var totalTime = hh + mm;
 
                             Ext.getCmp("TotalTimeId").setValue(totalTime.toString());
+                        }
+                        else
+                        {
+                            if(checkEndTime < checkStartTime)
+                            {
+                                alert("Start date is before end date!");
+                            }
+                            Ext.getCmp("TotalTimeId").setValue(NaN);
                         }
                     },
                     ui: '',
@@ -455,42 +454,6 @@ Ext.define('Lab12_1.view.TimeFormPanel', {
                 }
             ]
         }
-    ],
-    listeners: {
-        added: 'onFormpanelAdded'
-    },
-
-    onFormpanelAdded: function(component, container, index, eOpts) {
-        var today = new Date();
-
-        var dd = today.getDate();
-        var mm = today.getMonth() + 1; //January is 0!
-
-        var yyyy = today.getFullYear();
-        if (dd < 10) {
-          dd = '0' + dd;
-        }
-        if (mm < 10) {
-          mm = '0' + mm;
-        }
-
-        var HH = today.getHours();
-        var MM = today.getMinutes();
-
-        if(HH < 10)
-        {
-            HH = "0" + HH;
-        }
-        if(MM < 10)
-        {
-            MM = "0" + MM;
-        }
-
-        var today = dd + '/' + mm + '/' + yyyy + " " + HH + ":" + MM;
-
-        Ext.getCmp("StartTimeAndDateId").setValue(today);
-        Ext.getCmp("EndTimeAndDateId").setValue(today);
-        Ext.getCmp("TotalTimeId").setValue("0.0");
-    }
+    ]
 
 });

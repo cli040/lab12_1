@@ -36,11 +36,11 @@
                     "                            End: endTime,",
                     "                            Time: totalTime,",
                     "                            Comment: comment",
-                    "                        }",
+                    "                        };",
                     "        store.add(timeFormat);",
                     "        store.sync();",
-                    "        ",
-                    "    "
+                    "",
+                    ""
                 ]
             },
             "configAlternates": {

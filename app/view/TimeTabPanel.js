@@ -20,6 +20,7 @@ Ext.define('Lab12_1.view.TimeTabPanel', {
     requires: [
         'Ext.Button',
         'Ext.TitleBar',
+        'Ext.Label',
         'Ext.grid.Grid',
         'Ext.grid.column.Column',
         'Ext.grid.column.Date',
@@ -193,6 +194,13 @@ Ext.define('Lab12_1.view.TimeTabPanel', {
                     ]
                 },
                 {
+                    xtype: 'label',
+                    id: 'SumDayId',
+                    itemId: 'SumDayId',
+                    docked: 'bottom',
+                    html: 'Sum: '
+                },
+                {
                     xtype: 'grid',
                     height: '100%',
                     itemId: 'mygrid',
@@ -228,12 +236,14 @@ Ext.define('Lab12_1.view.TimeTabPanel', {
                         }
                     ],
                     listeners: {
-                        select: 'OnItemSelected'
+                        select: 'OnItemSelected',
+                        added: 'onMygridAdded'
                     }
                 }
             ],
             listeners: {
-                initialize: 'onContainerInitialize'
+                activate: 'dayContainerActivate',
+                initialize: 'dayContainerInit'
             }
         },
         {
@@ -493,12 +503,20 @@ Ext.define('Lab12_1.view.TimeTabPanel', {
                             text: 'Comment'
                         }
                     ]
+                },
+                {
+                    xtype: 'label',
+                    id: 'SumWeekId',
+                    itemId: 'SumWeekId',
+                    docked: 'bottom',
+                    html: 'Sum: '
                 }
-            ]
+            ],
+            listeners: {
+                initialize: 'weekContainerInit',
+                activate: 'weekContainerActivate'
+            }
         }
-    ],
-    listeners: {
-        activate: 'onTabpanelActivate'
-    }
+    ]
 
 });

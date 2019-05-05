@@ -7,7 +7,7 @@
             "frameworkVersion": "6.7.0.212"
         },
         "urlPrefixTemplate": "http://localhost:{port}/{path}",
-        "urlPrefix": "http://localhost:61745/",
+        "urlPrefix": "http://localhost:62147/",
         "canvasControls": {
             "viewportSize": {
                 "name": "iPhone 6",
@@ -53,14 +53,17 @@
         "store": [
             "c7be9b5a-a3d7-49e5-b5b7-80e849265543"
         ],
-        "controller": [],
+        "controller": [
+            "7ebfac20-32fc-4001-8a17-ac48cc8823c4"
+        ],
         "model": [
             "055383d5-dad5-4ca0-8f64-f64c0c0e0c7b"
         ],
         "resource": [
-            "247b9143-207c-4af8-a72a-30155acb2e06",
+            "cfee9327-e0e3-4926-a96a-59f6a138e152",
             "def7b94e-9e0b-4c31-8e12-d4a94dbfed55",
-            "90bcf4a4-b722-4acf-ba65-4799157b4473"
+            "90bcf4a4-b722-4acf-ba65-4799157b4473",
+            "13c27f34-101e-4b35-981b-bcd89d35ea1d"
         ],
         "app": [
             "application"

@@ -492,7 +492,7 @@ Ext.define('Lab12_1.view.TimeTabPanel', {
         }
     ],
     listeners: {
-        activate: 'onTabpanelActivate'
+        initialize: 'onTabpanelInitialize'
     }
 
 });

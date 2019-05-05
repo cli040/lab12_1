@@ -18,7 +18,8 @@
         ],
         "views": [
             "TimeTabPanel",
-            "TimeFormPanel"
+            "TimeFormPanel",
+            "UpdateTimeFormPanel"
         ]
     },
     "configAlternates": {

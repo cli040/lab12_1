@@ -18,20 +18,14 @@ Ext.define('Lab12_1.view.TimeTabPanel', {
     alias: 'widget.timetabpanel',
 
     requires: [
-        'Ext.Button',
+        'Lab12_1.view.TimeTabPanelViewModel',
+        'Lab12_1.view.TimeTabPanelViewController',
         'Ext.TitleBar',
+        'Ext.Button',
         'Ext.Label',
         'Ext.grid.Grid',
-        'Ext.grid.column.Column',
         'Ext.grid.column.Date',
-        'Ext.grid.column.Number',
-        'Ext.layout.Card',
-        'Ext.layout.Fit',
-        'Ext.layout.HBox',
-        'Lab12_1.store.TimeStore',
-        'Lab12_1.view.TimeFormPanel',
-        'Lab12_1.view.TimeTabPanelViewController',
-        'Lab12_1.view.TimeTabPanelViewModel'
+        'Ext.grid.column.Number'
     ],
 
     controller: 'timetabpanel',
@@ -212,14 +206,12 @@ Ext.define('Lab12_1.view.TimeTabPanel', {
                             xtype: 'datecolumn',
                             width: 129,
                             dataIndex: 'Start',
-                            format:'d/m/Y H:i',
                             text: 'Start'
                         },
                         {
                             xtype: 'datecolumn',
                             width: 124,
                             dataIndex: 'End',
-                            format:'d/m/Y H:i',
                             text: 'End'
                         },
                         {
@@ -517,6 +509,121 @@ Ext.define('Lab12_1.view.TimeTabPanel', {
             listeners: {
                 initialize: 'weekContainerInit',
                 activate: 'weekContainerActivate'
+            }
+        },
+        {
+            xtype: 'container',
+            title: 'Month',
+            iconCls: 'x-fa fa-calendar',
+            layout: 'fit',
+            items: [
+                {
+                    xtype: 'titlebar',
+                    id: 'MonthId',
+                    docked: 'top',
+                    title: 'May',
+                    layout: {
+                        type: 'hbox',
+                        align: 'center',
+                        pack: 'center'
+                    },
+                    items: [
+                        {
+                            xtype: 'container',
+                            maxWidth: 150,
+                            layout: {
+                                type: 'hbox',
+                                align: 'center',
+                                pack: 'center'
+                            },
+                            items: [
+                                {
+                                    xtype: 'button',
+                                    handler: function(button, e) {
+                                        Ext.create('Lab12_1.view.TimeFormPanel', {fullscreen: true});
+                                    },
+                                    itemId: 'AddTimeMonthId',
+                                    ui: 'confirm',
+                                    docked: 'top',
+                                    text: '+'
+                                }
+                            ]
+                        },
+                        {
+                            xtype: 'button',
+                            handler: function(button, e) {
+                                var currMonth = ["January", "Februry", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+                                var currDate = currMonth.indexOf(Ext.getCmp('MonthId').getTitle());
+
+                                var index = currDate <= 0 ? 11 : currDate - 1;
+
+                                Ext.getCmp('MonthId').setTitle(currMonth[index]);
+                            },
+                            ui: 'square',
+                            margin: '0, 0, 0, 5',
+                            text: '<'
+                        },
+                        {
+                            xtype: 'button',
+                            handler: function(button, e) {
+                                var currMonth = ["January", "Februry", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+                                var currDate = currMonth.indexOf(Ext.getCmp('MonthId').getTitle());
+
+                                var index = currDate >= 11 ? 0 : currDate + 1;
+
+                                Ext.getCmp('MonthId').setTitle(currMonth[index]);
+                            },
+                            align: 'right',
+                            ui: 'square',
+                            margin: '0, 5, 0, 0',
+                            text: '>'
+                        }
+                    ]
+                },
+                {
+                    xtype: 'grid',
+                    height: '100%',
+                    width: '100%',
+                    store: 'TimeStore',
+                    title: 'Month',
+                    columns: [
+                        {
+                            xtype: 'datecolumn',
+                            width: 129,
+                            dataIndex: 'Start',
+                            text: 'Start'
+                        },
+                        {
+                            xtype: 'datecolumn',
+                            width: 124,
+                            dataIndex: 'End',
+                            text: 'End'
+                        },
+                        {
+                            xtype: 'numbercolumn',
+                            width: 96,
+                            dataIndex: 'Time',
+                            text: 'Time'
+                        },
+                        {
+                            xtype: 'gridcolumn',
+                            width: 266,
+                            dataIndex: 'Comment',
+                            text: 'Comment'
+                        }
+                    ]
+                },
+                {
+                    xtype: 'label',
+                    id: 'SumMonthId',
+                    itemId: 'SumMonthId',
+                    docked: 'bottom',
+                    html: 'Sum: '
+                }
+            ],
+            listeners: {
+                initialize: 'monthContainerInit',
+                activate: 'monthContainerActivate'
             }
         }
     ]

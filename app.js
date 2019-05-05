@@ -28,10 +28,11 @@ Ext.application({
     ],
     views: [
         'TimeTabPanel',
-        'TimeFormPanel'
+        'TimeFormPanel',
+        'UpdateTimeFormPanel'
     ],
     controllers: [
-        'TimeController'
+        'MyController'
     ],
     name: 'Lab12_1',
 

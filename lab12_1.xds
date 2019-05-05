@@ -7,7 +7,7 @@
             "frameworkVersion": "6.7.0.212"
         },
         "urlPrefixTemplate": "http://localhost:{port}/{path}",
-        "urlPrefix": "http://localhost:62147/",
+        "urlPrefix": "http://localhost:50093/",
         "canvasControls": {
             "viewportSize": {
                 "name": "iPhone 6",
@@ -47,7 +47,9 @@
             "8b01b52f-dccc-4373-a1bd-2b9804dcfe02",
             "45d3724c-143b-4751-a8e8-66994b9be5cd",
             "b41e2e40-452c-4ab5-a0a8-a79d7c28fd98",
+            "4d95155e-fc7b-489a-8827-9fbf294b7f2c",
             "4bc178ec-c52e-433e-a651-71d3afc0a124",
+            "7c4ab65e-3d18-4003-938a-aefb2c4732cb",
             "d69f1807-218d-4e61-be55-5e98844e5488"
         ],
         "store": [
@@ -60,7 +62,7 @@
             "055383d5-dad5-4ca0-8f64-f64c0c0e0c7b"
         ],
         "resource": [
-            "cfee9327-e0e3-4926-a96a-59f6a138e152",
+            "c68f8e0e-1116-411a-b97d-26c0246c35dd",
             "def7b94e-9e0b-4c31-8e12-d4a94dbfed55",
             "90bcf4a4-b722-4acf-ba65-4799157b4473",
             "13c27f34-101e-4b35-981b-bcd89d35ea1d"

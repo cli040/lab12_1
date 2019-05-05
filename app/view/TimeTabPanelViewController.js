@@ -17,17 +17,13 @@ Ext.define('Lab12_1.view.TimeTabPanelViewController', {
     extend: 'Ext.app.ViewController',
     alias: 'controller.timetabpanel',
 
-    requires: [
-        'Lab12_1.view.TimeFormPanel'
-    ],
-
     OnItemSelected: function(dataview, selected, eOpts) {
         var index = dataview.indexOf(selected);
         var record = dataview.getStore().getAt(1);
         console.log(index);
 
         console.log(record.get("Comment"));
-        Ext.create('Lab12_1.view.TimeFormPanel', {fullscreen: true, record: record});
+        Ext.create('Lab12_1.view.UpdateTimeFormPanel', {fullscreen: true, record: record});
     },
 
     onMygridAdded: function(component, container, index, eOpts) {
@@ -166,6 +162,64 @@ Ext.define('Lab12_1.view.TimeTabPanelViewController', {
         var sumValue = store.sum('Time');
 
         Ext.getCmp('SumWeekId').setHtml("Sum: " + sumValue);
+    },
+
+    monthContainerInit: function(component, eOpts) {
+        var currDate = new Date();
+        var currMonth = ["January", "Februry", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+
+        /*switch(currDate.getMonth())
+        {
+        case 0:
+        currMonth = "January";
+        break;
+        case 1:
+        currMonth = "Februry";
+        break;
+        case 2:
+        currMonth = "March";
+        break;
+        case 3:
+        currMonth = "April";
+        break;
+        case 4:
+        currMonth = "May";
+        break;
+        case 5:
+        currMonth = "June";
+        break;
+        case 6:
+        currMonth = "July";
+        break;
+        case 7:
+        currMonth = "August";
+        break;
+        case 8:
+        currMonth = "September";
+        break;
+        case 9:
+        currMonth = "October";
+        break;
+        case 10:
+        currMonth = "November";
+        break;
+        case 11:
+        currMonth = "December";
+        break;
+        default:
+        break;
+        }*/
+
+        Ext.getCmp('MonthId').setTitle(currMonth[currDate.getMonth()]);
+
+    },
+
+    monthContainerActivate: function(newActiveItem, container, oldActiveItem, eOpts) {
+        var store= Ext.getStore("TimeStore");
+        var sumValue = store.sum('Time');
+
+        Ext.getCmp('SumMonthId').setHtml("Sum: " + sumValue);
+
     }
 
 });

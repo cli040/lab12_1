@@ -218,7 +218,7 @@ Ext.define('Lab12_1.view.TimeTabPanel', {
                         },
                         {
                             xtype: 'numbercolumn',
-                            width: 96,
+                            width: 70,
                             dataIndex: 'Time',
                             text: 'Time'
                         },
@@ -232,7 +232,8 @@ Ext.define('Lab12_1.view.TimeTabPanel', {
                         }
                     ],
                     listeners: {
-                        select: 'OnItemSelected'
+                        select: 'OnItemSelected',
+                        add: 'onItemAddDay'
                     }
                 }
             ],
@@ -487,7 +488,7 @@ Ext.define('Lab12_1.view.TimeTabPanel', {
                         },
                         {
                             xtype: 'numbercolumn',
-                            width: 96,
+                            width: 70,
                             dataIndex: 'Time',
                             text: 'Time'
                         },
@@ -497,7 +498,10 @@ Ext.define('Lab12_1.view.TimeTabPanel', {
                             dataIndex: 'Comment',
                             text: 'Comment'
                         }
-                    ]
+                    ],
+                    listeners: {
+                        add: 'OnItemAddWeek'
+                    }
                 },
                 {
                     xtype: 'label',
@@ -602,7 +606,7 @@ Ext.define('Lab12_1.view.TimeTabPanel', {
                         },
                         {
                             xtype: 'numbercolumn',
-                            width: 96,
+                            width: 70,
                             dataIndex: 'Time',
                             text: 'Time'
                         },
@@ -612,7 +616,10 @@ Ext.define('Lab12_1.view.TimeTabPanel', {
                             dataIndex: 'Comment',
                             text: 'Comment'
                         }
-                    ]
+                    ],
+                    listeners: {
+                        add: 'onItemAddMonth'
+                    }
                 },
                 {
                     xtype: 'label',

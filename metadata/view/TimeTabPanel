@@ -462,7 +462,7 @@
                                 "dataIndex": "Time",
                                 "docked": null,
                                 "text": "Time",
-                                "width": 96
+                                "width": 70
                             },
                             "configAlternates": {
                                 "dataIndex": "datafield",
@@ -537,6 +537,33 @@
                             },
                             "name": "OnItemSelected",
                             "designerId": "497a775d-aa1f-468c-94d1-9b33c3f6548a"
+                        },
+                        {
+                            "type": "viewcontrollereventbinding",
+                            "reference": {
+                                "name": "listeners",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "fn": "onItemAddDay",
+                                "implHandler": [
+                                    "        var store= Ext.getStore(\"TimeStore\");",
+                                    "        var sumValue = store.sum('Time');",
+                                    "",
+                                    "        Ext.getCmp('SumDayId').setHtml(\"Sum: \" + sumValue);"
+                                ],
+                                "name": "add",
+                                "scope": "me"
+                            },
+                            "configAlternates": {
+                                "fn": "string",
+                                "implHandler": "code",
+                                "name": "string",
+                                "scope": "string"
+                            },
+                            "name": "onItemAddDay",
+                            "designerId": "95f66e53-975c-4da2-8d14-be5860d4f762"
                         }
                     ]
                 },
@@ -1116,7 +1143,7 @@
                                 "dataIndex": "Time",
                                 "docked": null,
                                 "text": "Time",
-                                "width": 96
+                                "width": 70
                             },
                             "configAlternates": {
                                 "docked": "string",
@@ -1148,6 +1175,33 @@
                             },
                             "name": "MyColumn",
                             "designerId": "046b3b7f-d717-4195-9400-641746fa0e5f"
+                        },
+                        {
+                            "type": "viewcontrollereventbinding",
+                            "reference": {
+                                "name": "listeners",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "fn": "OnItemAddWeek",
+                                "implHandler": [
+                                    "        var store= Ext.getStore(\"TimeStore\");",
+                                    "        var sumValue = store.sum('Time');",
+                                    "",
+                                    "        Ext.getCmp('SumDayId').setHtml(\"Sum: \" + sumValue);"
+                                ],
+                                "name": "add",
+                                "scope": "me"
+                            },
+                            "configAlternates": {
+                                "fn": "string",
+                                "implHandler": "code",
+                                "name": "string",
+                                "scope": "string"
+                            },
+                            "name": "OnItemAddWeek",
+                            "designerId": "9d9e3a9f-97d6-4ea1-bc3f-1c40253d94c1"
                         }
                     ]
                 },
@@ -1631,7 +1685,7 @@
                                 "dataIndex": "Time",
                                 "docked": null,
                                 "text": "Time",
-                                "width": 96
+                                "width": 70
                             },
                             "configAlternates": {
                                 "docked": "string",
@@ -1663,6 +1717,33 @@
                             },
                             "name": "MyColumn",
                             "designerId": "093b1e0b-dfb0-4997-a675-be9c71c0cee7"
+                        },
+                        {
+                            "type": "viewcontrollereventbinding",
+                            "reference": {
+                                "name": "listeners",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "fn": "onItemAddMonth",
+                                "implHandler": [
+                                    "        var store= Ext.getStore(\"TimeStore\");",
+                                    "        var sumValue = store.sum('Time');",
+                                    "",
+                                    "        Ext.getCmp('SumDayId').setHtml(\"Sum: \" + sumValue);"
+                                ],
+                                "name": "add",
+                                "scope": "me"
+                            },
+                            "configAlternates": {
+                                "fn": "string",
+                                "implHandler": "code",
+                                "name": "string",
+                                "scope": "string"
+                            },
+                            "name": "onItemAddMonth",
+                            "designerId": "75fbd4a5-5141-4da4-996d-c0ae360d620e"
                         }
                     ]
                 },

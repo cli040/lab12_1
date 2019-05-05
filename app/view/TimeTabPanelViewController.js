@@ -34,6 +34,13 @@ Ext.define('Lab12_1.view.TimeTabPanelViewController', {
         //Ext.create('Lab12_1.view.UpdateTimeFormPanel', {fullscreen: true, record: selected});
     },
 
+    onItemAddDay: function(eOpts) {
+        var store= Ext.getStore("TimeStore");
+        var sumValue = store.sum('Time');
+
+        Ext.getCmp('SumDayId').setHtml("Sum: " + sumValue);
+    },
+
     dayContainerActivate: function(newActiveItem, container, oldActiveItem, eOpts) {
         /*
         store.each(function(record,id){
@@ -83,6 +90,13 @@ Ext.define('Lab12_1.view.TimeTabPanelViewController', {
         currDate = dd + '/' + mm + '/' + yyyy;
         Ext.getCmp('DayId').setTitle(currDate);
 
+    },
+
+    OnItemAddWeek: function(eOpts) {
+        var store= Ext.getStore("TimeStore");
+        var sumValue = store.sum('Time');
+
+        Ext.getCmp('SumDayId').setHtml("Sum: " + sumValue);
     },
 
     weekContainerInit: function(component, eOpts) {
@@ -170,6 +184,13 @@ Ext.define('Lab12_1.view.TimeTabPanelViewController', {
         var sumValue = store.sum('Time');
 
         Ext.getCmp('SumWeekId').setHtml("Sum: " + sumValue);
+    },
+
+    onItemAddMonth: function(eOpts) {
+        var store= Ext.getStore("TimeStore");
+        var sumValue = store.sum('Time');
+
+        Ext.getCmp('SumDayId').setHtml("Sum: " + sumValue);
     },
 
     monthContainerInit: function(component, eOpts) {

@@ -32,7 +32,7 @@ Ext.application({
         'UpdateTimeFormPanel'
     ],
     controllers: [
-        'MyController'
+        'TimeController'
     ],
     name: 'Lab12_1',
 

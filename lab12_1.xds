@@ -7,8 +7,7 @@
             "frameworkVersion": "6.7.0.212"
         },
         "urlPrefixTemplate": "http://localhost:{port}/{path}",
-        "urlPrefix": "http://localhost:49726/",
-        "urlPrefix": "http://localhost:52627/",
+        "urlPrefix": "http://localhost:59834/",
         "canvasControls": {
             "viewportSize": {
                 "name": "Samsung S6",
@@ -61,8 +60,8 @@
             "055383d5-dad5-4ca0-8f64-f64c0c0e0c7b"
         ],
         "resource": [
-            "e9a1bf9b-9b85-41ff-9386-57cad2c586a8",
-            "a86aa484-b92d-4da7-bf24-1b0b7eb6fb07",
+            "25c26338-2e40-4b01-b0ff-ac7f073d51a2",
+            "13c27f34-101e-4b35-981b-bcd89d35ea1d",
             "def7b94e-9e0b-4c31-8e12-d4a94dbfed55",
             "90bcf4a4-b722-4acf-ba65-4799157b4473"
         ],

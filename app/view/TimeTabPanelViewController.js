@@ -18,24 +18,32 @@ Ext.define('Lab12_1.view.TimeTabPanelViewController', {
     alias: 'controller.timetabpanel',
 
     OnItemSelected: function(dataview, selected, eOpts) {
-        var index = dataview.indexOf(selected);
-        var record = dataview.getStore().getAt(1);
-        console.log(index);
+        //var index = dataview.indexOf(selected);
+        //var record = dataview.getStore().getAt(1);
+        //console.log(index);
 
-        console.log(record.get("Comment"));
-        Ext.create('Lab12_1.view.UpdateTimeFormPanel', {fullscreen: true, record: record});
+        var s;
+        Ext.each(selected, function (item)
+        {
+            s = item.data;
+        });
+
+        console.log(s);
+
+        //console.log(record.get("Comment"));
+        //Ext.create('Lab12_1.view.UpdateTimeFormPanel', {fullscreen: true, record: selected});
     },
 
-    onMygridAdded: function(component, container, index, eOpts) {
+    dayContainerActivate: function(newActiveItem, container, oldActiveItem, eOpts) {
+        /*
         store.each(function(record,id){
-            console.log(record);
+        console.log(record);
         });
 
         var sumValue=store.sum('Time');
         console.log(sumValue);
-    },
+        */
 
-    dayContainerActivate: function(newActiveItem, container, oldActiveItem, eOpts) {
         var store= Ext.getStore("TimeStore");
         var sumValue = store.sum('Time');
 

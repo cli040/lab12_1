@@ -17,66 +17,7 @@ Ext.define('Lab12_1.view.TimeFormPanelViewController', {
     extend: 'Ext.app.ViewController',
     alias: 'controller.timeformpanel',
 
-
-    onFormpanelAdded: function(component, container, index, eOpts) {
-        var today = new Date();
-
-        var dd = today.getDate();
-        var mm = today.getMonth() + 1; //January is 0!
-
-        var yyyy = today.getFullYear();
-        if (dd < 10) {
-            dd = '0' + dd;
-        }
-        if (mm < 10) {
-            mm = '0' + mm;
-        }
-
-        var HH = today.getHours();
-        var MM = today.getMinutes();
-
-        if(HH < 10)
-        {
-            HH = "0" + HH;
-        }
-        if(MM < 10)
-        {
-            MM = "0" + MM;
-        }
-
-        var today = dd + '/' + mm + '/' + yyyy + " " + HH + ":" + MM;
-
-        Ext.getCmp("StartTimeAndDateId").setValue(today);
-        Ext.getCmp("EndTimeAndDateId").setValue(today);
-        Ext.getCmp("TotalTimeId").setValue("0.0");
-    },
-    addToStore: function(button, e) {
-        var store= Ext.getStore("TimeStore");
-
-        var startTime =formatTime(Ext.getCmp("StartTimeAndDateId"));
-        var endTime = formatTime(Ext.getCmp("EndTimeAndDateId"));
-        var totalTime = Ext.getCmp("TotalTimeId").getValue();
-        var comment= Ext.getCmp("CommentId").getValue();
-        var timeFormat={
-            Start: startTime,
-            End: endTime,
-            Time: totalTime,
-            Comment: comment
-        };
-
-        store.add(timeFormat);
-
-
-        store.sync();
-
-
-
-
-    }
-
+    requires: [
+        'Lab12_1.store.TimeStore'
+    ]
 });
-function formatTime(date){
-    var dateParts=date.split("/");
-    date=dateParts[1]+"/"+dateParts[0]+"/"+dateParts[2];
-    return new Date(date);
-}

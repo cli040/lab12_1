@@ -425,7 +425,8 @@ Ext.define('Lab12_1.view.UpdateTimeFormPanel', {
                         };
                         store.add(timeFormat);
                         store.sync();
-                        this.up('panel').close();
+                        var panel = button.up('panel');
+                        panel.destroy();
 
 
                     },
@@ -442,7 +443,7 @@ Ext.define('Lab12_1.view.UpdateTimeFormPanel', {
                     xtype: 'button',
                     handler: function(button, e) {
                         //this.up('panel').close();
-                        var panel = button.up('updatetimeformpanel');
+                        var panel = button.up('panel');
                         panel.destroy();
                     },
                     ui: 'decline',
@@ -452,6 +453,15 @@ Ext.define('Lab12_1.view.UpdateTimeFormPanel', {
                 }
             ]
         }
-    ]
+    ],
+
+    initialize: function() {
+            this.callParent();
+            var form = this.getPropertyForm().getForm();
+            console.log(form);
+
+            //var form = formpanel.getForm();
+            //form.loadRecord(record);
+    }
 
 });

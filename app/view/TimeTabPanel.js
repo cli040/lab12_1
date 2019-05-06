@@ -204,14 +204,14 @@ Ext.define('Lab12_1.view.TimeTabPanel', {
                     columns: [
                         {
                             xtype: 'datecolumn',
-                            width: 129,
+                            width: 130,
                             dataIndex: 'Start',
                             text: 'Start',
                             format: 'd/m/Y H:i'
                         },
                         {
                             xtype: 'datecolumn',
-                            width: 124,
+                            width: 130,
                             dataIndex: 'End',
                             text: 'End',
                             format: 'd/m/Y H:i'
@@ -232,8 +232,7 @@ Ext.define('Lab12_1.view.TimeTabPanel', {
                         }
                     ],
                     listeners: {
-                        select: 'OnItemSelected',
-                        added: 'onMygridAdded'
+                        select: 'OnItemSelected'
                     }
                 }
             ],
@@ -476,13 +475,13 @@ Ext.define('Lab12_1.view.TimeTabPanel', {
                     columns: [
                         {
                             xtype: 'datecolumn',
-                            width: 129,
+                            width: 130,
                             dataIndex: 'Start',
                             text: 'Start'
                         },
                         {
                             xtype: 'datecolumn',
-                            width: 124,
+                            width: 130,
                             dataIndex: 'End',
                             text: 'End'
                         },
@@ -591,13 +590,13 @@ Ext.define('Lab12_1.view.TimeTabPanel', {
                     columns: [
                         {
                             xtype: 'datecolumn',
-                            width: 129,
+                            width: 130,
                             dataIndex: 'Start',
                             text: 'Start'
                         },
                         {
                             xtype: 'datecolumn',
-                            width: 124,
+                            width: 130,
                             dataIndex: 'End',
                             text: 'End'
                         },

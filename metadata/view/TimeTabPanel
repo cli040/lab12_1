@@ -12,7 +12,6 @@
         "designer|userClassName": "TimeTabPanel",
         "docked": null,
         "fullscreen": false,
-        "itemId": "mytabpanel",
         "tabBarPosition": "bottom"
     },
     "configAlternates": {
@@ -22,8 +21,7 @@
         "designer|userClassName": "string",
         "docked": "string",
         "fullscreen": "boolean",
-        "tabBarPosition": "string",
-        "itemId": "string"
+        "tabBarPosition": "string"
     },
     "name": "MyTabPanel",
     "designerId": "d69f1807-218d-4e61-be55-5e98844e5488",
@@ -40,7 +38,6 @@
             "userConfig": {
                 "docked": null,
                 "iconCls": "x-fa fa-calendar",
-                "itemId": "mycontainer",
                 "layout": "fit",
                 "title": "Day"
             },
@@ -49,8 +46,7 @@
                 "title": "string",
                 "container|align": "string",
                 "layout": "string",
-                "iconCls": "string",
-                "itemId": "string"
+                "iconCls": "string"
             },
             "name": "MyContainer",
             "designerId": "096e983d-08e2-4b71-9b0b-8ad81a911ffa",
@@ -221,13 +217,13 @@
                                             "        var mm = currDate.getMonth() + 1; //January is 0!",
                                             "",
                                             "        var yyyy = currDate.getFullYear();",
-                                            "        ",
-                                            "        if (dd < 10) ",
+                                            "",
+                                            "        if (dd < 10)",
                                             "        {",
                                             "            dd = '0' + dd;",
                                             "        }",
-                                            "        ",
-                                            "        if (mm < 10) ",
+                                            "",
+                                            "        if (mm < 10)",
                                             "        {",
                                             "            mm = '0' + mm;",
                                             "        }",
@@ -243,6 +239,20 @@
                                             "        {",
                                             "            MM = \"0\" + MM;",
                                             "        }",
+                                            "",
+                                            "        // get filterDate",
+                                            "",
+                                            "        var daysName = [\"Sun\", \"Mon\", \"Tue\", \"Wed\", \"Thu\", \"Fri\", \"Sat\"];",
+                                            "        var monthsName = [\"January\", \"Februry\", \"March\", \"April\", \"May\", \"June\", \"July\", \"August\", \"September\", \"October\", \"November\", \"December\"];",
+                                            "",
+                                            "        var searchString = daysName[currDate.getDay()] + \" \" + monthsName[currDate.getMonth()] + \" \" + (currDate.getDate() <= 9 ? \"0\" + currDate.getDate() : currDate.getDate()) + \" \" + currDate.getFullYear();",
+                                            "",
+                                            "        var store = Ext.getStore(\"TimeStore\");",
+                                            "        store.filters.clear();",
+                                            "        store.filter(\"Start\", searchString);",
+                                            "        //console.log(store.data.items);",
+                                            "",
+                                            "        // end filterDate",
                                             "",
                                             "        currDate = dd + '/' + mm + '/' + yyyy;",
                                             "",
@@ -315,13 +325,13 @@
                                             "        var mm = currDate.getMonth() + 1; //January is 0!",
                                             "",
                                             "        var yyyy = currDate.getFullYear();",
-                                            "        ",
-                                            "        if (dd < 10) ",
+                                            "",
+                                            "        if (dd < 10)",
                                             "        {",
                                             "            dd = '0' + dd;",
                                             "        }",
-                                            "        ",
-                                            "        if (mm < 10) ",
+                                            "",
+                                            "        if (mm < 10)",
                                             "        {",
                                             "            mm = '0' + mm;",
                                             "        }",
@@ -337,6 +347,19 @@
                                             "        {",
                                             "            MM = \"0\" + MM;",
                                             "        }",
+                                            "",
+                                            "        // get filterDate",
+                                            "",
+                                            "        var daysName = [\"Sun\", \"Mon\", \"Tue\", \"Wed\", \"Thu\", \"Fri\", \"Sat\"];",
+                                            "        var monthsName = [\"January\", \"Februry\", \"March\", \"April\", \"May\", \"June\", \"July\", \"August\", \"September\", \"October\", \"November\", \"December\"];",
+                                            "",
+                                            "        var searchString = daysName[currDate.getDay()] + \" \" + monthsName[currDate.getMonth()] + \" \" + (currDate.getDate() <= 9 ? \"0\" + currDate.getDate() : currDate.getDate()) + \" \" + currDate.getFullYear();",
+                                            "",
+                                            "        var store = Ext.getStore(\"TimeStore\");",
+                                            "        store.filters.clear();",
+                                            "        store.filter(\"Start\", searchString);",
+                                            "",
+                                            "        // end filterDate",
                                             "",
                                             "        currDate = dd + '/' + mm + '/' + yyyy;",
                                             "",
@@ -391,7 +414,8 @@
                     "userConfig": {
                         "designer|displayName": "DayGrid",
                         "height": "100%",
-                        "itemId": "mygrid",
+                        "id": "DayGridId",
+                        "itemId": "DayGridId",
                         "store": "TimeStore",
                         "title": "Day",
                         "width": "100%"
@@ -399,10 +423,11 @@
                     "configAlternates": {
                         "designer|displayName": "string",
                         "height": "auto",
+                        "store": "store",
                         "width": "auto",
                         "itemId": "string",
                         "title": "string",
-                        "store": "store"
+                        "id": "string"
                     },
                     "name": "MyGrid",
                     "designerId": "89a10f38-b1a8-4532-a6d1-78b2dbbf2fc7",
@@ -419,31 +444,17 @@
                                 "docked": null,
                                 "format": "d/m/Y H:i",
                                 "text": "Start",
-                                "width": 130
+                                "width": 175
                             },
                             "configAlternates": {
                                 "docked": "string",
                                 "format": "string",
                                 "text": "string",
                                 "width": "auto",
-                                "dataIndex": "datafield",
-                                "filter": "object",
-                                "xtype": "array"
+                                "dataIndex": "datafield"
                             },
                             "name": "MyDateColumn",
-                            "designerId": "cf422580-eedb-4183-a6d3-788f33941ac7",
-                            "customConfigs": [
-                                {
-                                    "group": "(Custom Properties)",
-                                    "name": "xtype",
-                                    "type": "string"
-                                },
-                                {
-                                    "group": "(Custom Properties)",
-                                    "name": "filters",
-                                    "type": "string"
-                                }
-                            ]
+                            "designerId": "cf422580-eedb-4183-a6d3-788f33941ac7"
                         },
                         {
                             "type": "Ext.grid.column.Date",
@@ -457,7 +468,7 @@
                                 "docked": null,
                                 "format": "d/m/Y H:i",
                                 "text": "End",
-                                "width": 130
+                                "width": 175
                             },
                             "configAlternates": {
                                 "dataIndex": "datafield",
@@ -480,7 +491,7 @@
                                 "dataIndex": "Time",
                                 "docked": null,
                                 "text": "Time",
-                                "width": 96
+                                "width": 100
                             },
                             "configAlternates": {
                                 "dataIndex": "datafield",
@@ -520,16 +531,6 @@
                             "designerId": "747a3726-7b34-497c-a258-797d6a8af1fa"
                         },
                         {
-                            "type": "Ext.grid.filters.Plugin",
-                            "reference": {
-                                "name": "plugins",
-                                "type": "array"
-                            },
-                            "codeClass": null,
-                            "name": "MyPlugin",
-                            "designerId": "a279aae1-9f36-4692-a602-8c37fbddbe97"
-                        },
-                        {
                             "type": "viewcontrollereventbinding",
                             "reference": {
                                 "name": "listeners",
@@ -537,22 +538,10 @@
                             },
                             "codeClass": null,
                             "userConfig": {
-                                "fn": "OnItemSelected",
+                                "fn": "OnItemSelectedDay",
                                 "implHandler": [
-                                    "    //var index = dataview.indexOf(selected);",
-                                    "    //var record = dataview.getStore().getAt(1);",
-                                    "    //console.log(index);",
-                                    "",
-                                    "    var s;",
-                                    "    Ext.each(selected, function (item)",
-                                    "    {",
-                                    "      s = item.data;",
-                                    "    });",
-                                    "",
-                                    "    console.log(s);",
-                                    "",
-                                    "    //console.log(record.get(\"Comment\"));",
-                                    "    //Ext.create('Lab12_1.view.UpdateTimeFormPanel', {fullscreen: true, record: selected});"
+                                    "    console.log(selected[0]);",
+                                    "    Ext.create('Lab12_1.view.UpdateTimeFormPanel', {fullscreen: true, record: selected[0]});"
                                 ],
                                 "name": "select",
                                 "scope": "me"
@@ -563,8 +552,35 @@
                                 "name": "string",
                                 "scope": "string"
                             },
-                            "name": "OnItemSelected",
+                            "name": "OnItemSelectedDay",
                             "designerId": "497a775d-aa1f-468c-94d1-9b33c3f6548a"
+                        },
+                        {
+                            "type": "viewcontrollereventbinding",
+                            "reference": {
+                                "name": "listeners",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "fn": "onItemAddDay",
+                                "implHandler": [
+                                    "        var store= Ext.getStore(\"TimeStore\");",
+                                    "        var sumValue = store.sum('Time');",
+                                    "",
+                                    "        Ext.getCmp('SumDayId').setHtml(\"Sum: \" + sumValue + \" Hours\");"
+                                ],
+                                "name": "add",
+                                "scope": "me"
+                            },
+                            "configAlternates": {
+                                "fn": "string",
+                                "implHandler": "code",
+                                "name": "string",
+                                "scope": "string"
+                            },
+                            "name": "onItemAddDay",
+                            "designerId": "95f66e53-975c-4da2-8d14-be5860d4f762"
                         }
                     ]
                 },
@@ -578,19 +594,10 @@
                     "userConfig": {
                         "fn": "dayContainerActivate",
                         "implHandler": [
-                            "        /*",
-                            "        store.each(function(record,id){",
-                            "        console.log(record);",
-                            "        });",
-                            "",
-                            "        var sumValue=store.sum('Time');",
-                            "        console.log(sumValue);",
-                            "        */",
-                            "",
                             "        var store= Ext.getStore(\"TimeStore\");",
                             "        var sumValue = store.sum('Time');",
                             "",
-                            "        Ext.getCmp('SumDayId').setHtml(\"Sum: \" + sumValue);"
+                            "        Ext.getCmp('SumDayId').setHtml(\"Sum: \" + sumValue + \" Hours\");"
                         ],
                         "name": "activate",
                         "scope": "me"
@@ -643,8 +650,22 @@
                             "            MM = \"0\" + MM;",
                             "        }",
                             "",
+                            "        // get filterDate",
+                            "",
+                            "        var daysName = [\"Sun\", \"Mon\", \"Tue\", \"Wed\", \"Thu\", \"Fri\", \"Sat\"];",
+                            "        var monthsName = [\"January\", \"Februry\", \"March\", \"April\", \"May\", \"June\", \"July\", \"August\", \"September\", \"October\", \"November\", \"December\"];",
+                            "",
+                            "        var searchString = daysName[currDate.getDay()] + \" \" + monthsName[currDate.getMonth()] + \" \" + (currDate.getDate() <= 9 ? \"0\" + currDate.getDate() : currDate.getDate()) + \" \" + currDate.getFullYear();",
+                            "",
+                            "        // end filterDate",
+                            "",
                             "        currDate = dd + '/' + mm + '/' + yyyy;",
                             "        Ext.getCmp('DayId').setTitle(currDate);",
+                            "",
+                            "        sortDate = yyyy + \"/\" + dd + \"/\" + mm;",
+                            "",
+                            "        var store = Ext.getStore(\"TimeStore\");",
+                            "        store.filter(\"Start\", searchString);",
                             ""
                         ],
                         "name": "initialize",
@@ -849,8 +870,25 @@
                                             "var firstDayOfWeek = new Date(currDateString);",
                                             "var lastDayOfWeek = new Date(lastDateString);",
                                             "",
+                                            "var filterStart = new Date(currDateString);",
+                                            "",
                                             "firstDayOfWeek.setDate(firstDayOfWeek.getDate() - 7);",
                                             "lastDayOfWeek.setDate(lastDayOfWeek.getDate() - 7);",
+                                            "",
+                                            "        // get filterDate",
+                                            "",
+                                            "                var daysName = [\"Sun\", \"Mon\", \"Tue\", \"Wed\", \"Thu\", \"Fri\", \"Sat\"];",
+                                            "                var monthsName = [\"January\", \"Februry\", \"March\", \"April\", \"May\", \"June\", \"July\", \"August\", \"September\", \"October\", \"November\", \"December\"];",
+                                            "",
+                                            "                var searchString = daysName[firstDayOfWeek.getDay()] + \" \" + monthsName[firstDayOfWeek.getMonth()] + \" \" + (firstDayOfWeek.getDate() <= 9 ? \"0\" + firstDayOfWeek.getDate() : firstDayOfWeek.getDate()) + \" \" + firstDayOfWeek.getFullYear();",
+                                            "",
+                                            "                console.log(searchString);",
+                                            "",
+                                            "                var store = Ext.getStore(\"TimeStore\");",
+                                            "                store.filters.clear();",
+                                            "                store.filter(\"Start\", searchString);",
+                                            "",
+                                            "        // end filterDate",
                                             "",
                                             "        /** Format Start **/",
                                             "",
@@ -913,6 +951,7 @@
                                             "        lastDayOfWeek = dd + '/' + mm + '/' + yyyy;",
                                             "",
                                             "        /** Format End **/",
+                                            "",
                                             "",
                                             "var currentWeek = firstDayOfWeek + \" - \" + lastDayOfWeek;",
                                             "",
@@ -986,6 +1025,21 @@
                                             "firstDayOfWeek.setDate(firstDayOfWeek.getDate() + 7);",
                                             "lastDayOfWeek.setDate(lastDayOfWeek.getDate() + 7);",
                                             "",
+                                            "        // get filterDate",
+                                            "",
+                                            "        var daysName = [\"Sun\", \"Mon\", \"Tue\", \"Wed\", \"Thu\", \"Fri\", \"Sat\"];",
+                                            "        var monthsName = [\"January\", \"Februry\", \"March\", \"April\", \"May\", \"June\", \"July\", \"August\", \"September\", \"October\", \"November\", \"December\"];",
+                                            "",
+                                            "        var searchString = daysName[firstDayOfWeek.getDay()] + \" \" + monthsName[firstDayOfWeek.getMonth()] + \" \" + (firstDayOfWeek.getDate() <= 9 ? \"0\" + firstDayOfWeek.getDate() : firstDayOfWeek.getDate()) + \" \" + firstDayOfWeek.getFullYear();",
+                                            "",
+                                            "        console.log(searchString);",
+                                            "",
+                                            "        var store = Ext.getStore(\"TimeStore\");",
+                                            "        store.filters.clear();",
+                                            "        store.filter(\"Start\", searchString);",
+                                            "        ",
+                                            "        // end filterDate",
+                                            "",
                                             "        /** Format Start **/",
                                             "",
                                             "        var dd = firstDayOfWeek.getDate();",
@@ -1049,6 +1103,22 @@
                                             "        /** Format End **/",
                                             "",
                                             "var currentWeek = firstDayOfWeek + \" - \" + lastDayOfWeek;",
+                                            "",
+                                            "// get filterDate",
+                                            "",
+                                            "        var firstDayOfWeekDate = new Date(firstDayOfWeek);",
+                                            "        var lastDayOfWeekDate = new Date(lastDayOfWeek);",
+                                            "",
+                                            "        var daysName = [\"Sun\", \"Mon\", \"Tue\", \"Wed\", \"Thu\", \"Fri\", \"Sat\"];",
+                                            "        var monthsName = [\"January\", \"Februry\", \"March\", \"April\", \"May\", \"June\", \"July\", \"August\", \"September\", \"October\", \"November\", \"December\"];",
+                                            "",
+                                            "        var searchString = daysName[firstDayOfWeekDate.getDay()] + \" \" + monthsName[firstDayOfWeekDate.getMonth()] + \" \" + (firstDayOfWeekDate.getDate() <= 9 ? \"0\" + firstDayOfWeekDate.getDate() : firstDayOfWeekDate.getDate()) + \" \" + firstDayOfWeekDate.getFullYear();",
+                                            "",
+                                            "        var store = Ext.getStore(\"TimeStore\");",
+                                            "        store.filters.clear();",
+                                            "        store.filter(\"Start\", searchString);",
+                                            "",
+                                            "// end filterDate",
                                             "",
                                             "Ext.getCmp('WeekId').setTitle(currentWeek);"
                                         ]
@@ -1144,7 +1214,7 @@
                                 "dataIndex": "Time",
                                 "docked": null,
                                 "text": "Time",
-                                "width": 96
+                                "width": 70
                             },
                             "configAlternates": {
                                 "docked": "string",
@@ -1176,6 +1246,57 @@
                             },
                             "name": "MyColumn",
                             "designerId": "046b3b7f-d717-4195-9400-641746fa0e5f"
+                        },
+                        {
+                            "type": "viewcontrollereventbinding",
+                            "reference": {
+                                "name": "listeners",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "fn": "OnItemAddWeek",
+                                "implHandler": [
+                                    "        var store= Ext.getStore(\"TimeStore\");",
+                                    "        var sumValue = store.sum('Time');",
+                                    "",
+                                    "        Ext.getCmp('SumDayId').setHtml(\"Sum: \" + sumValue + \" Hours\");"
+                                ],
+                                "name": "add",
+                                "scope": "me"
+                            },
+                            "configAlternates": {
+                                "fn": "string",
+                                "implHandler": "code",
+                                "name": "string",
+                                "scope": "string"
+                            },
+                            "name": "OnItemAddWeek",
+                            "designerId": "9d9e3a9f-97d6-4ea1-bc3f-1c40253d94c1"
+                        },
+                        {
+                            "type": "viewcontrollereventbinding",
+                            "reference": {
+                                "name": "listeners",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "fn": "OnItemSelectWeek",
+                                "implHandler": [
+                                    "Ext.create('Lab12_1.view.UpdateTimeFormPanel', {fullscreen: true, record: selected[0]});"
+                                ],
+                                "name": "select",
+                                "scope": "me"
+                            },
+                            "configAlternates": {
+                                "fn": "string",
+                                "implHandler": "code",
+                                "name": "string",
+                                "scope": "string"
+                            },
+                            "name": "OnItemSelectWeek",
+                            "designerId": "7e46b709-36ad-4a0f-a492-75ceb2d960da"
                         }
                     ]
                 },
@@ -1192,14 +1313,13 @@
                             "        var firstDayOfWeek = new Date();",
                             "        var lastDayOfWeek = new Date();",
                             "",
-                            "        if(lastDayOfWeek.getUTCDay() > 0)",
+                            "        if(lastDayOfWeek.getDay() > 0)",
                             "        {",
                             "            do",
                             "            {",
                             "                lastDayOfWeek.setDate(lastDayOfWeek.getDate() + 1);",
-                            "                console.log(lastDayOfWeek.getDate());",
-                            "            }while(lastDayOfWeek.getUTCDay() !== 0);",
-                            "            ",
+                            "            }while(lastDayOfWeek.getDay() !== 0);",
+                            "",
                             "        }",
                             "",
                             "        firstDayOfWeek.setDate(lastDayOfWeek.getDate());",
@@ -1292,7 +1412,7 @@
                             "        var store= Ext.getStore(\"TimeStore\");",
                             "        var sumValue = store.sum('Time');",
                             "",
-                            "        Ext.getCmp('SumWeekId').setHtml(\"Sum: \" + sumValue);"
+                            "        Ext.getCmp('SumWeekId').setHtml(\"Sum: \" + sumValue + \" Hours\");"
                         ],
                         "name": "activate",
                         "scope": "me"
@@ -1659,7 +1779,7 @@
                                 "dataIndex": "Time",
                                 "docked": null,
                                 "text": "Time",
-                                "width": 96
+                                "width": 70
                             },
                             "configAlternates": {
                                 "docked": "string",
@@ -1691,6 +1811,57 @@
                             },
                             "name": "MyColumn",
                             "designerId": "093b1e0b-dfb0-4997-a675-be9c71c0cee7"
+                        },
+                        {
+                            "type": "viewcontrollereventbinding",
+                            "reference": {
+                                "name": "listeners",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "fn": "onItemAddMonth",
+                                "implHandler": [
+                                    "        var store= Ext.getStore(\"TimeStore\");",
+                                    "        var sumValue = store.sum('Time');",
+                                    "",
+                                    "        Ext.getCmp('SumDayId').setHtml(\"Sum: \" + sumValue + \" Hours\");"
+                                ],
+                                "name": "add",
+                                "scope": "me"
+                            },
+                            "configAlternates": {
+                                "fn": "string",
+                                "implHandler": "code",
+                                "name": "string",
+                                "scope": "string"
+                            },
+                            "name": "onItemAddMonth",
+                            "designerId": "75fbd4a5-5141-4da4-996d-c0ae360d620e"
+                        },
+                        {
+                            "type": "viewcontrollereventbinding",
+                            "reference": {
+                                "name": "listeners",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "fn": "OnItemSelectMonth",
+                                "implHandler": [
+                                    "Ext.create('Lab12_1.view.UpdateTimeFormPanel', {fullscreen: true, record: selected[0]});"
+                                ],
+                                "name": "select",
+                                "scope": "me"
+                            },
+                            "configAlternates": {
+                                "fn": "string",
+                                "implHandler": "code",
+                                "name": "string",
+                                "scope": "string"
+                            },
+                            "name": "OnItemSelectMonth",
+                            "designerId": "e81275e4-0100-4a3c-a971-d4804f2f1e5f"
                         }
                     ]
                 },
@@ -1729,50 +1900,7 @@
                         "fn": "monthContainerInit",
                         "implHandler": [
                             "        var currDate = new Date();",
-                            "        var currMonth = [\"January\", \"Februry\", \"March\", \"April\", \"May\", \"June\", \"July\", ",
-                            "                         \"August\", \"September\", \"October\", \"November\", \"December\"];",
-                            "",
-                            "        /*switch(currDate.getMonth())",
-                            "        {",
-                            "            case 0:",
-                            "                currMonth = \"January\";",
-                            "                break;",
-                            "            case 1:",
-                            "                currMonth = \"Februry\";",
-                            "                break;",
-                            "            case 2:",
-                            "                currMonth = \"March\";",
-                            "                break;",
-                            "            case 3:",
-                            "                currMonth = \"April\";",
-                            "                break;",
-                            "            case 4:",
-                            "                currMonth = \"May\";",
-                            "                break;",
-                            "            case 5:",
-                            "                currMonth = \"June\";",
-                            "                break;",
-                            "            case 6:",
-                            "                currMonth = \"July\";",
-                            "                break;",
-                            "            case 7:",
-                            "                currMonth = \"August\";",
-                            "                break;",
-                            "            case 8:",
-                            "                currMonth = \"September\";",
-                            "                break;",
-                            "            case 9:",
-                            "                currMonth = \"October\";",
-                            "                break;",
-                            "            case 10:",
-                            "                currMonth = \"November\";",
-                            "                break;",
-                            "            case 11:",
-                            "                currMonth = \"December\";",
-                            "                break;",
-                            "            default:",
-                            "                break;",
-                            "        }*/",
+                            "        var currMonth = [\"January\", \"Februry\", \"March\", \"April\", \"May\", \"June\", \"July\", \"August\", \"September\", \"October\", \"November\", \"December\"];",
                             "",
                             "        Ext.getCmp('MonthId').setTitle(currMonth[currDate.getMonth()]);",
                             ""
@@ -1802,7 +1930,7 @@
                             "        var store= Ext.getStore(\"TimeStore\");",
                             "        var sumValue = store.sum('Time');",
                             "",
-                            "        Ext.getCmp('SumMonthId').setHtml(\"Sum: \" + sumValue);",
+                            "        Ext.getCmp('SumMonthId').setHtml(\"Sum: \" + sumValue + \" Hours\");",
                             ""
                         ],
                         "name": "activate",

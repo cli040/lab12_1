@@ -38,8 +38,8 @@ Ext.define('Lab12_1.view.UpdateTimeFormPanel', {
             items: [
                 {
                     xtype: 'textfield',
-                    id: 'StartTimeAndDateId1',
-                    itemId: 'StartTimeAndDate',
+                    id: 'UpdateStartTimeAndDateId',
+                    itemId: 'UpdateStartTimeAndDateId',
                     margin: 5,
                     label: 'Start',
                     labelWidth: 100,
@@ -48,8 +48,8 @@ Ext.define('Lab12_1.view.UpdateTimeFormPanel', {
                 {
                     xtype: 'button',
                     handler: function(button, e) {
-                        var endTime = Ext.getCmp("EndTimeAndDateId").getValue();
-                        var totalTime = Ext.getCmp("TotalTimeId").getValue();
+                        var endTime = Ext.getCmp("UpdateEndTimeAndDateId").getValue();
+                        var totalTime = Ext.getCmp("UpdateTotalTimeId").getValue();
 
                         if(endTime.length > 0)
                         {
@@ -145,7 +145,7 @@ Ext.define('Lab12_1.view.UpdateTimeFormPanel', {
 
                             /** Format End **/
 
-                            Ext.getCmp("StartTimeAndDateId").setValue(newStartTime);
+                            Ext.getCmp("UpdateStartTimeAndDateId").setValue(newStartTime);
                         }
                     },
                     text: 'Calc Start'
@@ -158,8 +158,8 @@ Ext.define('Lab12_1.view.UpdateTimeFormPanel', {
             items: [
                 {
                     xtype: 'textfield',
-                    id: 'EndTimeAndDateId1',
-                    itemId: 'EndTimeAndDate',
+                    id: 'UpdateEndTimeAndDateId',
+                    itemId: 'UpdateEndTimeAndDateId',
                     margin: 5,
                     label: 'End',
                     labelWidth: 100,
@@ -168,8 +168,8 @@ Ext.define('Lab12_1.view.UpdateTimeFormPanel', {
                 {
                     xtype: 'button',
                     handler: function(button, e) {
-                        var startTime = Ext.getCmp("StartTimeAndDateId").getValue();
-                        var totalTime = Ext.getCmp("TotalTimeId").getValue();
+                        var startTime = Ext.getCmp("UpdateStartTimeAndDateId").getValue();
+                        var totalTime = Ext.getCmp("UpdateTotalTimeId").getValue();
 
                         var checkStartTime;
 
@@ -267,7 +267,7 @@ Ext.define('Lab12_1.view.UpdateTimeFormPanel', {
 
                             /** Format End **/
 
-                            Ext.getCmp("EndTimeAndDateId").setValue(newEndTime);
+                            Ext.getCmp("UpdateEndTimeAndDateId").setValue(newEndTime);
 
                         }
                     },
@@ -281,8 +281,8 @@ Ext.define('Lab12_1.view.UpdateTimeFormPanel', {
             items: [
                 {
                     xtype: 'textfield',
-                    id: 'TotalTimeId1',
-                    itemId: 'TotalTime',
+                    id: 'UpdateTotalTimeId',
+                    itemId: 'UpdateTotalTimeId',
                     margin: 5,
                     label: 'Total time',
                     labelWidth: 100,
@@ -291,8 +291,8 @@ Ext.define('Lab12_1.view.UpdateTimeFormPanel', {
                 {
                     xtype: 'button',
                     handler: function(button, e) {
-                        var startTime = Ext.getCmp("StartTimeAndDateId").getValue();
-                        var endTime = Ext.getCmp("EndTimeAndDateId").getValue();
+                        var startTime = Ext.getCmp("UpdateStartTimeAndDateId").getValue();
+                        var endTime = Ext.getCmp("UpdateEndTimeAndDateId").getValue();
 
                         var checkStartTime;
 
@@ -365,7 +365,7 @@ Ext.define('Lab12_1.view.UpdateTimeFormPanel', {
 
                             var totalTime = hh + mm;
 
-                            Ext.getCmp("TotalTimeId").setValue(totalTime.toString());
+                            Ext.getCmp("UpdateTotalTimeId").setValue(totalTime.toString());
                         }
                         else
                         {
@@ -373,7 +373,7 @@ Ext.define('Lab12_1.view.UpdateTimeFormPanel', {
                             {
                                 alert("Start date is before end date!");
                             }
-                            Ext.getCmp("TotalTimeId").setValue(NaN);
+                            Ext.getCmp("UpdateTotalTimeId").setValue(NaN);
                         }
                     },
                     ui: '',
@@ -387,8 +387,8 @@ Ext.define('Lab12_1.view.UpdateTimeFormPanel', {
             items: [
                 {
                     xtype: 'textfield',
-                    id: 'CommentId1',
-                    itemId: 'Comment',
+                    id: 'UpdateCommentId',
+                    itemId: 'UpdateCommentId',
                     margin: 5,
                     label: 'Comment',
                     labelWidth: 100,
@@ -410,25 +410,32 @@ Ext.define('Lab12_1.view.UpdateTimeFormPanel', {
                 {
                     xtype: 'button',
                     handler: function(button, e) {
+                        var record = button.up("formpanel").getRecord();
+                        var store = Ext.getStore("TimeStore");
 
+                        var startTime =formatTime(Ext.getCmp("UpdateStartTimeAndDateId").getValue());
+                        var endTime = formatTime(Ext.getCmp("UpdateEndTimeAndDateId").getValue());
+                        var totalTime = Ext.getCmp("UpdateTotalTimeId").getValue();
+                        var comment= Ext.getCmp("UpdateCommentId").getValue();
 
-                        var store= Ext.getStore("TimeStore");
-                        var startTime = Ext.getCmp("StartTimeAndDateId").getValue();
-                        var endTime = Ext.getCmp("EndTimeAndDateId").getValue();
-                        var totalTime = Ext.getCmp("TotalTimeId").getValue();
-                        var comment= Ext.getCmp("CommentId").getValue();
-                        var timeFormat={
-                            Start: startTime,
-                            End: endTime,
-                            Time: totalTime,
-                            Comment: comment
-                        };
-                        store.add(timeFormat);
-                        store.sync();
-                        var panel = button.up('panel');
+                        function formatTime(date)
+                        {
+                            var dateParts;
+                            dateParts = date.split("/");
+                            var newDate = dateParts[1] + "/" + dateParts[0]+"/" + dateParts[2];
+                            return new Date(newDate);
+                        }
+                        var index = record.id;
+
+                        var storeElement = store.getById(index);
+
+                        storeElement.set('Start', startTime);
+                        storeElement.set('End', endTime);
+                        storeElement.set('Time', totalTime);
+                        storeElement.set('Comment', comment);
+
+                        var panel = button.up('formpanel');
                         panel.destroy();
-
-
                     },
                     ui: 'confirm',
                     maxWidth: 250,
@@ -442,7 +449,6 @@ Ext.define('Lab12_1.view.UpdateTimeFormPanel', {
                 {
                     xtype: 'button',
                     handler: function(button, e) {
-                        //this.up('panel').close();
                         var panel = button.up('panel');
                         panel.destroy();
                     },
@@ -457,11 +463,29 @@ Ext.define('Lab12_1.view.UpdateTimeFormPanel', {
 
     initialize: function() {
             this.callParent();
-            var form = this.getPropertyForm().getForm();
-            console.log(form);
 
-            //var form = formpanel.getForm();
-            //form.loadRecord(record);
+            record = this.getRecord();
+
+            var startDay = record.data.Start.getDate() <= 9 ? "0" + record.data.Start.getDate() : record.data.Start.getDate();
+            var startMonth = record.data.Start.getMonth() <= 9 ? "0" + (record.data.Start.getMonth() + 1) : record.data.Start.getMonth();
+            var startYear = record.data.Start.getFullYear();
+            var startHour = record.data.Start.getHours() <= 9 ? "0" + record.data.Start.getHours() : record.data.Start.getHours();
+            var startMin = record.data.Start.getMinutes() <= 9 ? "0" + record.data.Start.getMinutes() : record.data.Start.getMinutes();
+
+            var startDate = startDay + "/" + startMonth + "/" + startYear + " " + startHour + ":" + startMin;
+
+            var endDay = record.data.End.getDate() <= 9 ? "0" + record.data.End.getDate() : record.data.End.getDate();
+            var endMonth = record.data.End.getMonth() <= 9 ? "0" + (record.data.End.getMonth() + 1) : record.data.End.getMonth();
+            var endYear = record.data.End.getFullYear();
+            var endHour = record.data.End.getHours() <= 9 ? "0" + record.data.End.getHours() : record.data.End.getHours();
+            var endMin = record.data.End.getMinutes() <= 9 ? "0" + record.data.End.getMinutes() : record.data.End.getMinutes();
+
+            var endDate = endDay + "/" + endMonth + "/" + endYear + " " + endHour + ":" + endMin;
+
+            Ext.getCmp("UpdateStartTimeAndDateId").setValue(startDate);
+            Ext.getCmp("UpdateEndTimeAndDateId").setValue(endDate);
+            Ext.getCmp("UpdateTotalTimeId").setValue(record.data.Time);
+            Ext.getCmp("UpdateCommentId").setValue(record.data.Comment);
     }
 
 });

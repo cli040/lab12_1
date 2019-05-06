@@ -25,13 +25,15 @@ Ext.define('Lab12_1.view.TimeTabPanel', {
         'Ext.Label',
         'Ext.grid.Grid',
         'Ext.grid.column.Date',
-        'Ext.grid.column.Number'
+        'Ext.grid.column.Number',
+        'Ext.grid.filters.Plugin'
     ],
 
     controller: 'timetabpanel',
     viewModel: {
         type: 'timetabpanel'
     },
+    itemId: 'mytabpanel',
     fullscreen: false,
     tabBarPosition: 'bottom',
 
@@ -44,6 +46,7 @@ Ext.define('Lab12_1.view.TimeTabPanel', {
             xtype: 'container',
             title: 'Day',
             iconCls: 'x-fa fa-calendar',
+            itemId: 'mycontainer',
             layout: 'fit',
             items: [
                 {
@@ -229,6 +232,11 @@ Ext.define('Lab12_1.view.TimeTabPanel', {
                             width: 266,
                             dataIndex: 'Comment',
                             text: 'Comment'
+                        }
+                    ],
+                    plugins: [
+                        {
+                            type: 'gridfilters'
                         }
                     ],
                     listeners: {

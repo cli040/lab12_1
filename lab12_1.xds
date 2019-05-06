@@ -7,15 +7,15 @@
             "frameworkVersion": "6.7.0.212"
         },
         "urlPrefixTemplate": "http://localhost:{port}/{path}",
-        "urlPrefix": "http://localhost:59834/",
+        "urlPrefix": "http://localhost:53652/",
         "canvasControls": {
             "viewportSize": {
-                "name": "Samsung S6",
+                "name": "iPhone 6 Plus",
                 "builtIn": true,
-                "height": 640,
-                "width": 360
+                "height": 736,
+                "width": 414
             },
-            "viewportOrientation": "portrait"
+            "viewportOrientation": "landscape"
         },
         "exportPath": "",
         "spacesToIndent": 4,
@@ -47,9 +47,7 @@
             "8b01b52f-dccc-4373-a1bd-2b9804dcfe02",
             "45d3724c-143b-4751-a8e8-66994b9be5cd",
             "b41e2e40-452c-4ab5-a0a8-a79d7c28fd98",
-            "4d95155e-fc7b-489a-8827-9fbf294b7f2c",
             "4bc178ec-c52e-433e-a651-71d3afc0a124",
-            "7c4ab65e-3d18-4003-938a-aefb2c4732cb",
             "d69f1807-218d-4e61-be55-5e98844e5488"
         ],
         "store": [
@@ -60,8 +58,7 @@
             "055383d5-dad5-4ca0-8f64-f64c0c0e0c7b"
         ],
         "resource": [
-            "25c26338-2e40-4b01-b0ff-ac7f073d51a2",
-            "13c27f34-101e-4b35-981b-bcd89d35ea1d",
+            "03bf1f7a-3aa2-405e-a9f1-2b1051d15ad0",
             "def7b94e-9e0b-4c31-8e12-d4a94dbfed55",
             "90bcf4a4-b722-4acf-ba65-4799157b4473"
         ],

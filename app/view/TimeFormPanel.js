@@ -18,22 +18,13 @@ Ext.define('Lab12_1.view.TimeFormPanel', {
     alias: 'widget.timeformpanel',
 
     requires: [
-        'Ext.Button',
-        'Ext.Button',
-        'Ext.Container',
-        'Ext.Container',
-        'Ext.Spacer',
-        'Ext.Spacer',
-        'Ext.field.Text',
-        'Ext.field.Text',
-        'Ext.layout.Box',
-        'Ext.layout.Center',
-        'Lab12_1.store.TimeStore',
-        'Lab12_1.store.TimeStore',
         'Lab12_1.view.TimeFormPanelViewModel',
-        'Lab12_1.view.TimeFormPanelViewModel'
+        'Ext.Container',
+        'Ext.field.Text',
+        'Ext.Button',
+        'Ext.Spacer',
+        'Lab12_1.store.TimeStore'
     ],
-
 
     viewModel: {
         type: 'timeformpanel'
@@ -474,37 +465,37 @@ Ext.define('Lab12_1.view.TimeFormPanel', {
     ],
 
     initialize: function() {
-                this.callParent();
-                var today = new Date();
+        this.callParent();
+        var today = new Date();
 
-                var dd = today.getDate();
-                var mm = today.getMonth() + 1; //January is 0!
+        var dd = today.getDate();
+        var mm = today.getMonth() + 1; //January is 0!
 
-                var yyyy = today.getFullYear();
-                if (dd < 10) {
-                  dd = '0' + dd;
-                }
-                if (mm < 10) {
-                  mm = '0' + mm;
-                }
+        var yyyy = today.getFullYear();
+        if (dd < 10) {
+            dd = '0' + dd;
+        }
+        if (mm < 10) {
+            mm = '0' + mm;
+        }
 
-                var HH = today.getHours();
-                var MM = today.getMinutes();
+        var HH = today.getHours();
+        var MM = today.getMinutes();
 
-                if(HH < 10)
-                {
-                    HH = "0" + HH;
-                }
-                if(MM < 10)
-                {
-                    MM = "0" + MM;
-                }
+        if(HH < 10)
+        {
+            HH = "0" + HH;
+        }
+        if(MM < 10)
+        {
+            MM = "0" + MM;
+        }
 
-                var today = dd + '/' + mm + '/' + yyyy + " " + HH + ":" + MM;
+        var today = dd + '/' + mm + '/' + yyyy + " " + HH + ":" + MM;
 
-                Ext.getCmp("StartTimeAndDateId").setValue(today);
-                Ext.getCmp("EndTimeAndDateId").setValue(today);
-                Ext.getCmp("TotalTimeId").setValue("0.0");
+        Ext.getCmp("StartTimeAndDateId").setValue(today);
+        Ext.getCmp("EndTimeAndDateId").setValue(today);
+        Ext.getCmp("TotalTimeId").setValue("0.0");
     }
 
 });

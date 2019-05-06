@@ -12,6 +12,7 @@
         "designer|userClassName": "TimeTabPanel",
         "docked": null,
         "fullscreen": false,
+        "itemId": "mytabpanel",
         "tabBarPosition": "bottom"
     },
     "configAlternates": {
@@ -21,7 +22,8 @@
         "designer|userClassName": "string",
         "docked": "string",
         "fullscreen": "boolean",
-        "tabBarPosition": "string"
+        "tabBarPosition": "string",
+        "itemId": "string"
     },
     "name": "MyTabPanel",
     "designerId": "d69f1807-218d-4e61-be55-5e98844e5488",
@@ -38,6 +40,7 @@
             "userConfig": {
                 "docked": null,
                 "iconCls": "x-fa fa-calendar",
+                "itemId": "mycontainer",
                 "layout": "fit",
                 "title": "Day"
             },
@@ -46,7 +49,8 @@
                 "title": "string",
                 "container|align": "string",
                 "layout": "string",
-                "iconCls": "string"
+                "iconCls": "string",
+                "itemId": "string"
             },
             "name": "MyContainer",
             "designerId": "096e983d-08e2-4b71-9b0b-8ad81a911ffa",
@@ -395,10 +399,10 @@
                     "configAlternates": {
                         "designer|displayName": "string",
                         "height": "auto",
-                        "store": "store",
                         "width": "auto",
                         "itemId": "string",
-                        "title": "string"
+                        "title": "string",
+                        "store": "store"
                     },
                     "name": "MyGrid",
                     "designerId": "89a10f38-b1a8-4532-a6d1-78b2dbbf2fc7",
@@ -422,10 +426,24 @@
                                 "format": "string",
                                 "text": "string",
                                 "width": "auto",
-                                "dataIndex": "datafield"
+                                "dataIndex": "datafield",
+                                "filter": "object",
+                                "xtype": "array"
                             },
                             "name": "MyDateColumn",
-                            "designerId": "cf422580-eedb-4183-a6d3-788f33941ac7"
+                            "designerId": "cf422580-eedb-4183-a6d3-788f33941ac7",
+                            "customConfigs": [
+                                {
+                                    "group": "(Custom Properties)",
+                                    "name": "xtype",
+                                    "type": "string"
+                                },
+                                {
+                                    "group": "(Custom Properties)",
+                                    "name": "filters",
+                                    "type": "string"
+                                }
+                            ]
                         },
                         {
                             "type": "Ext.grid.column.Date",
@@ -500,6 +518,16 @@
                             },
                             "name": "MyColumn",
                             "designerId": "747a3726-7b34-497c-a258-797d6a8af1fa"
+                        },
+                        {
+                            "type": "Ext.grid.filters.Plugin",
+                            "reference": {
+                                "name": "plugins",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "name": "MyPlugin",
+                            "designerId": "a279aae1-9f36-4692-a602-8c37fbddbe97"
                         },
                         {
                             "type": "viewcontrollereventbinding",
@@ -1701,7 +1729,8 @@
                         "fn": "monthContainerInit",
                         "implHandler": [
                             "        var currDate = new Date();",
-                            "        var currMonth = [\"January\", \"Februry\", \"March\", \"April\", \"May\", \"June\", \"July\", \"August\", \"September\", \"October\", \"November\", \"December\"];",
+                            "        var currMonth = [\"January\", \"Februry\", \"March\", \"April\", \"May\", \"June\", \"July\", ",
+                            "                         \"August\", \"September\", \"October\", \"November\", \"December\"];",
                             "",
                             "        /*switch(currDate.getMonth())",
                             "        {",

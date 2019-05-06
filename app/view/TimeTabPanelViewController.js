@@ -174,7 +174,8 @@ Ext.define('Lab12_1.view.TimeTabPanelViewController', {
 
     monthContainerInit: function(component, eOpts) {
         var currDate = new Date();
-        var currMonth = ["January", "Februry", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+        var currMonth = ["January", "Februry", "March", "April", "May", "June", "July",
+            "August", "September", "October", "November", "December"];
 
         /*switch(currDate.getMonth())
         {

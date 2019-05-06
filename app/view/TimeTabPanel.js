@@ -25,15 +25,13 @@ Ext.define('Lab12_1.view.TimeTabPanel', {
         'Ext.Label',
         'Ext.grid.Grid',
         'Ext.grid.column.Date',
-        'Ext.grid.column.Number',
-        'Ext.grid.filters.Plugin'
+        'Ext.grid.column.Number'
     ],
 
     controller: 'timetabpanel',
     viewModel: {
         type: 'timetabpanel'
     },
-    itemId: 'mytabpanel',
     fullscreen: false,
     tabBarPosition: 'bottom',
 
@@ -46,7 +44,6 @@ Ext.define('Lab12_1.view.TimeTabPanel', {
             xtype: 'container',
             title: 'Day',
             iconCls: 'x-fa fa-calendar',
-            itemId: 'mycontainer',
             layout: 'fit',
             items: [
                 {
@@ -260,11 +257,6 @@ Ext.define('Lab12_1.view.TimeTabPanel', {
                             width: 266,
                             dataIndex: 'Comment',
                             text: 'Comment'
-                        }
-                    ],
-                    plugins: [
-                        {
-                            type: 'gridfilters'
                         }
                     ],
                     listeners: {
@@ -563,13 +555,15 @@ Ext.define('Lab12_1.view.TimeTabPanel', {
                             xtype: 'datecolumn',
                             width: 130,
                             dataIndex: 'Start',
-                            text: 'Start'
+                            text: 'Start',
+                            format: 'd/m/Y H:i'
                         },
                         {
                             xtype: 'datecolumn',
                             width: 130,
                             dataIndex: 'End',
-                            text: 'End'
+                            text: 'End',
+                            format: 'd/m/Y H:i'
                         },
                         {
                             xtype: 'numbercolumn',
@@ -682,13 +676,15 @@ Ext.define('Lab12_1.view.TimeTabPanel', {
                             xtype: 'datecolumn',
                             width: 130,
                             dataIndex: 'Start',
-                            text: 'Start'
+                            text: 'Start',
+                            format: 'd/m/Y H:i'
                         },
                         {
                             xtype: 'datecolumn',
                             width: 130,
                             dataIndex: 'End',
-                            text: 'End'
+                            text: 'End',
+                            format: 'd/m/Y H:i'
                         },
                         {
                             xtype: 'numbercolumn',

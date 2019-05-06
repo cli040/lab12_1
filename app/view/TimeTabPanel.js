@@ -25,15 +25,13 @@ Ext.define('Lab12_1.view.TimeTabPanel', {
         'Ext.Label',
         'Ext.grid.Grid',
         'Ext.grid.column.Date',
-        'Ext.grid.column.Number',
-        'Ext.grid.filters.Plugin'
+        'Ext.grid.column.Number'
     ],
 
     controller: 'timetabpanel',
     viewModel: {
         type: 'timetabpanel'
     },
-    itemId: 'mytabpanel',
     fullscreen: false,
     tabBarPosition: 'bottom',
 
@@ -46,7 +44,6 @@ Ext.define('Lab12_1.view.TimeTabPanel', {
             xtype: 'container',
             title: 'Day',
             iconCls: 'x-fa fa-calendar',
-            itemId: 'mycontainer',
             layout: 'fit',
             items: [
                 {
@@ -133,9 +130,8 @@ Ext.define('Lab12_1.view.TimeTabPanel', {
                                 var searchString = daysName[currDate.getDay()] + " " + monthsName[currDate.getMonth()] + " " + (currDate.getDate() <= 9 ? "0" + currDate.getDate() : currDate.getDate()) + " " + currDate.getFullYear();
 
                                 var store = Ext.getStore("TimeStore");
-                                store.filters.clear();
+                                store.clearFilter();
                                 store.filter("Start", searchString);
-                                //console.log(store.data.items);
 
                                 // end filterDate
 
@@ -144,6 +140,9 @@ Ext.define('Lab12_1.view.TimeTabPanel', {
                                 /** Format End **/
 
                                 Ext.getCmp('DayId').setTitle(currDate);
+
+                                var sumValue = store.sum('Time');
+                                Ext.getCmp('SumDayId').setHtml("Sum: " + sumValue + " Hours");
                             },
                             align: 'right',
                             ui: 'square',
@@ -200,7 +199,7 @@ Ext.define('Lab12_1.view.TimeTabPanel', {
                                 var searchString = daysName[currDate.getDay()] + " " + monthsName[currDate.getMonth()] + " " + (currDate.getDate() <= 9 ? "0" + currDate.getDate() : currDate.getDate()) + " " + currDate.getFullYear();
 
                                 var store = Ext.getStore("TimeStore");
-                                store.filters.clear();
+                                store.clearFilter();
                                 store.filter("Start", searchString);
 
                                 // end filterDate
@@ -210,6 +209,10 @@ Ext.define('Lab12_1.view.TimeTabPanel', {
                                 /** Format End **/
 
                                 Ext.getCmp('DayId').setTitle(currDate);
+
+                                var sumValue = store.sum('Time');
+
+                                Ext.getCmp('SumDayId').setHtml("Sum: " + sumValue + " Hours");
                             },
                             ui: 'square',
                             margin: '0, 0, 0, 5',
@@ -235,6 +238,8 @@ Ext.define('Lab12_1.view.TimeTabPanel', {
                     columns: [
                         {
                             xtype: 'datecolumn',
+                            id: 'DayStartId',
+                            itemId: 'DayStartId',
                             width: 175,
                             dataIndex: 'Start',
                             text: 'Start',
@@ -260,11 +265,6 @@ Ext.define('Lab12_1.view.TimeTabPanel', {
                             width: 266,
                             dataIndex: 'Comment',
                             text: 'Comment'
-                        }
-                    ],
-                    plugins: [
-                        {
-                            type: 'gridfilters'
                         }
                     ],
                     listeners: {
@@ -341,17 +341,25 @@ Ext.define('Lab12_1.view.TimeTabPanel', {
                                 lastDayOfWeek.setDate(lastDayOfWeek.getDate() - 7);
 
                                 // get filterDate
-
-                                var daysName = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
-                                var monthsName = ["January", "Februry", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-
-                                var searchString = daysName[firstDayOfWeek.getDay()] + " " + monthsName[firstDayOfWeek.getMonth()] + " " + (firstDayOfWeek.getDate() <= 9 ? "0" + firstDayOfWeek.getDate() : firstDayOfWeek.getDate()) + " " + firstDayOfWeek.getFullYear();
-
-                                console.log(searchString);
-
                                 var store = Ext.getStore("TimeStore");
-                                store.filters.clear();
-                                store.filter("Start", searchString);
+                                store.clearFilter();
+
+                                store.filter(
+                                {
+                                    filterFn: function(item)
+                                    {
+                                        var startDate = new Date(firstDayOfWeek.toString());
+                                        startDate.setHours("00");
+                                        startDate.setMinutes("00");
+
+                                        var endDate = new Date(lastDayOfWeek.toString());
+                                        endDate.setHours("23");
+                                        endDate.setMinutes("59");
+                                        endDate.setSeconds("59");
+
+                                        return (item.get("Start") >= startDate && item.get("Start") <= endDate);
+                                    }
+                                });
 
                                 // end filterDate
 
@@ -417,10 +425,12 @@ Ext.define('Lab12_1.view.TimeTabPanel', {
 
                                 /** Format End **/
 
-
                                 var currentWeek = firstDayOfWeek + " - " + lastDayOfWeek;
 
                                 Ext.getCmp('WeekId').setTitle(currentWeek);
+
+                                var sumValue = store.sum('Time');
+                                Ext.getCmp('SumWeekId').setHtml("Sum: " + sumValue + " Hours");
                             },
                             ui: 'square',
                             margin: '0, 0, 0, 5',
@@ -450,16 +460,25 @@ Ext.define('Lab12_1.view.TimeTabPanel', {
 
                                 // get filterDate
 
-                                var daysName = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
-                                var monthsName = ["January", "Februry", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-
-                                var searchString = daysName[firstDayOfWeek.getDay()] + " " + monthsName[firstDayOfWeek.getMonth()] + " " + (firstDayOfWeek.getDate() <= 9 ? "0" + firstDayOfWeek.getDate() : firstDayOfWeek.getDate()) + " " + firstDayOfWeek.getFullYear();
-
-                                console.log(searchString);
-
                                 var store = Ext.getStore("TimeStore");
-                                store.filters.clear();
-                                store.filter("Start", searchString);
+                                store.clearFilter();
+
+                                store.filter(
+                                {
+                                    filterFn: function(item)
+                                    {
+                                        var startDate = new Date(firstDayOfWeek.toString());
+                                        startDate.setHours("00");
+                                        startDate.setMinutes("00");
+
+                                        var endDate = new Date(lastDayOfWeek.toString());
+                                        endDate.setHours("23");
+                                        endDate.setMinutes("59");
+                                        endDate.setSeconds("59");
+
+                                        return (item.get("Start") >= startDate && item.get("Start") <= endDate);
+                                    }
+                                });
 
                                 // end filterDate
 
@@ -527,23 +546,10 @@ Ext.define('Lab12_1.view.TimeTabPanel', {
 
                                 var currentWeek = firstDayOfWeek + " - " + lastDayOfWeek;
 
-                                // get filterDate
-
-                                var firstDayOfWeekDate = new Date(firstDayOfWeek);
-                                var lastDayOfWeekDate = new Date(lastDayOfWeek);
-
-                                var daysName = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
-                                var monthsName = ["January", "Februry", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-
-                                var searchString = daysName[firstDayOfWeekDate.getDay()] + " " + monthsName[firstDayOfWeekDate.getMonth()] + " " + (firstDayOfWeekDate.getDate() <= 9 ? "0" + firstDayOfWeekDate.getDate() : firstDayOfWeekDate.getDate()) + " " + firstDayOfWeekDate.getFullYear();
-
-                                var store = Ext.getStore("TimeStore");
-                                store.filters.clear();
-                                store.filter("Start", searchString);
-
-                                // end filterDate
-
                                 Ext.getCmp('WeekId').setTitle(currentWeek);
+
+                                var sumValue = store.sum('Time');
+                                Ext.getCmp('SumWeekId').setHtml("Sum: " + sumValue + " Hours");
                             },
                             align: 'right',
                             ui: 'square',
@@ -643,12 +649,50 @@ Ext.define('Lab12_1.view.TimeTabPanel', {
                         {
                             xtype: 'button',
                             handler: function(button, e) {
-                                var currMonth = ["January", "Februry", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-                                var currDate = currMonth.indexOf(Ext.getCmp('MonthId').getTitle());
+                                var currMonthTable = ["January", "Februry", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 
-                                var index = currDate <= 0 ? 11 : currDate - 1;
+                                var splitDate = Ext.getCmp('MonthId').getTitle().split("-");
+                                var currMonth = currMonthTable.indexOf(splitDate[0].trim());
+                                var currYear = parseInt(splitDate[1].trim(), 10);
+                                var index = currMonth <= 0 ? 11 : currMonth - 1;
 
-                                Ext.getCmp('MonthId').setTitle(currMonth[index]);
+                                var date = new Date();
+                                date.setMonth(index);
+
+                                if(index === 11)
+                                {
+                                    currYear = (currYear - 1);
+                                }
+
+                                date.setFullYear(currYear);
+
+                                // get filterDate
+                                var store = Ext.getStore("TimeStore");
+                                store.clearFilter();
+
+                                store.filter(
+                                {
+                                    filterFn: function(item)
+                                    {
+                                        var firstDay = new Date(date.getFullYear(), date.getMonth(), 1);
+                                        firstDay.setHours("00");
+                                        firstDay.setMinutes("00");
+
+                                        var lastDay = new Date(date.getFullYear(), date.getMonth() + 1, 0);
+                                        lastDay.setHours("23");
+                                        lastDay.setMinutes("59");
+                                        lastDay.setSeconds("59");
+
+                                        return (item.get("Start") >= firstDay && item.get("Start") <= lastDay);
+                                    }
+                                });
+
+                                // end filterDate
+
+                                Ext.getCmp('MonthId').setTitle(currMonthTable[index] + " - " + currYear);
+
+                                var sumValue = store.sum('Time');
+                                Ext.getCmp('SumMonthId').setHtml("Sum: " + sumValue + " Hours");
                             },
                             ui: 'square',
                             margin: '0, 0, 0, 5',
@@ -657,12 +701,50 @@ Ext.define('Lab12_1.view.TimeTabPanel', {
                         {
                             xtype: 'button',
                             handler: function(button, e) {
-                                var currMonth = ["January", "Februry", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-                                var currDate = currMonth.indexOf(Ext.getCmp('MonthId').getTitle());
+                                var currMonthTable = ["January", "Februry", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 
-                                var index = currDate >= 11 ? 0 : currDate + 1;
+                                var splitDate = Ext.getCmp('MonthId').getTitle().split("-");
+                                var currMonth = currMonthTable.indexOf(splitDate[0].trim());
+                                var currYear = parseInt(splitDate[1].trim(), 10);
+                                var index = currMonth >= 11 ? 0 : currMonth + 1;
 
-                                Ext.getCmp('MonthId').setTitle(currMonth[index]);
+                                var date = new Date();
+                                date.setMonth(index);
+
+                                if(index === 11)
+                                {
+                                    currYear = (currYear + 1);
+                                }
+
+                                date.setFullYear(currYear);
+
+                                // get filterDate
+                                var store = Ext.getStore("TimeStore");
+                                store.clearFilter();
+
+                                store.filter(
+                                {
+                                    filterFn: function(item)
+                                    {
+                                        var firstDay = new Date(date.getFullYear(), date.getMonth(), 1);
+                                        firstDay.setHours("00");
+                                        firstDay.setMinutes("00");
+
+                                        var lastDay = new Date(date.getFullYear(), date.getMonth() + 1, 0);
+                                        lastDay.setHours("23");
+                                        lastDay.setMinutes("59");
+                                        lastDay.setSeconds("59");
+
+                                        return (item.get("Start") >= firstDay && item.get("Start") <= lastDay);
+                                    }
+                                });
+
+                                // end filterDate
+
+                                Ext.getCmp('MonthId').setTitle(currMonthTable[index] + " - " + currYear);
+
+                                var sumValue = store.sum('Time');
+                                Ext.getCmp('SumMonthId').setHtml("Sum: " + sumValue + " Hours");
                             },
                             align: 'right',
                             ui: 'square',

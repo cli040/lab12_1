@@ -17,7 +17,8 @@ Ext.define('Lab12_1.view.TimeTabPanelViewController', {
     extend: 'Ext.app.ViewController',
     alias: 'controller.timetabpanel',
 
-    OnItemSelected: function(dataview, selected, eOpts) {
+    OnItemSelectedDay: function(dataview, selected, eOpts) {
+        console.log(selected[0]);
         Ext.create('Lab12_1.view.UpdateTimeFormPanel', {fullscreen: true, record: selected[0]});
     },
 
@@ -65,8 +66,22 @@ Ext.define('Lab12_1.view.TimeTabPanelViewController', {
             MM = "0" + MM;
         }
 
+        // get filterDate
+
+        var daysName = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+        var monthsName = ["January", "Februry", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+
+        var searchString = daysName[currDate.getDay()] + " " + monthsName[currDate.getMonth()] + " " + (currDate.getDate() <= 9 ? "0" + currDate.getDate() : currDate.getDate()) + " " + currDate.getFullYear();
+
+        // end filterDate
+
         currDate = dd + '/' + mm + '/' + yyyy;
         Ext.getCmp('DayId').setTitle(currDate);
+
+        sortDate = yyyy + "/" + dd + "/" + mm;
+
+        var store = Ext.getStore("TimeStore");
+        store.filter("Start", searchString);
 
     },
 
@@ -75,6 +90,10 @@ Ext.define('Lab12_1.view.TimeTabPanelViewController', {
         var sumValue = store.sum('Time');
 
         Ext.getCmp('SumDayId').setHtml("Sum: " + sumValue + " Hours");
+    },
+
+    OnItemSelectWeek: function(dataview, selected, eOpts) {
+        Ext.create('Lab12_1.view.UpdateTimeFormPanel', {fullscreen: true, record: selected[0]});
     },
 
     weekContainerInit: function(component, eOpts) {
@@ -86,7 +105,6 @@ Ext.define('Lab12_1.view.TimeTabPanelViewController', {
             do
             {
                 lastDayOfWeek.setDate(lastDayOfWeek.getDate() + 1);
-                console.log(lastDayOfWeek.getDate());
             }while(lastDayOfWeek.getDay() !== 0);
 
         }
@@ -169,6 +187,10 @@ Ext.define('Lab12_1.view.TimeTabPanelViewController', {
         var sumValue = store.sum('Time');
 
         Ext.getCmp('SumDayId').setHtml("Sum: " + sumValue + " Hours");
+    },
+
+    OnItemSelectMonth: function(dataview, selected, eOpts) {
+        Ext.create('Lab12_1.view.UpdateTimeFormPanel', {fullscreen: true, record: selected[0]});
     },
 
     monthContainerInit: function(component, eOpts) {

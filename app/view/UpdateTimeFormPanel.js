@@ -421,14 +421,14 @@ Ext.define('Lab12_1.view.UpdateTimeFormPanel', {
                         function formatTime(date)
                         {
                             var dateParts;
-                            dateParts=date.split("/");
-                            var newDate=dateParts[1]+"/"+dateParts[0]+"/"+dateParts[2];
+                            dateParts = date.split("/");
+                            var newDate = dateParts[1] + "/" + dateParts[0]+"/" + dateParts[2];
                             return new Date(newDate);
                         }
+                        var index = record.id;
 
-                        var index = record.id - 1;
+                        var storeElement = store.getById(index);
 
-                        var storeElement = store.getAt(index);
                         storeElement.set('Start', startTime);
                         storeElement.set('End', endTime);
                         storeElement.set('Time', totalTime);

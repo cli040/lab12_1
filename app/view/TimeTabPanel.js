@@ -122,6 +122,20 @@ Ext.define('Lab12_1.view.TimeTabPanel', {
                                     MM = "0" + MM;
                                 }
 
+                                // get filterDate
+
+                                var daysName = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+                                var monthsName = ["January", "Februry", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+
+                                var searchString = daysName[currDate.getDay()] + " " + monthsName[currDate.getMonth()] + " " + (currDate.getDate() <= 9 ? "0" + currDate.getDate() : currDate.getDate()) + " " + currDate.getFullYear();
+
+                                var store = Ext.getStore("TimeStore");
+                                store.filters.clear();
+                                store.filter("Start", searchString);
+                                //console.log(store.data.items);
+
+                                // end filterDate
+
                                 currDate = dd + '/' + mm + '/' + yyyy;
 
                                 /** Format End **/
@@ -175,6 +189,19 @@ Ext.define('Lab12_1.view.TimeTabPanel', {
                                     MM = "0" + MM;
                                 }
 
+                                // get filterDate
+
+                                var daysName = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+                                var monthsName = ["January", "Februry", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+
+                                var searchString = daysName[currDate.getDay()] + " " + monthsName[currDate.getMonth()] + " " + (currDate.getDate() <= 9 ? "0" + currDate.getDate() : currDate.getDate()) + " " + currDate.getFullYear();
+
+                                var store = Ext.getStore("TimeStore");
+                                store.filters.clear();
+                                store.filter("Start", searchString);
+
+                                // end filterDate
+
                                 currDate = dd + '/' + mm + '/' + yyyy;
 
                                 /** Format End **/
@@ -197,28 +224,29 @@ Ext.define('Lab12_1.view.TimeTabPanel', {
                 {
                     xtype: 'grid',
                     height: '100%',
-                    itemId: 'mygrid',
+                    id: 'DayGridId',
+                    itemId: 'DayGridId',
                     width: '100%',
                     store: 'TimeStore',
                     title: 'Day',
                     columns: [
                         {
                             xtype: 'datecolumn',
-                            width: 130,
+                            width: 175,
                             dataIndex: 'Start',
                             text: 'Start',
                             format: 'd/m/Y H:i'
                         },
                         {
                             xtype: 'datecolumn',
-                            width: 130,
+                            width: 175,
                             dataIndex: 'End',
                             text: 'End',
                             format: 'd/m/Y H:i'
                         },
                         {
                             xtype: 'numbercolumn',
-                            width: 70,
+                            width: 100,
                             dataIndex: 'Time',
                             text: 'Time'
                         },
@@ -232,7 +260,7 @@ Ext.define('Lab12_1.view.TimeTabPanel', {
                         }
                     ],
                     listeners: {
-                        select: 'OnItemSelected',
+                        select: 'OnItemSelectedDay',
                         add: 'onItemAddDay'
                     }
                 }
@@ -299,8 +327,25 @@ Ext.define('Lab12_1.view.TimeTabPanel', {
                                 var firstDayOfWeek = new Date(currDateString);
                                 var lastDayOfWeek = new Date(lastDateString);
 
+                                var filterStart = new Date(currDateString);
+
                                 firstDayOfWeek.setDate(firstDayOfWeek.getDate() - 7);
                                 lastDayOfWeek.setDate(lastDayOfWeek.getDate() - 7);
+
+                                // get filterDate
+
+                                var daysName = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+                                var monthsName = ["January", "Februry", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+
+                                var searchString = daysName[firstDayOfWeek.getDay()] + " " + monthsName[firstDayOfWeek.getMonth()] + " " + (firstDayOfWeek.getDate() <= 9 ? "0" + firstDayOfWeek.getDate() : firstDayOfWeek.getDate()) + " " + firstDayOfWeek.getFullYear();
+
+                                console.log(searchString);
+
+                                var store = Ext.getStore("TimeStore");
+                                store.filters.clear();
+                                store.filter("Start", searchString);
+
+                                // end filterDate
 
                                 /** Format Start **/
 
@@ -363,6 +408,7 @@ Ext.define('Lab12_1.view.TimeTabPanel', {
                                 lastDayOfWeek = dd + '/' + mm + '/' + yyyy;
 
                                 /** Format End **/
+
 
                                 var currentWeek = firstDayOfWeek + " - " + lastDayOfWeek;
 
@@ -394,6 +440,21 @@ Ext.define('Lab12_1.view.TimeTabPanel', {
                                 firstDayOfWeek.setDate(firstDayOfWeek.getDate() + 7);
                                 lastDayOfWeek.setDate(lastDayOfWeek.getDate() + 7);
 
+                                // get filterDate
+
+                                var daysName = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+                                var monthsName = ["January", "Februry", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+
+                                var searchString = daysName[firstDayOfWeek.getDay()] + " " + monthsName[firstDayOfWeek.getMonth()] + " " + (firstDayOfWeek.getDate() <= 9 ? "0" + firstDayOfWeek.getDate() : firstDayOfWeek.getDate()) + " " + firstDayOfWeek.getFullYear();
+
+                                console.log(searchString);
+
+                                var store = Ext.getStore("TimeStore");
+                                store.filters.clear();
+                                store.filter("Start", searchString);
+
+                                // end filterDate
+
                                 /** Format Start **/
 
                                 var dd = firstDayOfWeek.getDate();
@@ -457,6 +518,22 @@ Ext.define('Lab12_1.view.TimeTabPanel', {
                                 /** Format End **/
 
                                 var currentWeek = firstDayOfWeek + " - " + lastDayOfWeek;
+
+                                // get filterDate
+
+                                var firstDayOfWeekDate = new Date(firstDayOfWeek);
+                                var lastDayOfWeekDate = new Date(lastDayOfWeek);
+
+                                var daysName = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+                                var monthsName = ["January", "Februry", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+
+                                var searchString = daysName[firstDayOfWeekDate.getDay()] + " " + monthsName[firstDayOfWeekDate.getMonth()] + " " + (firstDayOfWeekDate.getDate() <= 9 ? "0" + firstDayOfWeekDate.getDate() : firstDayOfWeekDate.getDate()) + " " + firstDayOfWeekDate.getFullYear();
+
+                                var store = Ext.getStore("TimeStore");
+                                store.filters.clear();
+                                store.filter("Start", searchString);
+
+                                // end filterDate
 
                                 Ext.getCmp('WeekId').setTitle(currentWeek);
                             },
@@ -500,7 +577,8 @@ Ext.define('Lab12_1.view.TimeTabPanel', {
                         }
                     ],
                     listeners: {
-                        add: 'OnItemAddWeek'
+                        add: 'OnItemAddWeek',
+                        select: 'OnItemSelectWeek'
                     }
                 },
                 {
@@ -618,7 +696,8 @@ Ext.define('Lab12_1.view.TimeTabPanel', {
                         }
                     ],
                     listeners: {
-                        add: 'onItemAddMonth'
+                        add: 'onItemAddMonth',
+                        select: 'OnItemSelectMonth'
                     }
                 },
                 {

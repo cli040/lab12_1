@@ -217,13 +217,13 @@
                                             "        var mm = currDate.getMonth() + 1; //January is 0!",
                                             "",
                                             "        var yyyy = currDate.getFullYear();",
-                                            "        ",
-                                            "        if (dd < 10) ",
+                                            "",
+                                            "        if (dd < 10)",
                                             "        {",
                                             "            dd = '0' + dd;",
                                             "        }",
-                                            "        ",
-                                            "        if (mm < 10) ",
+                                            "",
+                                            "        if (mm < 10)",
                                             "        {",
                                             "            mm = '0' + mm;",
                                             "        }",
@@ -239,6 +239,20 @@
                                             "        {",
                                             "            MM = \"0\" + MM;",
                                             "        }",
+                                            "",
+                                            "        // get filterDate",
+                                            "",
+                                            "        var daysName = [\"Sun\", \"Mon\", \"Tue\", \"Wed\", \"Thu\", \"Fri\", \"Sat\"];",
+                                            "        var monthsName = [\"January\", \"Februry\", \"March\", \"April\", \"May\", \"June\", \"July\", \"August\", \"September\", \"October\", \"November\", \"December\"];",
+                                            "",
+                                            "        var searchString = daysName[currDate.getDay()] + \" \" + monthsName[currDate.getMonth()] + \" \" + (currDate.getDate() <= 9 ? \"0\" + currDate.getDate() : currDate.getDate()) + \" \" + currDate.getFullYear();",
+                                            "",
+                                            "        var store = Ext.getStore(\"TimeStore\");",
+                                            "        store.filters.clear();",
+                                            "        store.filter(\"Start\", searchString);",
+                                            "        //console.log(store.data.items);",
+                                            "",
+                                            "        // end filterDate",
                                             "",
                                             "        currDate = dd + '/' + mm + '/' + yyyy;",
                                             "",
@@ -311,13 +325,13 @@
                                             "        var mm = currDate.getMonth() + 1; //January is 0!",
                                             "",
                                             "        var yyyy = currDate.getFullYear();",
-                                            "        ",
-                                            "        if (dd < 10) ",
+                                            "",
+                                            "        if (dd < 10)",
                                             "        {",
                                             "            dd = '0' + dd;",
                                             "        }",
-                                            "        ",
-                                            "        if (mm < 10) ",
+                                            "",
+                                            "        if (mm < 10)",
                                             "        {",
                                             "            mm = '0' + mm;",
                                             "        }",
@@ -333,6 +347,19 @@
                                             "        {",
                                             "            MM = \"0\" + MM;",
                                             "        }",
+                                            "",
+                                            "        // get filterDate",
+                                            "",
+                                            "        var daysName = [\"Sun\", \"Mon\", \"Tue\", \"Wed\", \"Thu\", \"Fri\", \"Sat\"];",
+                                            "        var monthsName = [\"January\", \"Februry\", \"March\", \"April\", \"May\", \"June\", \"July\", \"August\", \"September\", \"October\", \"November\", \"December\"];",
+                                            "",
+                                            "        var searchString = daysName[currDate.getDay()] + \" \" + monthsName[currDate.getMonth()] + \" \" + (currDate.getDate() <= 9 ? \"0\" + currDate.getDate() : currDate.getDate()) + \" \" + currDate.getFullYear();",
+                                            "",
+                                            "        var store = Ext.getStore(\"TimeStore\");",
+                                            "        store.filters.clear();",
+                                            "        store.filter(\"Start\", searchString);",
+                                            "",
+                                            "        // end filterDate",
                                             "",
                                             "        currDate = dd + '/' + mm + '/' + yyyy;",
                                             "",
@@ -387,7 +414,8 @@
                     "userConfig": {
                         "designer|displayName": "DayGrid",
                         "height": "100%",
-                        "itemId": "mygrid",
+                        "id": "DayGridId",
+                        "itemId": "DayGridId",
                         "store": "TimeStore",
                         "title": "Day",
                         "width": "100%"
@@ -398,7 +426,8 @@
                         "store": "store",
                         "width": "auto",
                         "itemId": "string",
-                        "title": "string"
+                        "title": "string",
+                        "id": "string"
                     },
                     "name": "MyGrid",
                     "designerId": "89a10f38-b1a8-4532-a6d1-78b2dbbf2fc7",
@@ -415,7 +444,7 @@
                                 "docked": null,
                                 "format": "d/m/Y H:i",
                                 "text": "Start",
-                                "width": 130
+                                "width": 175
                             },
                             "configAlternates": {
                                 "docked": "string",
@@ -439,7 +468,7 @@
                                 "docked": null,
                                 "format": "d/m/Y H:i",
                                 "text": "End",
-                                "width": 130
+                                "width": 175
                             },
                             "configAlternates": {
                                 "dataIndex": "datafield",
@@ -462,7 +491,7 @@
                                 "dataIndex": "Time",
                                 "docked": null,
                                 "text": "Time",
-                                "width": 70
+                                "width": 100
                             },
                             "configAlternates": {
                                 "dataIndex": "datafield",
@@ -509,8 +538,9 @@
                             },
                             "codeClass": null,
                             "userConfig": {
-                                "fn": "OnItemSelected",
+                                "fn": "OnItemSelectedDay",
                                 "implHandler": [
+                                    "    console.log(selected[0]);",
                                     "    Ext.create('Lab12_1.view.UpdateTimeFormPanel', {fullscreen: true, record: selected[0]});"
                                 ],
                                 "name": "select",
@@ -522,7 +552,7 @@
                                 "name": "string",
                                 "scope": "string"
                             },
-                            "name": "OnItemSelected",
+                            "name": "OnItemSelectedDay",
                             "designerId": "497a775d-aa1f-468c-94d1-9b33c3f6548a"
                         },
                         {
@@ -620,8 +650,22 @@
                             "            MM = \"0\" + MM;",
                             "        }",
                             "",
+                            "        // get filterDate",
+                            "",
+                            "        var daysName = [\"Sun\", \"Mon\", \"Tue\", \"Wed\", \"Thu\", \"Fri\", \"Sat\"];",
+                            "        var monthsName = [\"January\", \"Februry\", \"March\", \"April\", \"May\", \"June\", \"July\", \"August\", \"September\", \"October\", \"November\", \"December\"];",
+                            "",
+                            "        var searchString = daysName[currDate.getDay()] + \" \" + monthsName[currDate.getMonth()] + \" \" + (currDate.getDate() <= 9 ? \"0\" + currDate.getDate() : currDate.getDate()) + \" \" + currDate.getFullYear();",
+                            "",
+                            "        // end filterDate",
+                            "",
                             "        currDate = dd + '/' + mm + '/' + yyyy;",
                             "        Ext.getCmp('DayId').setTitle(currDate);",
+                            "",
+                            "        sortDate = yyyy + \"/\" + dd + \"/\" + mm;",
+                            "",
+                            "        var store = Ext.getStore(\"TimeStore\");",
+                            "        store.filter(\"Start\", searchString);",
                             ""
                         ],
                         "name": "initialize",
@@ -826,8 +870,25 @@
                                             "var firstDayOfWeek = new Date(currDateString);",
                                             "var lastDayOfWeek = new Date(lastDateString);",
                                             "",
+                                            "var filterStart = new Date(currDateString);",
+                                            "",
                                             "firstDayOfWeek.setDate(firstDayOfWeek.getDate() - 7);",
                                             "lastDayOfWeek.setDate(lastDayOfWeek.getDate() - 7);",
+                                            "",
+                                            "        // get filterDate",
+                                            "",
+                                            "                var daysName = [\"Sun\", \"Mon\", \"Tue\", \"Wed\", \"Thu\", \"Fri\", \"Sat\"];",
+                                            "                var monthsName = [\"January\", \"Februry\", \"March\", \"April\", \"May\", \"June\", \"July\", \"August\", \"September\", \"October\", \"November\", \"December\"];",
+                                            "",
+                                            "                var searchString = daysName[firstDayOfWeek.getDay()] + \" \" + monthsName[firstDayOfWeek.getMonth()] + \" \" + (firstDayOfWeek.getDate() <= 9 ? \"0\" + firstDayOfWeek.getDate() : firstDayOfWeek.getDate()) + \" \" + firstDayOfWeek.getFullYear();",
+                                            "",
+                                            "                console.log(searchString);",
+                                            "",
+                                            "                var store = Ext.getStore(\"TimeStore\");",
+                                            "                store.filters.clear();",
+                                            "                store.filter(\"Start\", searchString);",
+                                            "",
+                                            "        // end filterDate",
                                             "",
                                             "        /** Format Start **/",
                                             "",
@@ -890,6 +951,7 @@
                                             "        lastDayOfWeek = dd + '/' + mm + '/' + yyyy;",
                                             "",
                                             "        /** Format End **/",
+                                            "",
                                             "",
                                             "var currentWeek = firstDayOfWeek + \" - \" + lastDayOfWeek;",
                                             "",
@@ -963,6 +1025,21 @@
                                             "firstDayOfWeek.setDate(firstDayOfWeek.getDate() + 7);",
                                             "lastDayOfWeek.setDate(lastDayOfWeek.getDate() + 7);",
                                             "",
+                                            "        // get filterDate",
+                                            "",
+                                            "        var daysName = [\"Sun\", \"Mon\", \"Tue\", \"Wed\", \"Thu\", \"Fri\", \"Sat\"];",
+                                            "        var monthsName = [\"January\", \"Februry\", \"March\", \"April\", \"May\", \"June\", \"July\", \"August\", \"September\", \"October\", \"November\", \"December\"];",
+                                            "",
+                                            "        var searchString = daysName[firstDayOfWeek.getDay()] + \" \" + monthsName[firstDayOfWeek.getMonth()] + \" \" + (firstDayOfWeek.getDate() <= 9 ? \"0\" + firstDayOfWeek.getDate() : firstDayOfWeek.getDate()) + \" \" + firstDayOfWeek.getFullYear();",
+                                            "",
+                                            "        console.log(searchString);",
+                                            "",
+                                            "        var store = Ext.getStore(\"TimeStore\");",
+                                            "        store.filters.clear();",
+                                            "        store.filter(\"Start\", searchString);",
+                                            "        ",
+                                            "        // end filterDate",
+                                            "",
                                             "        /** Format Start **/",
                                             "",
                                             "        var dd = firstDayOfWeek.getDate();",
@@ -1026,6 +1103,22 @@
                                             "        /** Format End **/",
                                             "",
                                             "var currentWeek = firstDayOfWeek + \" - \" + lastDayOfWeek;",
+                                            "",
+                                            "// get filterDate",
+                                            "",
+                                            "        var firstDayOfWeekDate = new Date(firstDayOfWeek);",
+                                            "        var lastDayOfWeekDate = new Date(lastDayOfWeek);",
+                                            "",
+                                            "        var daysName = [\"Sun\", \"Mon\", \"Tue\", \"Wed\", \"Thu\", \"Fri\", \"Sat\"];",
+                                            "        var monthsName = [\"January\", \"Februry\", \"March\", \"April\", \"May\", \"June\", \"July\", \"August\", \"September\", \"October\", \"November\", \"December\"];",
+                                            "",
+                                            "        var searchString = daysName[firstDayOfWeekDate.getDay()] + \" \" + monthsName[firstDayOfWeekDate.getMonth()] + \" \" + (firstDayOfWeekDate.getDate() <= 9 ? \"0\" + firstDayOfWeekDate.getDate() : firstDayOfWeekDate.getDate()) + \" \" + firstDayOfWeekDate.getFullYear();",
+                                            "",
+                                            "        var store = Ext.getStore(\"TimeStore\");",
+                                            "        store.filters.clear();",
+                                            "        store.filter(\"Start\", searchString);",
+                                            "",
+                                            "// end filterDate",
                                             "",
                                             "Ext.getCmp('WeekId').setTitle(currentWeek);"
                                         ]
@@ -1180,6 +1273,30 @@
                             },
                             "name": "OnItemAddWeek",
                             "designerId": "9d9e3a9f-97d6-4ea1-bc3f-1c40253d94c1"
+                        },
+                        {
+                            "type": "viewcontrollereventbinding",
+                            "reference": {
+                                "name": "listeners",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "fn": "OnItemSelectWeek",
+                                "implHandler": [
+                                    "Ext.create('Lab12_1.view.UpdateTimeFormPanel', {fullscreen: true, record: selected[0]});"
+                                ],
+                                "name": "select",
+                                "scope": "me"
+                            },
+                            "configAlternates": {
+                                "fn": "string",
+                                "implHandler": "code",
+                                "name": "string",
+                                "scope": "string"
+                            },
+                            "name": "OnItemSelectWeek",
+                            "designerId": "7e46b709-36ad-4a0f-a492-75ceb2d960da"
                         }
                     ]
                 },
@@ -1201,7 +1318,6 @@
                             "            do",
                             "            {",
                             "                lastDayOfWeek.setDate(lastDayOfWeek.getDate() + 1);",
-                            "                console.log(lastDayOfWeek.getDate());",
                             "            }while(lastDayOfWeek.getDay() !== 0);",
                             "",
                             "        }",
@@ -1722,6 +1838,30 @@
                             },
                             "name": "onItemAddMonth",
                             "designerId": "75fbd4a5-5141-4da4-996d-c0ae360d620e"
+                        },
+                        {
+                            "type": "viewcontrollereventbinding",
+                            "reference": {
+                                "name": "listeners",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "fn": "OnItemSelectMonth",
+                                "implHandler": [
+                                    "Ext.create('Lab12_1.view.UpdateTimeFormPanel', {fullscreen: true, record: selected[0]});"
+                                ],
+                                "name": "select",
+                                "scope": "me"
+                            },
+                            "configAlternates": {
+                                "fn": "string",
+                                "implHandler": "code",
+                                "name": "string",
+                                "scope": "string"
+                            },
+                            "name": "OnItemSelectMonth",
+                            "designerId": "e81275e4-0100-4a3c-a971-d4804f2f1e5f"
                         }
                     ]
                 },

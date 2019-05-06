@@ -262,7 +262,7 @@ Ext.define('Lab12_1.view.TimeTabPanel', {
                             xtype: 'gridcolumn',
                             id: 'DayGridCommentId',
                             itemId: 'DayGridCommentId',
-                            width: 266,
+                            width: 250,
                             dataIndex: 'Comment',
                             text: 'Comment'
                         }
@@ -567,27 +567,27 @@ Ext.define('Lab12_1.view.TimeTabPanel', {
                     columns: [
                         {
                             xtype: 'datecolumn',
-                            width: 130,
+                            width: 175,
                             dataIndex: 'Start',
                             text: 'Start',
                             format: 'd/m/Y H:i'
                         },
                         {
                             xtype: 'datecolumn',
-                            width: 130,
+                            width: 175,
                             dataIndex: 'End',
                             text: 'End',
                             format: 'd/m/Y H:i'
                         },
                         {
                             xtype: 'numbercolumn',
-                            width: 70,
+                            width: 100,
                             dataIndex: 'Time',
                             text: 'Time'
                         },
                         {
                             xtype: 'gridcolumn',
-                            width: 266,
+                            width: 250,
                             dataIndex: 'Comment',
                             text: 'Comment'
                         }
@@ -764,27 +764,27 @@ Ext.define('Lab12_1.view.TimeTabPanel', {
                     columns: [
                         {
                             xtype: 'datecolumn',
-                            width: 130,
+                            width: 175,
                             dataIndex: 'Start',
                             text: 'Start',
                             format: 'd/m/Y H:i'
                         },
                         {
                             xtype: 'datecolumn',
-                            width: 130,
+                            width: 175,
                             dataIndex: 'End',
                             text: 'End',
                             format: 'd/m/Y H:i'
                         },
                         {
                             xtype: 'numbercolumn',
-                            width: 70,
+                            width: 100,
                             dataIndex: 'Time',
                             text: 'Time'
                         },
                         {
                             xtype: 'gridcolumn',
-                            width: 266,
+                            width: 250,
                             dataIndex: 'Comment',
                             text: 'Comment'
                         }

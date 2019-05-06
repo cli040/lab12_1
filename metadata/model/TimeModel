@@ -55,7 +55,7 @@
             "designerId": "b383aef1-dbf4-42ad-a987-5402472c2363"
         },
         {
-            "type": "Ext.data.field.Integer",
+            "type": "Ext.data.field.Number",
             "reference": {
                 "name": "fields",
                 "type": "array"
@@ -67,7 +67,7 @@
             "configAlternates": {
                 "name": "string"
             },
-            "name": "MyInteger",
+            "name": "MyNumber",
             "designerId": "0947995e-72b2-4980-a53d-36dd6040057e"
         },
         {

@@ -528,7 +528,7 @@
                                 "id": "DayGridCommentId",
                                 "itemId": "DayGridCommentId",
                                 "text": "Comment",
-                                "width": 266
+                                "width": 250
                             },
                             "configAlternates": {
                                 "dataIndex": "datafield",
@@ -608,7 +608,7 @@
                             "        var store= Ext.getStore(\"TimeStore\");",
                             "",
                             "        // get filterDate",
-                            "        ",
+                            "",
                             "        var currDateString = Ext.getCmp('DayId').getTitle();",
                             "",
                             "        var splitDate = currDateString.split(\"/\");",
@@ -626,8 +626,8 @@
                             "        store.filter(\"Start\", searchString);",
                             "",
                             "        // end filterDate",
-                            "        var sumValue = store.sum('Time');",
                             "",
+                            "        var sumValue = store.sum('Time');",
                             "        Ext.getCmp('SumDayId').setHtml(\"Sum: \" + sumValue + \" Hours\");"
                         ],
                         "name": "activate",
@@ -1204,14 +1204,16 @@
                             "userConfig": {
                                 "dataIndex": "Start",
                                 "docked": null,
+                                "format": "d/m/Y H:i",
                                 "text": "Start",
-                                "width": 130
+                                "width": 175
                             },
                             "configAlternates": {
                                 "dataIndex": "datafield",
                                 "docked": "string",
                                 "text": "string",
-                                "width": "auto"
+                                "width": "auto",
+                                "format": "string"
                             },
                             "name": "MyDateColumn",
                             "designerId": "8be7dfea-ba93-4bae-a1b1-bfe9a3319766"
@@ -1226,14 +1228,16 @@
                             "userConfig": {
                                 "dataIndex": "End",
                                 "docked": null,
+                                "format": "d/m/Y H:i",
                                 "text": "End",
-                                "width": 130
+                                "width": 175
                             },
                             "configAlternates": {
                                 "docked": "string",
                                 "text": "string",
                                 "width": "auto",
-                                "dataIndex": "datafield"
+                                "dataIndex": "datafield",
+                                "format": "string"
                             },
                             "name": "MyDateColumn2",
                             "designerId": "0ae77c7e-8a0b-474a-b61d-e2b42ed0ba2b"
@@ -1249,7 +1253,7 @@
                                 "dataIndex": "Time",
                                 "docked": null,
                                 "text": "Time",
-                                "width": 70
+                                "width": 100
                             },
                             "configAlternates": {
                                 "docked": "string",
@@ -1271,7 +1275,7 @@
                                 "dataIndex": "Comment",
                                 "docked": null,
                                 "text": "Comment",
-                                "width": 266
+                                "width": 250
                             },
                             "configAlternates": {
                                 "docked": "string",
@@ -1885,14 +1889,16 @@
                             "userConfig": {
                                 "dataIndex": "Start",
                                 "docked": null,
+                                "format": "d/m/Y H:i",
                                 "text": "Start",
-                                "width": 130
+                                "width": 175
                             },
                             "configAlternates": {
                                 "dataIndex": "datafield",
                                 "docked": "string",
                                 "text": "string",
-                                "width": "auto"
+                                "width": "auto",
+                                "format": "string"
                             },
                             "name": "MyDateColumn",
                             "designerId": "4864fddc-f5c9-4796-a672-decc051b21c1"
@@ -1907,14 +1913,16 @@
                             "userConfig": {
                                 "dataIndex": "End",
                                 "docked": null,
+                                "format": "d/m/Y H:i",
                                 "text": "End",
-                                "width": 130
+                                "width": 175
                             },
                             "configAlternates": {
                                 "docked": "string",
                                 "text": "string",
                                 "width": "auto",
-                                "dataIndex": "datafield"
+                                "dataIndex": "datafield",
+                                "format": "string"
                             },
                             "name": "MyDateColumn2",
                             "designerId": "f7ffe5c0-b90e-43a3-8da4-836925397ddd"
@@ -1930,7 +1938,7 @@
                                 "dataIndex": "Time",
                                 "docked": null,
                                 "text": "Time",
-                                "width": 70
+                                "width": 100
                             },
                             "configAlternates": {
                                 "docked": "string",
@@ -1952,7 +1960,7 @@
                                 "dataIndex": "Comment",
                                 "docked": null,
                                 "text": "Comment",
-                                "width": 266
+                                "width": 250
                             },
                             "configAlternates": {
                                 "docked": "string",

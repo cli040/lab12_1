@@ -50,8 +50,8 @@ Ext.define('Lab12_1.view.TimeTabPanelViewController', {
         store.filter("Start", searchString);
 
         // end filterDate
-        var sumValue = store.sum('Time');
 
+        var sumValue = store.sum('Time');
         Ext.getCmp('SumDayId').setHtml("Sum: " + sumValue + " Hours");
     },
 

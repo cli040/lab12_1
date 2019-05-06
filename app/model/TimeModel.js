@@ -18,7 +18,7 @@ Ext.define('Lab12_1.model.TimeModel', {
 
     requires: [
         'Ext.data.field.Date',
-        'Ext.data.field.Integer',
+        'Ext.data.field.Number',
         'Ext.data.field.String'
     ],
 
@@ -35,7 +35,7 @@ Ext.define('Lab12_1.model.TimeModel', {
             dateFormat: 'd/m/Y H:i'
         },
         {
-            type: 'int',
+            type: 'float',
             name: 'Time'
         },
         {

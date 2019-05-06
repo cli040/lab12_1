@@ -49,9 +49,9 @@ Ext.define('Lab12_1.view.UpdateTimeFormPanel', {
                     xtype: 'button',
                     handler: function(button, e) {
                         var endTime = Ext.getCmp("UpdateEndTimeAndDateId").getValue();
-                        var totalTime = Ext.getCmp("UpdateTotalTimeId").getValue();
+                        var totalTime = Ext.getCmp("UpdateTotalTimeId").getValue().toString();
 
-                        if(endTime.length > 0)
+                        if(endTime.length > 12)
                         {
                             var endTimeParts = endTime.split("/");
                             endTime = endTimeParts[1] + "/" + endTimeParts[0] + "/" + endTimeParts[2];
@@ -147,6 +147,50 @@ Ext.define('Lab12_1.view.UpdateTimeFormPanel', {
 
                             Ext.getCmp("UpdateStartTimeAndDateId").setValue(newStartTime);
                         }
+                        else
+                        {
+                            if(checkTotalTime)
+                            {
+                                alert("TotalTime is null");
+                            }
+                            if(checkEndTime)
+                            {
+                                alert("Endtime is null");
+                            }
+
+                            var newStartTime = new Date();
+
+                            /** Format Start **/
+
+                            var dd = newStartTime.getDate();
+                            var mm = newStartTime.getMonth() + 1; //January is 0!
+
+                            var yyyy = newStartTime.getFullYear();
+                            if (dd < 10) {
+                                dd = '0' + dd;
+                            }
+                            if (mm < 10) {
+                                mm = '0' + mm;
+                            }
+
+                            var HH = newStartTime.getHours();
+                            var MM = newStartTime.getMinutes();
+
+                            if(HH < 10)
+                            {
+                                HH = "0" + HH;
+                            }
+                            if(MM < 10)
+                            {
+                                MM = "0" + MM;
+                            }
+
+                            newStartTime = dd + '/' + mm + '/' + yyyy + " " + HH + ":" + MM;
+
+                            /** Format End **/
+
+                            Ext.getCmp("UpdateStartTimeAndDateId").setValue(newStartTime);
+                        }
                     },
                     text: 'Calc Start'
                 }
@@ -169,11 +213,11 @@ Ext.define('Lab12_1.view.UpdateTimeFormPanel', {
                     xtype: 'button',
                     handler: function(button, e) {
                         var startTime = Ext.getCmp("UpdateStartTimeAndDateId").getValue();
-                        var totalTime = Ext.getCmp("UpdateTotalTimeId").getValue();
+                        var totalTime = Ext.getCmp("UpdateTotalTimeId").getValue().toString();
 
                         var checkStartTime;
 
-                        if(startTime.length > 0)
+                        if(startTime.length > 12)
                         {
                             var startTimeParts = startTime.split("/");
 
@@ -187,8 +231,6 @@ Ext.define('Lab12_1.view.UpdateTimeFormPanel', {
                         }
 
                         var checkTotalTime = totalTime.length > 0 && !isNaN(totalTime);
-
-
 
                         if(checkStartTime && checkTotalTime)
                         {
@@ -268,7 +310,50 @@ Ext.define('Lab12_1.view.UpdateTimeFormPanel', {
                             /** Format End **/
 
                             Ext.getCmp("UpdateEndTimeAndDateId").setValue(newEndTime);
+                        }
+                        else
+                        {
+                            if(checkTotalTime)
+                            {
+                                alert("TotalTime is null");
+                            }
+                            if(checkStartTime)
+                            {
+                                alert("Start time is null");
+                            }
 
+                            var newStartTime = new Date();
+
+                            /** Format Start **/
+
+                            var dd = newStartTime.getDate();
+                            var mm = newStartTime.getMonth() + 1; //January is 0!
+
+                            var yyyy = newStartTime.getFullYear();
+                            if (dd < 10) {
+                                dd = '0' + dd;
+                            }
+                            if (mm < 10) {
+                                mm = '0' + mm;
+                            }
+
+                            var HH = newStartTime.getHours();
+                            var MM = newStartTime.getMinutes();
+
+                            if(HH < 10)
+                            {
+                                HH = "0" + HH;
+                            }
+                            if(MM < 10)
+                            {
+                                MM = "0" + MM;
+                            }
+
+                            newStartTime = dd + '/' + mm + '/' + yyyy + " " + HH + ":" + MM;
+
+                            /** Format End **/
+
+                            Ext.getCmp("UpdateEndTimeAndDateId").setValue(newStartTime);
                         }
                     },
                     text: 'Calc End'
@@ -296,7 +381,7 @@ Ext.define('Lab12_1.view.UpdateTimeFormPanel', {
 
                         var checkStartTime;
 
-                        if(startTime.length > 0)
+                        if(startTime.length > 12)
                         {
                             var startTimeParts = startTime.split("/");
 
@@ -311,7 +396,7 @@ Ext.define('Lab12_1.view.UpdateTimeFormPanel', {
 
                         var checkEndTime;
 
-                        if(endTime.length > 0)
+                        if(endTime.length > 12)
                         {
                             var endTimeParts = endTime.split("/");
 
@@ -410,32 +495,140 @@ Ext.define('Lab12_1.view.UpdateTimeFormPanel', {
                 {
                     xtype: 'button',
                     handler: function(button, e) {
-                        var record = button.up("formpanel").getRecord();
-                        var store = Ext.getStore("TimeStore");
-
-                        var startTime =formatTime(Ext.getCmp("UpdateStartTimeAndDateId").getValue());
-                        var endTime = formatTime(Ext.getCmp("UpdateEndTimeAndDateId").getValue());
-                        var totalTime = Ext.getCmp("UpdateTotalTimeId").getValue();
-                        var comment= Ext.getCmp("UpdateCommentId").getValue();
-
                         function formatTime(date)
                         {
                             var dateParts;
-                            dateParts = date.split("/");
-                            var newDate = dateParts[1] + "/" + dateParts[0]+"/" + dateParts[2];
+                            dateParts=date.split("/");
+                            var newDate=dateParts[1]+"/"+dateParts[0]+"/"+dateParts[2];
                             return new Date(newDate);
                         }
-                        var index = record.id;
 
-                        var storeElement = store.getById(index);
+                        var startTime = Ext.getCmp("UpdateStartTimeAndDateId").getValue();
+                        var endTime = Ext.getCmp("UpdateEndTimeAndDateId").getValue();
+                        var totalTime = Ext.getCmp("UpdateTotalTimeId").getValue().toString();
 
-                        storeElement.set('Start', startTime);
-                        storeElement.set('End', endTime);
-                        storeElement.set('Time', totalTime);
-                        storeElement.set('Comment', comment);
+                        var checkStartTime;
 
-                        var panel = button.up('formpanel');
-                        panel.destroy();
+                        if(startTime.length > 12)
+                        {
+                            var startTimeParts = startTime.split("/");
+
+                            startTime = startTimeParts[1] + "/" + startTimeParts[0] + "/" + startTimeParts[2];
+
+                            checkStartTime = new Date(startTime);
+                        }
+                        else
+                        {
+                            checkStartTime = false;
+                        }
+
+                        var checkTotalTime = totalTime.length > 0 && !isNaN(totalTime);
+
+                        var checkEndTime;
+
+                        if(endTime.length > 12)
+                        {
+                            var endTimeParts = endTime.split("/");
+                            endTime = endTimeParts[1] + "/" + endTimeParts[0] + "/" + endTimeParts[2];
+
+                            checkEndTime = new Date(endTime);
+                        }
+                        else
+                        {
+                            checkEndTime = false;
+                        }
+
+                        if(checkStartTime && checkEndTime && (checkEndTime >= checkStartTime) && checkTotalTime)
+                        {
+                            // Calc TotalTime
+
+                            var endT = endTime.toString().substring(11,16);
+                            var endTimeParts = endT.split(":");
+
+                            var startT = endTime.toString().substring(11,16);
+                            var startTimeParts = startT.split(":");
+
+                            var resDate = new Date(checkEndTime.getTime() - checkStartTime.getTime()); // 01 Jan 1970 01:00
+
+                            var y = resDate.getYear() - 70;
+                            var m = resDate.getMonth();
+                            var d = resDate.getDate() - 1;
+
+                            var hh = 0;
+                            var mm = 0.0;
+
+                            if(y > 0)
+                            {
+                                hh += y * 24 * 365;
+                            }
+                            if(m > 0)
+                            {
+                                hh += m * 24 * 30;
+                            }
+                            if(d > 0)
+                            {
+                                hh += d * 24;
+                            }
+
+                            hh += (resDate.getHours() === 0 ? resDate.getHours() : (resDate.getHours() - 1));
+
+                            mm = String(resDate.getMinutes() / 60.0);
+                            mm = mm.substring(0, 4);
+                            mm = parseFloat(mm) === 0.0 ? ".0" : parseFloat(mm);
+
+                            var totalTime = hh + mm;
+
+                            Ext.getCmp("UpdateTotalTimeId").setValue(totalTime.toString());
+
+                            var record = button.up("formpanel").getRecord();
+                            var store = Ext.getStore("TimeStore");
+
+                            var startTime =formatTime(Ext.getCmp("UpdateStartTimeAndDateId").getValue());
+                            var endTime = formatTime(Ext.getCmp("UpdateEndTimeAndDateId").getValue());
+                            var totalTime = Ext.getCmp("UpdateTotalTimeId").getValue().toString();
+                            var comment= Ext.getCmp("UpdateCommentId").getValue();
+
+                            var index = record.id;
+
+                            var storeElement = store.getById(index);
+
+                            storeElement.set('Start', startTime);
+                            storeElement.set('End', endTime);
+                            storeElement.set('Time', totalTime);
+                            storeElement.set('Comment', comment);
+
+                            var panel = button.up('formpanel');
+                            panel.destroy();
+
+                            var sumValue = store.sum('Time');
+                            Ext.getCmp('SumDayId').setHtml("Sum: " + sumValue + " Hours");
+                            Ext.getCmp('SumWeekId').setHtml("Sum: " + sumValue + " Hours");
+                            Ext.getCmp('SumMonthId').setHtml("Sum: " + sumValue + " Hours");
+                        }
+                        else
+                        {
+                            if(!checkStartTime)
+                            {
+                                alert("Start time is in wrong format!");
+                            }
+                            else if(!checkEndTime)
+                            {
+                                alert("End time is is in wrong format!");
+                            }
+                            else if((checkEndTime < checkStartTime))
+                            {
+                                alert("End time is before start time!");
+                            }
+                            else if(!checkTotalTime)
+                            {
+                                alert("Total time is not a number or negativ!");
+                                alert("Make sure that end time is after start time!");
+                            }
+                            else
+                            {
+                                alert("Something else went wrong");
+                            }
+                        }
                     },
                     ui: 'confirm',
                     maxWidth: 250,
